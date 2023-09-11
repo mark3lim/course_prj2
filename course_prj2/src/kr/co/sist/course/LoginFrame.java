@@ -26,10 +26,8 @@ public class LoginFrame extends JFrame {
 	public LoginFrame() {
 		super("로그인");
 		
-		 String path = System.getProperty("user.dir");
-		//E:\dev\workspace\course_prj2\src\images\mainBg.png
 		//배경화면 설정
-		JLabel jlblBg = new JLabel(new ImageIcon(path+"/src/images/mainBg.png"));
+		JLabel jlblBg = new JLabel(new ImageIcon("C:/Users/user/git/group_prj/course_prj/src/kr/co/sist/course/images/mainBg.png"));
 		jlblBg.setBounds(0, 0, 1200, 800);
 		
 		
