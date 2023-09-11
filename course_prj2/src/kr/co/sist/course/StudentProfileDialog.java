@@ -34,12 +34,13 @@ public class StudentProfileDialog extends JDialog {
 	private JLabel jlblMyImg;
 	private JButton jbtnChangePw;
 	
-	public StudentProfileDialog(/* StudentMainFrame smf */) {
+//	public StudentProfileDialog(/* StudentMainFrame smf */) {
+	public StudentProfileDialog(StudentMainFrame smf) {
 		this.smf = smf;
 		super.setModal(false);
 		super.setTitle("내 정보");
 		
-		int labelWidth = 80;
+		int labelWidth = 100;
 		int labelHeight = 30;
 		int fieldWidth = 150;
 		int fieldHeight = 30;
@@ -62,7 +63,7 @@ public class StudentProfileDialog extends JDialog {
 		JLabel jlStuNo = new JLabel("학번");
 		jlStuNo.setBounds(510, 170, labelWidth, labelHeight);
 		jlblStuNo = new JLabel("2023001");
-		jlblStuNo.setBounds(jlStuNo.getX()+85, jlStuNo.getY(), fieldWidth, fieldHeight);
+		jlblStuNo.setBounds(jlStuNo.getX()+100, jlStuNo.getY(), fieldWidth, fieldHeight);
 		
 		//이름 설정
 		JLabel jlName = new JLabel("이름");
@@ -123,7 +124,7 @@ public class StudentProfileDialog extends JDialog {
 		
 		//사진 편집 버튼 설정
 		jbtnEditPhoto = new JButton("편집");
-		jbtnEditPhoto.setBounds(jlblMyImg.getX()-8, jlblMyImg.getY()+238, 225, 30);
+		jbtnEditPhoto.setBounds(jlblMyImg.getX(), jlblMyImg.getY()+238, 210, 30);
 		
 		// 라벨 폰트 설정
 		Font font = new Font("맑은 고딕", Font.BOLD, 20);
@@ -266,8 +267,8 @@ public class StudentProfileDialog extends JDialog {
 		return jbtnChangePw;
 	}
 
-	public static void main(String[] args) {
-		new StudentProfileDialog();
-	}
+//	public static void main(String[] args) {
+//		new StudentProfileDialog(smf);
+//	}
 
 }

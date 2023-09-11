@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -17,6 +18,7 @@ public class StudentProfileEvt extends WindowAdapter implements ActionListener {
 	
 	public StudentProfileEvt(StudentProfileDialog spd) {
 		this.spd = spd;
+		initMyProfile();
 		setEmailComboBox();
 	}
 	
@@ -26,13 +28,27 @@ public class StudentProfileEvt extends WindowAdapter implements ActionListener {
 		dcbm.addElement("@gmail.com");
 		dcbm.addElement("@naver.com");
 		dcbm.addElement("@nate.com");
-		dcbm.addElement("@daum.com");
+		dcbm.addElement("@daum.net");
 		dcbm.addElement("@hotmail.com");
 		
 	}
 
-	public void initMyProfile(StudentVO sVO) {
-		System.out.println("초기화");
+	public void initMyProfile() {
+//		spd.getSmf();
+		
+		//이메일을 학생 이메일 도메인으로 설정
+		String temp = StudentMainFrame.sVO.getEmail();
+		String email = temp.substring(temp.indexOf("@")+1);
+		spd.getDcbmEmail().setSelectedItem(email);
+		
+		//화면에 표시	
+		spd.getJlblStuNo().setText(String.valueOf(StudentMainFrame.sVO.getId()));
+		spd.getJlblName().setText(StudentMainFrame.sVO.getName());
+		spd.getJtfEmail().setText(StudentMainFrame.sVO.getEmail());
+		spd.getJlblDept().setText(StudentMainFrame.sVO.getDptName());
+		spd.getJlblMajor().setText(StudentMainFrame.sVO.getMajorName());
+		spd.getJtfPhone().setText(StudentMainFrame.sVO.getPhone());
+		spd.getJtfAddr().setText(StudentMainFrame.sVO.getAddr());
 	}
 	
 	public void changePw(StudentVO sVO) { 

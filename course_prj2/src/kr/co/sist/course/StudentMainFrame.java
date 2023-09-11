@@ -28,13 +28,13 @@ public class StudentMainFrame extends JFrame {
 	private JLabel jlblEmail;
 	private JLabel jlblLoginTime;
 
-	private static StudentVO sVO;
+	static StudentVO sVO;
 	
 	public StudentMainFrame(StudentVO stuVO) {
 		sVO = stuVO;
 		
 		//배경 사진 설정
-		JLabel jlblBg = new JLabel(new ImageIcon("C:/Users/user/git/group_prj/course_prj/src/kr/co/sist/course/images/mainBg.png"));
+		JLabel jlblBg = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/mainBg.png"));
 		jlblBg.setBounds(0, 0, 1200, 800);
 		
 		//학생 사진을 보여주는 라벨 설정
@@ -188,9 +188,9 @@ public class StudentMainFrame extends JFrame {
 		return jlblLoginTime;
 	}
 
-	public static StudentVO getsVO() {
-		return sVO;
-	}
+//	public static StudentVO getsVO() {
+//		return sVO;
+//	}
 
 //	public static void main(String[] args) {
 //		//임시 값

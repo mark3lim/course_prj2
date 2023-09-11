@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -26,7 +28,18 @@ public class StudentScoreEvt extends WindowAdapter implements ActionListener {
 		//다오 연결해서 해당 학생이 들은 학기 가져오
 		
 		DefaultComboBoxModel<String> dcbm = ssd.getDcbmSemester();
-		dcbm.addElement("학기 선택");
+		try {
+			List<String> list = StudentScoreDAO.getInstance().selectSemester(20230002);
+			
+			dcbm.addElement("학기 선택");
+			for(int i = 0; i < list.size(); i++) {
+				dcbm.addElement(list.get(i));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 //	public void initTable() {

@@ -23,7 +23,7 @@ public class StudentMainEvt extends WindowAdapter implements ActionListener {
 	}
 	
 	public void myPage() {
-		System.out.println("my Profile");
+		new StudentProfileDialog(smf);
 	}
 	
 	public void mySubject() {
@@ -44,12 +44,11 @@ public class StudentMainEvt extends WindowAdapter implements ActionListener {
 	}
 	
 	public void initInfo() {
-		StudentVO sVO = StudentMainFrame.getsVO();
-		
-		smf.getJlblMyName().setText(sVO.getName());
-		smf.getJlblDept().setText(sVO.getDptName());
-		smf.getJlblMajor().setText(sVO.getMajorName());
-		smf.getJlblEmail().setText(sVO.getEmail());
+//		StudentVO sVO = StudentMainFrame.sVO;
+		smf.getJlblMyName().setText(StudentMainFrame.sVO.getName());
+		smf.getJlblDept().setText(StudentMainFrame.sVO.getDptName());
+		smf.getJlblMajor().setText(StudentMainFrame.sVO.getMajorName());
+		smf.getJlblEmail().setText(StudentMainFrame.sVO.getEmail());
 		setLoginTime();
 	}
 	
