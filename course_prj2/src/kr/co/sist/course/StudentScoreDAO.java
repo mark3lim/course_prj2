@@ -62,9 +62,46 @@ public class StudentScoreDAO {
 		return list;
 	}
 	
-	public List<StudentScoreVO> selectScore(String gradeYear) {
-		List<StudentScoreVO> list = null;
+	public List<StudentScoreVO> selectScore(int sLevel, int semester) throws SQLException {
+		List<StudentScoreVO> list = new ArrayList<StudentScoreVO>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
+		DbConn db = DbConn.getInstance();
+		
+		try {
+			con = db.getConnection("192.168.10.142", "applepie", "mincho");
+			StringBuilder selectQuery = new StringBuilder();
+			selectQuery
+			.append("	SELECT M.MAJORNAME,S.SUBNAME, S.CREDIT,G.GRADE,S.SUBTYPE					")
+			.append("	FROM TGRADE G, SUBJECT S, MAJOR M											")
+			.append("	WHERE G.STUNO=? AND G.SLEVEL=? AND G.SEMESTER=? AND							")
+			.append("	G.SUBCODE=S.SUBCODE AND S.MAJORCODE=M.MAJORCODE								");
+			
+			pstmt = con.prepareStatement(selectQuery.toString());
+			pstmt.setInt(1, StudentMainFrame.sVO.getId());
+			pstmt.setInt(2, sLevel);
+			pstmt.setInt(3, semester);
+			
+			rs = pstmt.executeQuery();
+			
+			StudentScoreVO ssVO = null;
+			while (rs.next()) {
+				ssVO = new StudentScoreVO(
+					rs.getString("MAJORNAME"),
+					rs.getString("SUBNAME"),
+					rs.getInt("CREDIT"),
+					rs.getString("GRADE"),
+					rs.getString("SUBTYPE")
+				);
+				
+				list.add(ssVO);
+			}
+			
+		} finally {
+			db.dbClose(rs, pstmt, con);
+		}
 		
 		return list;
 	}

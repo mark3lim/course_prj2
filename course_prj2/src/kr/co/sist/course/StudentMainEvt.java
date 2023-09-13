@@ -35,7 +35,7 @@ public class StudentMainEvt extends WindowAdapter implements ActionListener {
 	}
 	
 	public void myGrade() {
-		System.out.println("성적조회");
+		new StudentScoreDialog(smf);
 	}
 	
 	public void setLoginTime() {

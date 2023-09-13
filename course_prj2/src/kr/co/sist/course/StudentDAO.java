@@ -69,16 +69,61 @@ public class StudentDAO {
 		return sVO;
 	}
 	
-	public int updateMyInfo(StudentVO sVO) {
+	public int updateMyInfo(StudentVO updateVO) throws SQLException {
 		int result = 0;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		DbConn db = DbConn.getInstance();
+		
+		try {
+			con = db.getConnection("192.168.10.142", "applepie", "mincho");
+			StringBuilder updateProfile = new StringBuilder();
+			updateProfile
+			.append("	UPDATE STUDENT	")
+			.append("	SET EMAIL=?, PHONE=?, ADDR=?, IMG=? 	")
+			.append("	WHERE STUNO=?	");
+			
+			pstmt = con.prepareStatement(updateProfile.toString());
+			pstmt.setString(1, updateVO.getEmail());
+			pstmt.setString(2, updateVO.getPhone());
+			pstmt.setString(3, updateVO.getAddr());
+			pstmt.setString(4, updateVO.getImg());
+			pstmt.setInt(5, StudentMainFrame.sVO.getId());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} finally {
+			db.dbClose(null, pstmt, con);
+		}
 		
 		
 		return result;
 	}
 	
-	public int updatePw(StudentVO sVO) {
+	public int updatePw(int stuNum, String pw) throws SQLException {
 		int result = 0;
 		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		DbConn db = DbConn.getInstance();
+		
+		try {
+			con = db.getConnection("192.168.10.142", "applepie", "mincho");
+			String updatePw = "UPDATE STUDENT SET PASS=? WHERE STUNO=? ";
+			
+			pstmt = con.prepareStatement(updatePw);
+			pstmt.setString(1, pw);
+			pstmt.setInt(2, stuNum);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			db.dbClose(null, pstmt, con);
+		}
 		
 		return result;
 	}

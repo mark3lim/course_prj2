@@ -46,23 +46,24 @@ public class StudentProfileDialog extends JDialog {
 		int fieldHeight = 30;
 		
 		//배경화면 설정 라벨
-		JLabel bgLabel = new JLabel(new ImageIcon("/Users/marklim/Documents/ForCoding/workplace/course_prj/src/kr/co/sist/course/images/backgr.png"));
+		JLabel bgLabel = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/backgr.png"));
 		bgLabel.setBounds(0, 0, 1000, 700);
 		
 		//내 정보 제목 표시
 		JLabel jlblTitle = new JLabel("내 정보");
 		jlblTitle.setBounds(180, 100, 70, 30);
+		jlblTitle.setFont(new Font("맑은 고딕", Font.BOLD, 24));
 		
 		//학생 사진 보여주는 라벨
-		jlblMyImg = new JLabel("사진(크기: 210 X 240)");
-		jlblMyImg.setBounds(180, 170, 210, 240);
+		jlblMyImg = new JLabel();
+		jlblMyImg.setBounds(180, 170, 190, 250);
 		jlblMyImg.setHorizontalAlignment(JLabel.CENTER);
-		jlblMyImg.setToolTipText("크기: 210 X 240");
+		jlblMyImg.setToolTipText("크기: 190 X 250");
 		
 		//학번 설정
 		JLabel jlStuNo = new JLabel("학번");
 		jlStuNo.setBounds(510, 170, labelWidth, labelHeight);
-		jlblStuNo = new JLabel("2023001");
+		jlblStuNo = new JLabel();
 		jlblStuNo.setBounds(jlStuNo.getX()+100, jlStuNo.getY(), fieldWidth, fieldHeight);
 		
 		//이름 설정
@@ -85,10 +86,15 @@ public class StudentProfileDialog extends JDialog {
 		jlEmail.setBounds(jlPw.getX(), jlPw.getY()+70, labelWidth, labelHeight);
 		jtfEmail = new JTextField(30);
 		jtfEmail.setBounds(jpfPwConfirm.getX(), jpfPwConfirm.getY()+32, 50, fieldHeight);
-		//이메일 컴포박스 설
+		
+		//이메일 컴포박스 설정
 		dcbmEmail = new DefaultComboBoxModel<String>();
 		jcbChoiceEmail = new JComboBox<String>(dcbmEmail);
-		jcbChoiceEmail.setBounds(jtfEmail.getX(), jtfEmail.getY()+7, fieldWidth, fieldHeight);
+		jcbChoiceEmail.setBounds(jtfEmail.getX()+28, jtfEmail.getY()+7, fieldWidth-28, fieldHeight);
+		jcbChoiceEmail.setEditable(true);
+		
+		JLabel golbaengi = new JLabel("@");
+		golbaengi.setBounds(jcbChoiceEmail.getX()-23, jtfEmail.getY()+10, 20, 20);
 		
 		//학부 설정
 		JLabel jldpt = new JLabel("학부");
@@ -124,7 +130,7 @@ public class StudentProfileDialog extends JDialog {
 		
 		//사진 편집 버튼 설정
 		jbtnEditPhoto = new JButton("편집");
-		jbtnEditPhoto.setBounds(jlblMyImg.getX(), jlblMyImg.getY()+238, 210, 30);
+		jbtnEditPhoto.setBounds(jlblMyImg.getX(), jlblMyImg.getY()+250, 190, 30);
 		
 		// 라벨 폰트 설정
 		Font font = new Font("맑은 고딕", Font.BOLD, 20);
@@ -132,13 +138,14 @@ public class StudentProfileDialog extends JDialog {
 		jlStuNo.setFont(font);
 		jlName.setFont(font);
 		jlPw.setFont(font);
-//		jlblStuNo.setFont(font);
-//		jlblName.setFont(font);
+		jlblStuNo.setFont(font);
+		jlblName.setFont(font);
 		jlEmail.setFont(font);
 		jldpt.setFont(font);
 		jlMajor.setFont(font);
 		jlPhone.setFont(font);
 		jlAddr.setFont(font);
+		golbaengi.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 		
 		//임시용 테두리 설정
 		//정확한 위치와 크기를 알아보기 위해서 설정
@@ -182,6 +189,7 @@ public class StudentProfileDialog extends JDialog {
 		bgLabel.add(jpfPw);
 		bgLabel.add(jpfPwConfirm);
 		bgLabel.add(jlEmail);
+		bgLabel.add(golbaengi);
 		bgLabel.add(jcbChoiceEmail);
 		bgLabel.add(jldpt);
 		bgLabel.add(jlblDept);
