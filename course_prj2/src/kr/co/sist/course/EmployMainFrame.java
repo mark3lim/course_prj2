@@ -38,7 +38,7 @@ public class EmployMainFrame extends JFrame {
 		flag = eVO.getUsercode()=='E' ? true : false; //관리자면 true를 교수면 false를 반환한다.
 		
 		// 배경 사진 설정
-		JLabel jlblBg = new JLabel(new ImageIcon("C:/Users/user/git/group_prj/course_prj/src/kr/co/sist/course/images/mainBg.png"));
+		JLabel jlblBg = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/mainBg.png"));
 		jlblBg.setBounds(0, 0, 1200, 800);
 		
 		// 학생 사진을 보여주는 라벨 설정
