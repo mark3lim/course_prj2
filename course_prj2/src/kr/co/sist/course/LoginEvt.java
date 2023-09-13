@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 //돼라
 public class LoginEvt extends WindowAdapter implements ActionListener {
 	
@@ -33,10 +34,10 @@ public class LoginEvt extends WindowAdapter implements ActionListener {
 			JOptionPane.showMessageDialog(lf, "서버 오류!\n잠시 후에 다시 시도해 주세요.");
 		} catch (NumberFormatException nfe) {
 			nfe.printStackTrace();
-			JOptionPane.showMessageDialog(lf, "아이디를 올바르게 입력해주세요.");
+			JOptionPane.showMessageDialog(lf, "아이디, 비밀번호를 올바르게 입력해주세요.");
 		} catch (NullPointerException npe) {
 			npe.printStackTrace();
-			JOptionPane.showMessageDialog(lf, "아이디를 올바르게 입력해주세요.");
+			JOptionPane.showMessageDialog(lf, "아이디, 비밀번호를 올바르게 입력해주세요.\"");
 		}
 		
 	}
@@ -67,6 +68,11 @@ public class LoginEvt extends WindowAdapter implements ActionListener {
 	@Override
 	public void windowClosing(WindowEvent we) {
 		lf.dispose();
+	}
+
+	@Override
+	public void windowOpened(WindowEvent we) {
+		lf.getJtfId().requestFocus();
 	}
 
 }

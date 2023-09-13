@@ -1,6 +1,7 @@
 package kr.co.sist.course;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -12,7 +13,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 
 @SuppressWarnings("serial")
 public class StudentScoreDialog extends JDialog {
@@ -24,18 +24,20 @@ public class StudentScoreDialog extends JDialog {
 	private JComboBox<String> jcbSemester;
 	private DefaultComboBoxModel<String> dcbmSemester;
 	
-	public StudentScoreDialog(/*StudentMainFrame smf*/) {
+//	public StudentScoreDialog(/*StudentMainFrame smf*/) {
+	public StudentScoreDialog(StudentMainFrame smf) {
 		this.smf = smf;
 		super.setModal(false);
 		super.setTitle("성적 조회");
 		
 		//배경화면 설정 라벨
-		JLabel bgLabel = new JLabel(new ImageIcon("/Users/marklim/Documents/ForCoding/workplace/course_prj/src/kr/co/sist/course/images/backgr.png"));
+		JLabel bgLabel = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/backgr.png"));
 		bgLabel.setBounds(0, 0, 1000, 700);
 		
 		//타이틀 설정
 		JLabel jlTitle = new JLabel("성적조회");
-		jlTitle.setBounds(145, 100, 70, 30);
+		jlTitle.setBounds(145, 100, 100, 30);
+		jlTitle.setFont(new Font("맑은 고딕", Font.BOLD, 24));
 		
 		//콤보박스 설정
 		dcbmSemester = new DefaultComboBoxModel<String>();
@@ -43,18 +45,22 @@ public class StudentScoreDialog extends JDialog {
 		jcbSemester.setBounds(jlTitle.getX()-3, jlTitle.getY()+40, 150, 30);
 		
 		//성적 테이블 설정
-		String[] header = {"학과명", "과목명", "평점", "성적", "이수구분"};
-		dtmScore = new DefaultTableModel(header, 0);
-		jtScore = new JTable();
-		jtScore.setModel(dtmScore);
-		jtScore.setBounds(jcbSemester.getX(), jcbSemester.getY()+40, 705, 385);
+		String[] columnNames = {"학과명", "과목명", "평점", "성적", "이수구분"};
+		dtmScore = new DefaultTableModel(null, columnNames);
+		jtScore = new JTable(dtmScore);
+		
+		JScrollPane jsp = new JScrollPane(jtScore);
+		jsp.setBounds(jcbSemester.getX(), jcbSemester.getY()+40, 705, 385);
 		
 		jtScore.getTableHeader().setReorderingAllowed(false);
-		JScrollPane jsp = new JScrollPane(jtScore);
+		jtScore.getTableHeader().setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		jtScore.getColumnModel().getColumn(0).setPreferredWidth(110);
+		jtScore.getColumnModel().getColumn(1).setPreferredWidth(210);
+		jtScore.setRowHeight(30);
 		
 		//검색 버튼 설정
 		jbtnSearch = new JButton("조회");
-		jbtnSearch.setBounds(jcbSemester.getX()+150, jcbSemester.getY(), 80, 30);
+		jbtnSearch.setBounds(jcbSemester.getX()+160, jcbSemester.getY(), 80, 30);
 		
 		//임시용 테두리 설정
 		//정확한 위치와 크기를 알아보기 위해서 설정
@@ -72,7 +78,7 @@ public class StudentScoreDialog extends JDialog {
 		
 		bgLabel.add(jlTitle);
 		bgLabel.add(jcbSemester);
-		bgLabel.add(jtScore);
+		bgLabel.add(jsp);
 		bgLabel.add(jbtnSearch);
 		
 		add(bgLabel);
@@ -105,8 +111,8 @@ public class StudentScoreDialog extends JDialog {
 		return dcbmSemester;
 	}
 	
-	public static void main(String[] args) {
-		new StudentScoreDialog();
-	}
+//	public static void main(String[] args) {
+//		new StudentScoreDialog();
+//	}
 
 }

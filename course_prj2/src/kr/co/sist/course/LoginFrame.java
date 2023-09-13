@@ -27,7 +27,7 @@ public class LoginFrame extends JFrame {
 		super("로그인");
 		
 		//배경화면 설정
-		JLabel jlblBg = new JLabel(new ImageIcon("C:/Users/user/git/group_prj/course_prj/src/kr/co/sist/course/images/mainBg.png"));
+		JLabel jlblBg = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/mainBg.png"));
 		jlblBg.setBounds(0, 0, 1200, 800);
 		
 		

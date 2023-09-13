@@ -20,7 +20,7 @@ public class EmployMainEvt extends WindowAdapter implements ActionListener {
 	}
 	
 	public void goMyProfile() {
-		System.out.println("profile");
+		new EmployProfileDialog(emf);
 	}
 	
 	public void goStuManage() {
