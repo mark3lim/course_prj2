@@ -42,7 +42,7 @@ public class StudentProfileDialog extends JDialog {
 		
 		int labelWidth = 100;
 		int labelHeight = 30;
-		int fieldWidth = 150;
+		int fieldWidth = 250;
 		int fieldHeight = 30;
 		
 		//배경화면 설정 라벨
@@ -56,16 +56,16 @@ public class StudentProfileDialog extends JDialog {
 		
 		//학생 사진 보여주는 라벨
 		jlblMyImg = new JLabel();
-		jlblMyImg.setBounds(180, 170, 190, 250);
+		jlblMyImg.setBounds(160, 170, 190, 250);
 		jlblMyImg.setHorizontalAlignment(JLabel.CENTER);
 		jlblMyImg.setToolTipText("크기: 190 X 250");
 		
 		//학번 설정
 		JLabel jlStuNo = new JLabel("학번");
-		jlStuNo.setBounds(510, 170, labelWidth, labelHeight);
+		jlStuNo.setBounds(420, 170, labelWidth, labelHeight);
 		jlblStuNo = new JLabel();
 		jlblStuNo.setBounds(jlStuNo.getX()+100, jlStuNo.getY(), fieldWidth, fieldHeight);
-		
+				
 		//이름 설정
 		JLabel jlName = new JLabel("이름");
 		jlName.setBounds(jlStuNo.getX(), jlStuNo.getY()+32, labelWidth, labelHeight);
@@ -85,17 +85,17 @@ public class StudentProfileDialog extends JDialog {
 		JLabel jlEmail = new JLabel("이메일");
 		jlEmail.setBounds(jlPw.getX(), jlPw.getY()+70, labelWidth, labelHeight);
 		jtfEmail = new JTextField(30);
-		jtfEmail.setBounds(jpfPwConfirm.getX(), jpfPwConfirm.getY()+32, 50, fieldHeight);
-		
+		jtfEmail.setBounds(jpfPwConfirm.getX(), jpfPwConfirm.getY()+38, 100, fieldHeight);
+				
 		//이메일 컴포박스 설정
 		dcbmEmail = new DefaultComboBoxModel<String>();
 		jcbChoiceEmail = new JComboBox<String>(dcbmEmail);
-		jcbChoiceEmail.setBounds(jtfEmail.getX()+28, jtfEmail.getY()+7, fieldWidth-28, fieldHeight);
+		jcbChoiceEmail.setBounds(jtfEmail.getX()+120, jtfEmail.getY(), 130, fieldHeight);
 		jcbChoiceEmail.setEditable(true);
-		
+				
 		JLabel golbaengi = new JLabel("@");
-		golbaengi.setBounds(jcbChoiceEmail.getX()-23, jtfEmail.getY()+10, 20, 20);
-		
+		golbaengi.setBounds(jcbChoiceEmail.getX()-19, jtfEmail.getY()+3, 20, 20);
+				
 		//학부 설정
 		JLabel jldpt = new JLabel("학부");
 		jldpt.setBounds(jlEmail.getX(), jlEmail.getY()+32, labelWidth, labelHeight);
@@ -126,8 +126,8 @@ public class StudentProfileDialog extends JDialog {
 		
 		//비밀번호 버튼 설정
 		jbtnChangePw = new JButton("변경");
-		jbtnChangePw.setBounds(jpfPw.getX()+150, jpfPw.getY(), 80, 30);
-		
+		jbtnChangePw.setBounds(jpfPw.getX()+255, jpfPw.getY()+3, 60, 25);
+				
 		//사진 편집 버튼 설정
 		jbtnEditPhoto = new JButton("편집");
 		jbtnEditPhoto.setBounds(jlblMyImg.getX(), jlblMyImg.getY()+250, 190, 30);
@@ -189,6 +189,7 @@ public class StudentProfileDialog extends JDialog {
 		bgLabel.add(jpfPw);
 		bgLabel.add(jpfPwConfirm);
 		bgLabel.add(jlEmail);
+		bgLabel.add(jtfEmail);
 		bgLabel.add(golbaengi);
 		bgLabel.add(jcbChoiceEmail);
 		bgLabel.add(jldpt);

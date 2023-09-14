@@ -41,7 +41,7 @@ public class EmployProfileDialog extends JDialog {
 		
 		int labelWidth = 100;
 		int labelHeight = 30;
-		int fieldWidth = 150;
+		int fieldWidth = 250;
 		int fieldHeight = 30;
 		
 		//배경화면 설정 라벨
@@ -55,7 +55,7 @@ public class EmployProfileDialog extends JDialog {
 		
 		//학생 사진 보여주는 라벨
 		jlblMyImg = new JLabel();
-		jlblMyImg.setBounds(180, 170, 190, 250);
+		jlblMyImg.setBounds(160, 170, 190, 250);
 		jlblMyImg.setHorizontalAlignment(JLabel.CENTER);
 		jlblMyImg.setToolTipText("크기: 190 X 250");
 		
@@ -84,23 +84,23 @@ public class EmployProfileDialog extends JDialog {
 		JLabel jlEmail = new JLabel("이메일");
 		jlEmail.setBounds(jlPw.getX(), jlPw.getY()+70, labelWidth, labelHeight);
 		jtfEmail = new JTextField(30);
-		jtfEmail.setBounds(jpfCheckPw.getX(), jpfCheckPw.getY()+32, 50, fieldHeight);
-		
+		jtfEmail.setBounds(jpfCheckPw.getX(), jpfCheckPw.getY()+38, 100, fieldHeight);
+				
 		//이메일 컴포박스 설정
 		dcbmEmail = new DefaultComboBoxModel<String>();
 		jcbChoiceEmail = new JComboBox<String>(dcbmEmail);
-		jcbChoiceEmail.setBounds(jtfEmail.getX()+28, jtfEmail.getY()+7, fieldWidth-28, fieldHeight);
+		jcbChoiceEmail.setBounds(jtfEmail.getX()+120, jtfEmail.getY(), 130, fieldHeight);
 		jcbChoiceEmail.setEditable(true);
 		
 		JLabel golbaengi = new JLabel("@");
-		golbaengi.setBounds(jcbChoiceEmail.getX()-23, jtfEmail.getY()+10, 20, 20);
+		golbaengi.setBounds(jcbChoiceEmail.getX()-19, jtfEmail.getY()+3, 20, 20);
 		
 		//학부 설정
 		JLabel jldpt = new JLabel("학부");
 		jldpt.setBounds(jlEmail.getX(), jlEmail.getY()+32, labelWidth, labelHeight);
 		jlblDpt = new JLabel();
-		jlblDpt.setBounds(jtfEmail.getX(), jtfEmail.getY()+38, fieldWidth, fieldHeight);
-		
+		jlblDpt.setBounds(jtfEmail.getX(), jtfEmail.getY()+32, fieldWidth, fieldHeight);
+				
 		//학과 설정
 		JLabel jlMajor = new JLabel("학과");
 		jlMajor.setBounds(jldpt.getX(), jldpt.getY()+32, labelWidth, labelHeight);
@@ -119,8 +119,8 @@ public class EmployProfileDialog extends JDialog {
 		
 		//비밀번호 버튼 설정
 		jbtnUpdatePw = new JButton("변경");
-		jbtnUpdatePw.setBounds(jpfPw.getX()+150, jpfPw.getY(), 80, 30);
-		
+		jbtnUpdatePw.setBounds(jpfPw.getX()+255, jpfPw.getY()+3, 60, 25);
+				
 		//사진 편집 버튼 설정
 		jbtnEditImg = new JButton("편집");
 		jbtnEditImg.setBounds(jlblMyImg.getX(), jlblMyImg.getY()+250, 190, 30);
@@ -180,6 +180,7 @@ public class EmployProfileDialog extends JDialog {
 		bgLabel.add(jpfCheckPw);
 		bgLabel.add(jlEmail);
 		bgLabel.add(golbaengi);
+		bgLabel.add(jtfEmail);
 		bgLabel.add(jcbChoiceEmail);
 		bgLabel.add(jldpt);
 		bgLabel.add(jlblDpt);
