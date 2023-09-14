@@ -61,7 +61,7 @@ public class EmployProfileDialog extends JDialog {
 		
 		//학번 설정
 		JLabel jlStuNo = new JLabel("학번");
-		jlStuNo.setBounds(510, 170, labelWidth, labelHeight);
+		jlStuNo.setBounds(420, 170, labelWidth, labelHeight);
 		jlblEmpno = new JLabel();
 		jlblEmpno.setBounds(jlStuNo.getX()+100, jlStuNo.getY(), fieldWidth, fieldHeight);
 		
@@ -99,7 +99,7 @@ public class EmployProfileDialog extends JDialog {
 		JLabel jldpt = new JLabel("학부");
 		jldpt.setBounds(jlEmail.getX(), jlEmail.getY()+32, labelWidth, labelHeight);
 		jlblDpt = new JLabel();
-		jlblDpt.setBounds(jtfEmail.getX(), jtfEmail.getY()+32, fieldWidth, fieldHeight);
+		jlblDpt.setBounds(jtfEmail.getX(), jtfEmail.getY()+38, fieldWidth, fieldHeight);
 				
 		//학과 설정
 		JLabel jlMajor = new JLabel("학과");

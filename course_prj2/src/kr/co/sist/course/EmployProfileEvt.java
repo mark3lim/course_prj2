@@ -97,7 +97,7 @@ public class EmployProfileEvt extends WindowAdapter implements ActionListener {
 		
 		System.out.println(fd.getFile());
 		Image image = new ImageIcon(fd.getDirectory()+fd.getFile()).getImage();
-		ImageIcon newImg = new ImageIcon(image);
+		ImageIcon newImg = new ImageIcon(image.getScaledInstance(190, 250, Image.SCALE_SMOOTH));
 		
 		EmployMainFrame.eVO.setImage(fd.getFile()); //업데이트 하기 전까지는 서버에 저장되거나 하지 않음
 		epf.getJlblMyImg().setIcon(newImg);
