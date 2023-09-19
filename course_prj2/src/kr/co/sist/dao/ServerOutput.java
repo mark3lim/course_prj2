@@ -2,6 +2,7 @@ package kr.co.sist.dao;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.ServerSocket;
@@ -31,18 +32,16 @@ public class ServerOutput {
 	
 	public void writeImage(String id) throws IOException {
 		StringBuilder path = new StringBuilder();
-		path.append("e:/tempImage/").append(id).append("/");
+		path.append("e:/tempImage/").append(id);
 		
 		File file = new File(path.toString());
 		FileInputStream fis = null;
 		
+		path.append("/").append(file.list()[0]);
 		
 		try {
-			//이미지 파일명을 갖고 오기 위해서 사용
-			String[] strFileList = file.list();
 			
 			//실행 시 오류가 나면 strFileList[0]를 strFileList[1]로 변경하여 시도. 0번 인덱스에 정크 파일이 있어서 발생하는 문제로 주로 맥에서 일어난다.
-			path.append("/").append(strFileList[0]);
 			file = new File(path.toString());
 			
 			//이미지 파일을 읽기 위한 스트림
@@ -54,24 +53,25 @@ public class ServerOutput {
 			while((len = fis.read(data)) != -1) {
 				os.write(data, 0, len);
 			}
+			
 			os.flush();
+			
+			if(os != null) { os.flush(); }
+			if(socket != null) { socket.close(); }
+			if(disReadStream != null) { disReadStream.close(); }
 			
 			System.out.println("이미지 전송 완료");
 			
-			
-		} finally {
-			if(os != null) { os.close(); }
-			if(fis != null) { fis.close(); }
-			if(socket != null) { socket.close(); }
-			if(server != null) { server.close(); }
-		}
+		} catch (FileNotFoundException e) {
+			os.close();
+			socket.close();
+		} 
 	}
 	
 	public static void main(String[] args) {
 		try {
 			new ServerOutput();
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
 

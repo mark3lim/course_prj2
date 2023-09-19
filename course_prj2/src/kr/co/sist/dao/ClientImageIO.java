@@ -73,12 +73,12 @@ public class ClientImageIO {
 			
 			//바이트로 되어있는 이미지 파일을 읽어온다.
 			byte[] data = is.readAllBytes();
+			ImageIcon icon = new ImageIcon(data);
 
 			System.out.println("사진 불러오기 성공");
 			
-//			JFrame jf = new JFrame();
-			ImageIcon icon = new ImageIcon(data);
 			return icon;
+//			JFrame jf = new JFrame();
 //			JLabel jl = new JLabel(icon);
 			
 //			jf.add(jl);

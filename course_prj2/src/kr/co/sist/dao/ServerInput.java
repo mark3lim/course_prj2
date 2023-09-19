@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
@@ -32,11 +31,9 @@ public class ServerInput {
 			
 			readImage();
 		}
-		
 	}
 	
-	public void readImage() throws IOException {
-		FileOutputStream fos = null;
+	public void readImage() {
 		
 		try {
 			//학번 또는 사번 받음
@@ -72,11 +69,11 @@ public class ServerInput {
 			
 			System.out.println("사진 저장 성공");
 			
-			
-		} finally {
-			if(fos != null) { fos.close(); }
+			if(is != null) { is.close(); }
 			if(socket != null) { socket.close(); }
-			if(server != null) { server.close(); }
+			
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -86,7 +83,6 @@ public class ServerInput {
 			
 		} catch (IOException e) {
 			System.out.println("연결 종료.");
-			e.printStackTrace();
 		}
 	}
 

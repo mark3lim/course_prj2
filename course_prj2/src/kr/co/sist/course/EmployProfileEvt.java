@@ -6,15 +6,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import kr.co.sist.dao.ClientImageIO;
+
 public class EmployProfileEvt extends WindowAdapter implements ActionListener {
 	
 	private EmployProfileDialog epf;
+	private String path;
+	private String fileType;
 	
 	public EmployProfileEvt(EmployProfileDialog epf) {
 		this.epf = epf;
@@ -79,10 +84,17 @@ public class EmployProfileEvt extends WindowAdapter implements ActionListener {
 				return;
 			}
 			
+			if(!(path != null || "".equals(path))) {
+				ClientImageIO.writeImage(path, fileType, EmployMainFrame.eVO.getEmpno());
+			}
+			
 			JOptionPane.showMessageDialog(epf, "내 정보가 수정되었습니다.");
 			
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(epf, "정보 수정 실패!\n나중에 시도해주세요.", "서버오류", JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(epf, "사진을 불러오는 중에 문제 발생!", "오류", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 	}
@@ -99,7 +111,10 @@ public class EmployProfileEvt extends WindowAdapter implements ActionListener {
 		Image image = new ImageIcon(fd.getDirectory()+fd.getFile()).getImage();
 		ImageIcon newImg = new ImageIcon(image.getScaledInstance(190, 250, Image.SCALE_SMOOTH));
 		
-		EmployMainFrame.eVO.setImage(fd.getFile()); //업데이트 하기 전까지는 서버에 저장되거나 하지 않음
+//		EmployMainFrame.eVO.setImage(fd.getFile()); //업데이트 하기 전까지는 서버에 저장되거나 하지 않음
+		String temp = fd.getFile();
+		path = fd.getDirectory()+temp;
+		fileType = temp.substring(temp.lastIndexOf("."));
 		epf.getJlblMyImg().setIcon(newImg);
 	}
 	

@@ -4,8 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.swing.ImageIcon;
+
+import kr.co.sist.dao.ClientImageIO;
 //돼라
 /* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 */
 public class StudentMainEvt extends WindowAdapter implements ActionListener {
@@ -49,6 +54,13 @@ public class StudentMainEvt extends WindowAdapter implements ActionListener {
 		smf.getJlblDept().setText(StudentMainFrame.sVO.getDptName());
 		smf.getJlblMajor().setText(StudentMainFrame.sVO.getMajorName());
 		smf.getJlblEmail().setText(StudentMainFrame.sVO.getEmail());
+		try {
+			ImageIcon image = ClientImageIO.readImage(String.valueOf(StudentMainFrame.sVO.getId()));
+			smf.getJlblMyPhoto().setIcon(image);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		setLoginTime();
 	}
 	

@@ -106,6 +106,7 @@ public class LoginFrame extends JFrame {
 		jbtnLogin.addActionListener(le);
 		jcbChangeAdmin.addActionListener(le);
 		jcbIdSave.addActionListener(le);
+		jpPw.addActionListener(le);
 		addWindowListener(le);
 		
 		//화면 크기 설정
