@@ -100,7 +100,7 @@ public class StudentProfileDialog extends JDialog {
 		JLabel jldpt = new JLabel("학부");
 		jldpt.setBounds(jlEmail.getX(), jlEmail.getY()+32, labelWidth, labelHeight);
 		jlblDept = new JLabel();
-		jlblDept.setBounds(jtfEmail.getX(), jtfEmail.getY()+38, fieldWidth, fieldHeight);
+		jlblDept.setBounds(jtfEmail.getX(), jtfEmail.getY()+32, fieldWidth, fieldHeight);
 		
 		//학과 설정
 		JLabel jlMajor = new JLabel("학과");

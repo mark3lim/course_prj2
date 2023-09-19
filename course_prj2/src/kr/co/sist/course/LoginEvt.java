@@ -33,7 +33,6 @@ public class LoginEvt extends WindowAdapter implements ActionListener {
 			sqle.printStackTrace();
 			JOptionPane.showMessageDialog(lf, "서버 오류!\n잠시 후에 다시 시도해 주세요.");
 		} catch (NumberFormatException nfe) {
-			nfe.printStackTrace();
 			JOptionPane.showMessageDialog(lf, "아이디, 비밀번호를 올바르게 입력해주세요.");
 		} catch (NullPointerException npe) {
 			npe.printStackTrace();
