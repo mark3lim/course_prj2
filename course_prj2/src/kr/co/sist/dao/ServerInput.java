@@ -21,7 +21,7 @@ public class ServerInput {
 	private InputStream is;
 	
 	public ServerInput() throws IOException {
-		server = new ServerSocket(99000);
+		server = new ServerSocket(9900);
 		System.out.println("서버 작동 중");
 		
 		while (true) {

@@ -15,7 +15,7 @@ public class ServerOutput {
 	private OutputStream os;
 	
 	public ServerOutput() throws IOException {
-		server = new ServerSocket(99001);
+		server = new ServerSocket(9901);
 		System.out.println("서버 작동 중");
 		
 		while (true) {

@@ -21,7 +21,7 @@ public class ClientImageIO {
 	
 	public static void writeImage(String path, String fileType, String id) throws IOException {
 		//소켓 연결
-		Socket socket = new Socket("192.168.10.143", 99000);
+		Socket socket = new Socket("192.168.10.143", 9900);
 		OutputStream os = socket.getOutputStream();
 		DataOutputStream dosWriteStream = new DataOutputStream(os);
 		
@@ -59,7 +59,7 @@ public class ClientImageIO {
 	
 	public static ImageIcon readImage(String id) throws IOException {
 		//소켓 연결
-		Socket socket = new Socket("192.168.10.143", 99001);
+		Socket socket = new Socket("192.168.10.143", 9901);
 		InputStream is = socket.getInputStream();
 		
 		try {
