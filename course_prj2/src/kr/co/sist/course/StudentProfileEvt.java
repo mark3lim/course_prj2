@@ -6,15 +6,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import kr.co.sist.dao.ClientImageIO;
+
 public class StudentProfileEvt extends WindowAdapter implements ActionListener {
 	
 	private StudentProfileDialog spd;
+	private String path;
+	private String fileType;
 	
 	public StudentProfileEvt(StudentProfileDialog spd) {
 		this.spd = spd;
@@ -80,10 +85,11 @@ public class StudentProfileEvt extends WindowAdapter implements ActionListener {
 //		변경할 정보들을 저장하는 VO class
 		StudentVO tempVO = new StudentVO();
 		
-		String email = spd.getJtfEmail()+"@"+spd.getDcbmEmail().getSelectedItem(); //이메일을 서식에 맞게 대입
-		tempVO.setEmail(email);
-		tempVO.setPhone(spd.getJtfPhone().getText());
-		tempVO.setAddr(spd.getJtfAddr().getText());
+		StringBuilder email = new StringBuilder();
+		email.append(spd.getJtfEmail().getText().replace(" ", "")).append("@").append(spd.getJcbChoiceEmail().getSelectedItem());  //이메일을 서식에 맞게 대입
+		tempVO.setEmail(email.toString());
+		tempVO.setPhone(spd.getJtfPhone().getText().replace(" ", ""));
+		tempVO.setAddr(spd.getJtfAddr().getText().trim());
 		tempVO.setImg(sVO.getImg());
 		
 		try {
@@ -92,11 +98,17 @@ public class StudentProfileEvt extends WindowAdapter implements ActionListener {
 				JOptionPane.showMessageDialog(spd, "정보 수정 실패!\n나중에 시도해주세요.", "서버오류", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
+			if(path != null || !"".equals(path)) {
+				ClientImageIO.writeImage(path, fileType, String.valueOf(StudentMainFrame.sVO.getId()));
+			}
 			
 			JOptionPane.showMessageDialog(spd, "내 정보가 수정되었습니다.");
 			
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(spd, "정보 수정 실패!\n나중에 시도해주세요.", "서버오류", JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(spd, "사진을 불러오는 중에 문제 발생!", "오류", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 		
@@ -111,11 +123,15 @@ public class StudentProfileEvt extends WindowAdapter implements ActionListener {
 			return;
 		}
 		System.out.println(fd.getFile());
-		Image image = new ImageIcon(fd.getDirectory()+fd.getFile()).getImage();
+		Image image = new ImageIcon(fd.getDirectory()+fd.getFile()).getImage().getScaledInstance(190, 250, Image.SCALE_SMOOTH);
 		ImageIcon newImg = new ImageIcon(image);
-		
-		StudentMainFrame.sVO.setImg(fd.getFile()); //업데이트 하기 전까지는 서버에 저장되거나 하지 않음
 		spd.getJlblMyImg().setIcon(newImg);
+
+		String temp = fd.getFile();
+		path = fd.getDirectory()+temp;
+		fileType = temp.substring(temp.lastIndexOf("."));
+		
+		StudentMainFrame.sVO.setImg(temp);
 	}
 	
 	@Override

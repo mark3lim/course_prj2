@@ -43,7 +43,7 @@ public class EmployMainFrame extends JFrame {
 		
 		// 학생 사진을 보여주는 라벨 설정
 		jlblMyPhoto = new JLabel();
-		jlblMyPhoto.setBounds(220, 150, 200, 250);
+		jlblMyPhoto.setBounds(220, 150, 190, 250);
 		jlblMyPhoto.setBorder(new LineBorder(Color.red));
 		
 		// 메인 버튼들을 모아두는 패널 설정
