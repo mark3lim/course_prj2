@@ -35,10 +35,10 @@ public class LoginDAO {
 			
 			StringBuilder query = new StringBuilder();
 			query
-			.append("	SELECT  STUNO,D.DPTNAME,M.MAJORNAME, PASS, SNAME, PHONE, EMAIL, ADDR, IMG	")
-			.append("	FROM  STUDENT S, MAJOR M, DPT D												")
-			.append("	WHERE  STUNO=? AND  PASS=?													")
-			.append("	AND S.MAJORCODE=M.MAJORCODE AND S.DPTCODE=D.DPTCODE							");
+			.append("	SELECT  STUNO,D.DPTNAME,M.MAJORNAME, PASS, SNAME, PHONE, EMAIL, ADDR, IMG, NOWLEVEL	")
+			.append("	FROM  STUDENT S, MAJOR M, DPT D														")
+			.append("	WHERE  STUNO=? AND  PASS=?															")
+			.append("	AND S.MAJORCODE=M.MAJORCODE AND S.DPTCODE=D.DPTCODE									");
 			pstmt = con.prepareStatement(query.toString());
 			
 			pstmt.setInt(1, Integer.parseInt(id));
@@ -57,6 +57,7 @@ public class LoginDAO {
 				sVO.setImg(rs.getString("IMG"));
 				sVO.setDptName(rs.getString("DPTNAME"));
 				sVO.setMajorName(rs.getString("MAJORNAME"));
+				sVO.setYear(rs.getInt("NOWLEVEL"));
 			}
 			
 			

@@ -62,7 +62,8 @@ public class StudentDAO {
 						rs.getString("MAJORCODE"),
 						rs.getString("PHONE"),
 						rs.getString("ADDR"),
-						rs.getString("IMG")
+						rs.getString("IMG"),
+						rs.getInt("NOWLEVEL")
 				);
 						
 			}

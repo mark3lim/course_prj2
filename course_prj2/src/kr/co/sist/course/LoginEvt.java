@@ -66,6 +66,8 @@ public class LoginEvt extends WindowAdapter implements ActionListener {
 	public void idSave(String id) {
 		System.out.println(id);
 		
+		
+		
 		if(lf.getJcbIdSave().isSelected()) {
 			System.out.println("아이디 저장");
 		} else {
