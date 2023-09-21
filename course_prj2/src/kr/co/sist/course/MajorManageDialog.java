@@ -1,4 +1,4 @@
-package self_practice_course_prj;
+package kr.co.sist.course;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -112,8 +112,8 @@ public class MajorManageDialog extends JDialog {
 		jbtnChange.setFont(font);
 		jlblMajor.setFont(new Font("Pretendard", Font.BOLD, 20));
 		jlblDpt.setFont(new Font("Pretendard", Font.BOLD, 20));
-		jspJtMajor.setFont(font);
-
+		jtMajor.setFont(new Font("Pretendard", Font.BOLD, 14));
+		
 		// back-color
 		jbtnSearch.setBackground(new Color(0xE0E0E0));
 		jbtnAdd.setBackground(new Color(0xE0E0E0));

@@ -1,4 +1,4 @@
-package self_practice_course_prj;
+package kr.co.sist.course;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -257,7 +257,7 @@ public class ProfDAO {
 			con.setAutoCommit(false); // 자동 커밋 비활성화
 
 			String majorCode = getMajorcode(pVO);
-			String userCode = "C";
+			String userCode = "P";
 			int seq = getNextProfSeq();
 
 			empNo = majorCode + userCode + String.format("%03d", seq);
