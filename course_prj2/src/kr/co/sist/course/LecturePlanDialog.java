@@ -271,11 +271,11 @@ public class LecturePlanDialog extends JDialog {
 		return smf;
 	}
 
-	public static void main(String[] args) {
-// new LecturePlanDialog(new StudentSubjectDialog());
-		
-		
-		
-
-	}
+//	public static void main(String[] args) {
+//// new LecturePlanDialog(new StudentSubjectDialog());
+//		
+//		
+//		
+//
+//	}
 }
