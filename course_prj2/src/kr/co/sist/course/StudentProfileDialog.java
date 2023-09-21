@@ -29,12 +29,14 @@ public class StudentProfileDialog extends JDialog {
 	private JLabel jlblMajor;
 	private JTextField jtfPhone;
 	private JTextField jtfAddr;
-//	private JButton jbtnAddr;
 	private JButton jbtnEditPhoto;
 	private JLabel jlblMyImg;
 	private JButton jbtnChangePw;
 	
-//	public StudentProfileDialog(/* StudentMainFrame smf */) {
+	/**
+	 * 학생 내 정보 화면 설정
+	 * @param smf StudentMainFrame
+	 */
 	public StudentProfileDialog(StudentMainFrame smf) {
 		this.smf = smf;
 		super.setModal(false);
@@ -44,6 +46,10 @@ public class StudentProfileDialog extends JDialog {
 		int labelHeight = 30;
 		int fieldWidth = 250;
 		int fieldHeight = 30;
+		
+		//텍스트 필드, 버튼 디자인
+		LineBorder lineB = new LineBorder(new Color(0xCFCFCF));
+		Color btnColor = new Color(0xE0E0E0);
 		
 		//배경화면 설정 라벨
 		JLabel bgLabel = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/backgr.png"));
@@ -76,21 +82,28 @@ public class StudentProfileDialog extends JDialog {
 		JLabel jlPw = new JLabel("비밀번호");
 		jlPw.setBounds(jlName.getX(), jlName.getY()+32, labelWidth, labelHeight);
 		
+		//새 비밀번호 입력창
 		jpfPw = new JPasswordField(50);
 		jpfPw.setBounds(jlblName.getX(), jlPw.getY(), fieldWidth, fieldHeight);
+		jpfPw.setBorder(lineB);
+		
+		//비밀번호 확인 입력창
 		jpfPwConfirm = new JPasswordField(50);
 		jpfPwConfirm.setBounds(jpfPw.getX(), jpfPw.getY()+32, fieldWidth, fieldHeight);
+		jpfPwConfirm.setBorder(lineB);
 		
 		//이메일 설정
 		JLabel jlEmail = new JLabel("이메일");
 		jlEmail.setBounds(jlPw.getX(), jlPw.getY()+70, labelWidth, labelHeight);
 		jtfEmail = new JTextField(30);
 		jtfEmail.setBounds(jpfPwConfirm.getX(), jpfPwConfirm.getY()+38, 100, fieldHeight);
+		jtfEmail.setBorder(lineB);
 				
 		//이메일 컴포박스 설정
 		dcbmEmail = new DefaultComboBoxModel<String>();
 		jcbChoiceEmail = new JComboBox<String>(dcbmEmail);
 		jcbChoiceEmail.setBounds(jtfEmail.getX()+120, jtfEmail.getY(), 130, fieldHeight);
+		jcbChoiceEmail.setBackground(Color.white);
 		jcbChoiceEmail.setEditable(true);
 				
 		JLabel golbaengi = new JLabel("@");
@@ -113,24 +126,31 @@ public class StudentProfileDialog extends JDialog {
 		jlPhone.setBounds(jlMajor.getX(), jlMajor.getY()+32, labelWidth, labelHeight);
 		jtfPhone = new JTextField(50);
 		jtfPhone.setBounds(jlblMajor.getX(), jlblMajor.getY()+32, fieldWidth, fieldHeight);
+		jtfPhone.setBorder(lineB);
 		
 		//주소 설정
 		JLabel jlAddr = new JLabel("주소");
 		jlAddr.setBounds(jlPhone.getX(), jlPhone.getY()+32, labelWidth, labelHeight);
 		jtfAddr = new JTextField(100);
 		jtfAddr.setBounds(jtfPhone.getX(), jtfPhone.getY()+32, fieldWidth, fieldHeight);
+		jtfAddr.setBorder(lineB);
 		
 		//수정 버튼 설정
 		jbtnUpdateInfo = new JButton("수정");
 		jbtnUpdateInfo.setBounds(460, 520, 80, 30);
+		jbtnUpdateInfo.setBackground(btnColor);
+		jbtnUpdateInfo.setBorder(null);
 		
 		//비밀번호 버튼 설정
 		jbtnChangePw = new JButton("변경");
 		jbtnChangePw.setBounds(jpfPw.getX()+255, jpfPw.getY()+3, 60, 25);
+		jbtnChangePw.setBackground(btnColor);
+		jbtnChangePw.setBorder(null);
 				
 		//사진 편집 버튼 설정
 		jbtnEditPhoto = new JButton("편집");
-		jbtnEditPhoto.setBounds(jlblMyImg.getX(), jlblMyImg.getY()+250, 190, 30);
+		jbtnEditPhoto.setBackground(btnColor);
+		jbtnEditPhoto.setBorder(null);
 		
 		// 라벨 폰트 설정
 		Font font = new Font("맑은 고딕", Font.BOLD, 20);
@@ -150,25 +170,25 @@ public class StudentProfileDialog extends JDialog {
 		//임시용 테두리 설정
 		//정확한 위치와 크기를 알아보기 위해서 설정
 		//디자인이 끝나면 삭제할 예
-		jlblTitle.setBorder(new LineBorder(Color.red));
-		jlblMyImg.setBorder(new LineBorder(Color.red));
-		jlStuNo.setBorder(new LineBorder(Color.red));
-		jlName.setBorder(new LineBorder(Color.red));
-		jlPw.setBorder(new LineBorder(Color.red));
-		jlblStuNo.setBorder(new LineBorder(Color.red));
-		jlblName.setBorder(new LineBorder(Color.red));
-		jpfPw.setBorder(new LineBorder(Color.red));
-		jpfPwConfirm.setBorder(new LineBorder(Color.red));
-		jlEmail.setBorder(new LineBorder(Color.red));
-		jcbChoiceEmail.setBorder(new LineBorder(Color.red));
-		jldpt.setBorder(new LineBorder(Color.red));
-		jlblDept.setBorder(new LineBorder(Color.red));
-		jlMajor.setBorder(new LineBorder(Color.red));
-		jlblMajor.setBorder(new LineBorder(Color.red));
-		jlPhone.setBorder(new LineBorder(Color.red));
-		jtfPhone.setBorder(new LineBorder(Color.red));
-		jlAddr.setBorder(new LineBorder(Color.red));
-		jtfAddr.setBorder(new LineBorder(Color.red));
+//		jlblTitle.setBorder(new LineBorder(Color.red));
+//		jlblMyImg.setBorder(new LineBorder(Color.red));
+//		jlStuNo.setBorder(new LineBorder(Color.red));
+//		jlName.setBorder(new LineBorder(Color.red));
+//		jlPw.setBorder(new LineBorder(Color.red));
+//		jlblStuNo.setBorder(new LineBorder(Color.red));
+//		jlblName.setBorder(new LineBorder(Color.red));
+//		jpfPw.setBorder(new LineBorder(Color.red));
+//		jpfPwConfirm.setBorder(new LineBorder(Color.red));
+//		jlEmail.setBorder(new LineBorder(Color.red));
+//		jcbChoiceEmail.setBorder(new LineBorder(Color.red));
+//		jldpt.setBorder(new LineBorder(Color.red));
+//		jlblDept.setBorder(new LineBorder(Color.red));
+//		jlMajor.setBorder(new LineBorder(Color.red));
+//		jlblMajor.setBorder(new LineBorder(Color.red));
+//		jlPhone.setBorder(new LineBorder(Color.red));
+//		jtfPhone.setBorder(new LineBorder(Color.red));
+//		jlAddr.setBorder(new LineBorder(Color.red));
+//		jtfAddr.setBorder(new LineBorder(Color.red));
 		
 		setLayout(null);
 		
@@ -204,13 +224,12 @@ public class StudentProfileDialog extends JDialog {
 		bgLabel.add(jbtnChangePw);
 		bgLabel.add(jbtnEditPhoto);
 
+		//배경이 되는 이미지가 있는 라벨 추가
 		add(bgLabel);
 		
 		setBounds(150, 200, 1000, 700);
 		setVisible(true);
 	}
-	
-	
 	
 	public StudentMainFrame getSmf() {
 		return smf;

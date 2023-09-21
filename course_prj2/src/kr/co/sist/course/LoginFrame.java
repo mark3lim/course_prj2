@@ -14,6 +14,10 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 //돼라
 /* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 */
+/**
+ * 로그인 화면을 보여주는 창
+ * @author user
+ */
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame {
 	
@@ -23,6 +27,9 @@ public class LoginFrame extends JFrame {
 	private JCheckBox jcbChangeAdmin;
 	private JCheckBox jcbIdSave;
 	
+	/**
+	 * 로그인 화면 설정
+	 */
 	public LoginFrame() {
 		super("로그인");
 		
@@ -30,7 +37,8 @@ public class LoginFrame extends JFrame {
 		JLabel jlblBg = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/mainBg.png"));
 		jlblBg.setBounds(0, 0, 1200, 800);
 		
-		
+		//아이디, 비밀번호 입력창 선 색깔 설정
+		LineBorder lineColor = new LineBorder(new Color(0xCFCFCF));
 		
 		//아이디 라벨 설정
 		JLabel jlblId = new JLabel("ID");
@@ -39,6 +47,7 @@ public class LoginFrame extends JFrame {
 		//아이디 입력 필드 설정
 		jtfId = new JTextField(20);
 		jtfId.setBounds(jlblId.getX()+75, jlblId.getY()+2, 220, 40);
+		jtfId.setBorder(lineColor);
 		
 		//비밀번호 라벨 설정
 		JLabel jlblPw = new JLabel("PW");
@@ -47,6 +56,7 @@ public class LoginFrame extends JFrame {
 		//비밀번호 입력 필드 설정
 		jpPw = new JPasswordField(20);
 		jpPw.setBounds(jlblPw.getX()+75, jlblPw.getY()+2, 220, 40);
+		jpPw.setBorder(lineColor);
 		
 		//비밀번호 입력 필드 설정
 		
@@ -70,6 +80,8 @@ public class LoginFrame extends JFrame {
 		//로그인 버튼 설정
 		jbtnLogin = new JButton("로그인");
 		jbtnLogin.setBounds(jlblPw.getX(), jlblPw.getY()+90, 295, 30);
+		jbtnLogin.setBackground(new Color(0xE0E0E0));
+		jbtnLogin.setBorder(null);
 		
 		//학교 이미지 설정
 		JLabel jlblImg = new JLabel();

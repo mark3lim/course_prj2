@@ -16,6 +16,11 @@ public class LoginEvt extends WindowAdapter implements ActionListener {
 		this.lf = lf;
 	}
 	
+	/**
+	 * 아이디와 비밀번호를 확인하여 로그인을 한다.
+	 * @param id 아이디(사번, 학번)
+	 * @param pw 비밀번호
+	 */
 	public void accountCheck(String id, char[] pw) {
 		String strId = id.trim();
 		String pass = String.valueOf(pw);
@@ -26,7 +31,7 @@ public class LoginEvt extends WindowAdapter implements ActionListener {
 		}
 		
 		try {
-			if(isAdmin()) {
+			if(isAdmin()) { //관리자 또는 학생 계정으로 로그인하는지 확인한다.
 				new EmployMainFrame(LoginDAO.getInstnace().selectEmp(strId, pass));
 		
 			} else {
@@ -45,11 +50,19 @@ public class LoginEvt extends WindowAdapter implements ActionListener {
 		
 	}
 	
+	/**
+	 * 관리자 계정으로 로그인하는지 확인하는 작업이다.
+	 * @return 관리자 계정에 체크되어 있으면 true 아니면 false를 반환
+	 */
 	public boolean isAdmin() {
 		boolean flag = lf.getJcbChangeAdmin().isSelected();
 		return flag;
 	}
 	
+	/**
+	 * 아이디를 저장할지 체크박스에 체크하면 파일을 사용자 컴퓨터에 저장한다.
+	 * @param id 아이디(사번, 학번)
+	 */
 	public void idSave(String id) {
 		System.out.println(id);
 		
@@ -73,6 +86,9 @@ public class LoginEvt extends WindowAdapter implements ActionListener {
 		lf.dispose();
 	}
 
+	/**
+	 * 실행이 되면 아이디 JTextField에 커서가 자동으로 가도록 설정하기 위한 메서드
+	 */
 	@Override
 	public void windowOpened(WindowEvent we) {
 		lf.getJtfId().requestFocus();
