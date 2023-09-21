@@ -37,6 +37,10 @@ public class EmployMainFrame extends JFrame {
 		eVO = VO;
 		flag = eVO.getUsercode()=='M' ? true : false; //관리자면 true를 교수면 false를 반환한다.
 		
+		// 폰트
+		Font font = new Font("Pretendard", Font.BOLD, 18);
+		Font font14 = new Font("Pretendard", Font.BOLD, 14);
+		
 		// 배경 사진 설정
 		JLabel jlblBg = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/mainBg.png"));
 		jlblBg.setBounds(0, 0, 1200, 800);
@@ -49,7 +53,7 @@ public class EmployMainFrame extends JFrame {
 		// 메인 버튼들을 모아두는 패널 설정
 		JPanel pnlButton = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 40));
 		pnlButton.setBounds(620, 170, 400, 400);
-		pnlButton.setBorder(new LineBorder(Color.red));
+		pnlButton.setBorder(new LineBorder(new Color(0xE0E0E0)));
 		
 		Dimension d = new Dimension(300, 50);
 		
@@ -62,15 +66,32 @@ public class EmployMainFrame extends JFrame {
 		jbtnSubjectManage = new JButton("과목관리");
 		jbtnSubjectManage.setPreferredSize(d);
 		
+		jbtnStuManage.setFont(font);
+		jbtnProfesorManage.setFont(font);
+		jbtnMajorManage.setFont(font);
+		jbtnSubjectManage.setFont(font);
+		
+		jbtnStuManage.setBackground(Color.white);
+		jbtnStuManage.setBorder(new LineBorder(new Color(0xE0E0E0)));
+		jbtnProfesorManage.setBackground(Color.white);
+		jbtnProfesorManage.setBorder(new LineBorder(new Color(0xE0E0E0)));
+		jbtnMajorManage.setBackground(Color.white);
+		jbtnMajorManage.setBorder(new LineBorder(new Color(0xE0E0E0)));
+		jbtnSubjectManage.setBackground(Color.white);
+		jbtnSubjectManage.setBorder(new LineBorder(new Color(0xE0E0E0)));
+		
 		pnlButton.add(jbtnStuManage);
 		pnlButton.add(jbtnProfesorManage);
 		pnlButton.add(jbtnMajorManage);
 		pnlButton.add(jbtnSubjectManage);
 		
+		pnlButton.setBackground(Color.white);
+		
 		// 로그인하면 보여주는 학생 정보를 보여주는 패널 설정
 		JPanel pnlInfoTag = setInfoLable(); //분류 라벨 만드는 method
 		pnlInfoTag.setLocation(jlblMyPhoto.getX(), jlblMyPhoto.getY()+290);
-		pnlInfoTag.setBorder(new LineBorder(Color.red));
+		pnlInfoTag.setBackground(Color.white);
+		//pnlInfoTag.setBorder(new LineBorder(Color.red));
 		
 		//관리자 정보 표시창
 		jlblOne = new JLabel();
@@ -83,6 +104,10 @@ public class EmployMainFrame extends JFrame {
 		jlblLoginTime = new JLabel();
 		jlblLoginTime.setBounds(100,jlblMyEmail.getY()+35, 200, 30);
 		
+		jlblOne.setFont(font);
+		jlblTwo.setFont(font);
+		jlblMyEmail.setFont(font);
+		jlblLoginTime.setFont(font);
 		
 		pnlInfoTag.add(jlblOne);
 		pnlInfoTag.add(jlblTwo);
@@ -93,19 +118,24 @@ public class EmployMainFrame extends JFrame {
 		JPanel pnlName = new JPanel();
 		pnlName.setBounds(680, jlblMyPhoto.getY() - 45, 340, 35);
 		pnlName.setLayout(null);
-
-		Font font = new Font("Pretendard", Font.BOLD, 16);
+		pnlName.setBackground(Color.white);
 
 		jlblMyName = new JLabel();
 		jlblMyName.setHorizontalAlignment(JLabel.CENTER);
 		jlblMyName.setBounds(0, 2, 140, 30);
-		jlblMyName.setBorder(new LineBorder(Color.pink));
-		jlblMyName.setFont(font);
+		//jlblMyName.setBorder(new LineBorder(Color.pink));
+		jlblMyName.setFont(new Font("Pretendard", Font.BOLD, 20));
 
 		jbtnMyProfile = new JButton("내 정보");
+		jbtnMyProfile.setFont(font14);
 		jbtnMyProfile.setBounds(152, 5, 85, 25);
+		jbtnMyProfile.setBorder(null);
+		jbtnMyProfile.setBackground(new Color(0xE0E0E0));
 		jbtnLogout = new JButton("로그아웃");
+		jbtnLogout.setFont(font14);
 		jbtnLogout.setBounds(250, 5, 85, 25);
+		jbtnLogout.setBorder(null);
+		jbtnLogout.setBackground(new Color(0xE0E0E0));
 
 		pnlName.add(jlblMyName);
 		pnlName.add(jbtnMyProfile);
@@ -117,9 +147,7 @@ public class EmployMainFrame extends JFrame {
 		add(pnlButton);
 		add(pnlInfoTag);
 		add(pnlName);
-
 		add(jlblBg);
-
 
 		//기본 값 설정
 		EmployMainEvt eme = new EmployMainEvt(this);
@@ -150,7 +178,7 @@ public class EmployMainFrame extends JFrame {
 			strArr = P_Arr;
 		}
 		
-		Font font = new Font(null, Font.BOLD, 14);
+		Font font = new Font("Pretendard", Font.BOLD, 17);
 		
 		JPanel pnl = new JPanel();
 		pnl.setLayout(null);
