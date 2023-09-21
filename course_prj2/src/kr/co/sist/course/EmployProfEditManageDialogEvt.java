@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 /**
  * 인영 교수 수정 창 Event
  * ㄴ
+ * 
  * @author user
  *
  */

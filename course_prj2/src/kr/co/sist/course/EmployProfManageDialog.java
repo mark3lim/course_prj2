@@ -21,7 +21,11 @@ import javax.swing.table.TableColumn;
  *인영
  *교수 관리 Dialog
  * @author user
+<<<<<<< HEAD
  *ㄴ
+=======
+ *
+>>>>>>> refs/heads/main
  */
 @SuppressWarnings("serial")
 public class EmployProfManageDialog extends JDialog {

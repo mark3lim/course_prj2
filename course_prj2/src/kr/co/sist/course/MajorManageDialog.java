@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 /**
  * 인영 학과관리 Dialog
  * ㄴ
+ * 
  * @author user
  *
  */

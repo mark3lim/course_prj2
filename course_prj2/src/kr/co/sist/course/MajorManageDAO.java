@@ -15,6 +15,7 @@ import kr.co.sist.dao.DbConn;
 /**
  * 인영 학과 관리 DAO
  * ㄴ
+ * 
  * @author user
  *
  */

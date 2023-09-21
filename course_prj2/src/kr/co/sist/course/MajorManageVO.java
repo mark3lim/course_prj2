@@ -3,6 +3,7 @@ package kr.co.sist.course;
 /**
  * 인영 학과관리 VO
  * ㄴ
+ * 
  * @author user
  *
  */
