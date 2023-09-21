@@ -160,27 +160,6 @@ public class EmployProfileDialog extends JDialog {
 		jlPhone.setFont(font);
 		golbaengi.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 		
-		//임시용 테두리 설정
-		//정확한 위치와 크기를 알아보기 위해서 설정
-		//디자인이 끝나면 삭제할 예
-//		jlblTitle.setBorder(new LineBorder(Color.red));
-//		jlblMyImg.setBorder(new LineBorder(Color.red));
-//		jlStuNo.setBorder(new LineBorder(Color.red));
-//		jlName.setBorder(new LineBorder(Color.red));
-//		jlPw.setBorder(new LineBorder(Color.red));
-//		jlblEmpno.setBorder(new LineBorder(Color.red));
-//		jlblName.setBorder(new LineBorder(Color.red));
-//		jpfPw.setBorder(new LineBorder(Color.red));
-//		jpfCheckPw.setBorder(new LineBorder(Color.red));
-//		jlEmail.setBorder(new LineBorder(Color.red));
-//		jcbChoiceEmail.setBorder(new LineBorder(Color.red));
-//		jldpt.setBorder(new LineBorder(Color.red));
-//		jlblDpt.setBorder(new LineBorder(Color.red));
-//		jlMajor.setBorder(new LineBorder(Color.red));
-//		jlblMajor.setBorder(new LineBorder(Color.red));
-//		jlPhone.setBorder(new LineBorder(Color.red));
-//		jtfPhone.setBorder(new LineBorder(Color.red));
-		
 		setLayout(null);
 		
 		//이벤트 연결

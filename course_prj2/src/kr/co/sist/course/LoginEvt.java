@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 //돼라
@@ -24,9 +25,16 @@ public class LoginEvt extends WindowAdapter implements ActionListener {
 	public void accountCheck(String id, char[] pw) {
 		String strId = id.trim();
 		String pass = String.valueOf(pw);
+		String pattern = "[ㄱ-ㅎ|ㅏ-ㅣ|가-힝|(|)|.|-]*"; // 숫자만 등장하는지
 		
 		if("".equals(id) || "".equals(pass)) {
 			JOptionPane.showMessageDialog(lf, "아이디와 비밀번호는 필수 입력입니다.");
+			return;
+		} 
+			
+		if(Pattern.matches(pattern, strId)) {
+			lf.getJtfId().requestFocus();
+			JOptionPane.showMessageDialog(lf, "아이디를 올바르게 입력해주세요.");
 			return;
 		}
 		

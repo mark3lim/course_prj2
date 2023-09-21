@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import kr.co.sist.dao.DbConn;
 
 public class StudentDAO {
-	//돼라
+	
 	private static StudentDAO sDAO;
 	
 	private StudentDAO() {
@@ -21,14 +21,6 @@ public class StudentDAO {
 		
 		return sDAO;
 	}
-	
-	//왜 있는지 몰라서 일단 주석
-//	public StudentVO selectMyInfo(int stuNum) {
-//		StudentVO sVO = null;
-//		
-//		
-//		return sVO;
-//	}
 	
 	/**
 	 * StudentVO를 로그인한 학생에 맞춰서 데이터베이스 정보를 가져와 설정하는 작업이다.

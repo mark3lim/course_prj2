@@ -42,7 +42,7 @@ public class EmployMainEvt extends WindowAdapter implements ActionListener {
 
 	public void goMajorManage() {
 		if(emf.getFlag()) {
-//			new MajorManageDialog(emf);
+			new MajorManageDialog(emf);
 			System.out.println("학과관리");
 		} else {
 			JOptionPane.showMessageDialog(emf, "접근 권한이 없습니다.");

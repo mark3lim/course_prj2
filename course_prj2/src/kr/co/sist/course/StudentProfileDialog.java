@@ -149,6 +149,7 @@ public class StudentProfileDialog extends JDialog {
 				
 		//사진 편집 버튼 설정
 		jbtnEditPhoto = new JButton("편집");
+		jbtnEditPhoto.setBounds(jlblMyImg.getX(), jlblMyImg.getY()+250, 190, 25);
 		jbtnEditPhoto.setBackground(btnColor);
 		jbtnEditPhoto.setBorder(null);
 		

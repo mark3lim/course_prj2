@@ -249,16 +249,5 @@ public class EmployMainFrame extends JFrame {
 		return flag;
 	}
 
-//	public static void main(String[] args) {
-//		//임시 값
-//		EmployVO v = new EmployVO();
-//		v.setUsercode('E');
-//		v.setName("농담곰");
-//		v.setEmpno("EMP000100");
-//		v.setDptName("컴퓨터공학부");
-//		v.setMajorName("컴퓨터과학");
-//		v.setEmail("testest@gmail.com");
-//		new EmployMainFrame(v);
-//	}
 
 }

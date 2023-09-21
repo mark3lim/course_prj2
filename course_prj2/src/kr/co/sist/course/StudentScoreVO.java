@@ -3,7 +3,7 @@ package kr.co.sist.course;
 public class StudentScoreVO {
 	
 	private String majorName;
-	private String LectureName;
+	private String lectureName;
 	private int credit;
 	private String grade;
 	private String subType;
@@ -14,7 +14,7 @@ public class StudentScoreVO {
 	public StudentScoreVO(String majorName, String lectureName, int credit, String grade, String subType) {
 		super();
 		this.majorName = majorName;
-		LectureName = lectureName;
+		this.lectureName = lectureName;
 		this.credit = credit;
 		this.grade = grade;
 		this.subType = subType;
@@ -22,7 +22,7 @@ public class StudentScoreVO {
 	
 	@Override
 	public String toString() {
-		return "StudentScoreVO [majorName=" + majorName + ", LectureName=" + LectureName + ", credit=" + credit
+		return "StudentScoreVO [majorName=" + majorName + ", LectureName=" + lectureName + ", credit=" + credit
 				+ ", grade=" + grade + ", subType=" + subType + "]";
 	}
 
@@ -35,11 +35,11 @@ public class StudentScoreVO {
 	}
 
 	public String getLectureName() {
-		return LectureName;
+		return lectureName;
 	}
 
 	public void setLectureName(String lectureName) {
-		LectureName = lectureName;
+		this.lectureName = lectureName;
 	}
 
 	public int getCredit() {
