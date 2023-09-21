@@ -24,8 +24,11 @@ public class EmployMainEvt extends WindowAdapter implements ActionListener {
 	}
 	
 	public void goStuManage() {
-		new EmployStuManageDialog(emf);
-		//System.out.println("학생관리");
+		if(emf.getFlag()) { //관리자
+			new EmployStuManageDialog(emf);			
+		}else {				//교수
+			new EmployStuProfManageDialog(emf);
+		}
 	}
 	
 	public void goDrManage() {

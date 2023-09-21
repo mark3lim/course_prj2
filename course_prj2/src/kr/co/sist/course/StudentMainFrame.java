@@ -95,21 +95,23 @@ public class StudentMainFrame extends JFrame {
 		
 		//작은 버튼의 색깔
 		Color btnColor = new Color(0xE0E0E0);
+		Font font14 = new Font("Pretendard", Font.BOLD, 14);
 		
 		jbtnMyProfile = new JButton("내 정보");
 		jbtnMyProfile.setBounds(115, 5, 85, 25);
 		jbtnMyProfile.setBackground(btnColor);
 		jbtnMyProfile.setBorder(null);
+		jbtnMyProfile.setFont(font14);
 		
 		jbtnLogout = new JButton("로그아웃");
 		jbtnLogout.setBounds(212, 5, 85, 25);
 		jbtnLogout.setBackground(btnColor);
 		jbtnLogout.setBorder(null);
+		jbtnLogout.setFont(font14);
 		
 		pnlName.add(jlblMyName);
 		pnlName.add(jbtnMyProfile);
 		pnlName.add(jbtnLogout);
-		
 		
 		setLayout(null);
 		
@@ -142,7 +144,7 @@ public class StudentMainFrame extends JFrame {
 	public JPanel setInfoLable() {
 		String[] strArr = {"학부", "학과", "이메일", "로그인 시간"};
 		JLabel[] jl = new JLabel[strArr.length];
-		Font font = new Font("Pretendard", Font.BOLD, 14);
+		Font font = new Font("Pretendard", Font.BOLD, 17);
 		
 		JPanel pnl = new JPanel();
 		pnl.setLayout(null);
@@ -203,19 +205,19 @@ public class StudentMainFrame extends JFrame {
 		return jlblLoginTime;
 	}
 
-//	public static StudentVO getsVO() {
-//		return sVO;
-//	}
+	public static StudentVO getsVO() {
+		return sVO;
+	}
 
-//	public static void main(String[] args) {
-//		//임시 값
-//		StudentVO s = new StudentVO();
-//		s.setName("농담곰");
-//		s.setDptName("연극영화부");
-//		s.setMajorName("연극영화과");
-//		s.setEmail("testest@naver.com");
-//		s.setId(2023001);
-//		new StudentMainFrame(s);
-//	}
+	public static void main(String[] args) {
+		//임시 값
+		StudentVO s = new StudentVO();
+		s.setName("농담곰");
+		s.setDptName("연극영화부");
+		s.setMajorName("연극영화과");
+		s.setEmail("testest@naver.com");
+		s.setId(2023001);
+		new StudentMainFrame(s);
+	}
 	
 }

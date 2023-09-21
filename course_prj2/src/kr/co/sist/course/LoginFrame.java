@@ -57,9 +57,7 @@ public class LoginFrame extends JFrame {
 		jpPw = new JPasswordField(20);
 		jpPw.setBounds(jlblPw.getX()+75, jlblPw.getY()+2, 220, 40);
 		jpPw.setBorder(lineColor);
-		
-		//비밀번호 입력 필드 설정
-		
+				
 		//아이디(학번)과 비밀번호 라벨, 입력 폰트 설정
 		Font font = new Font("Pretendard", Font.BOLD, 26);
 		Font font14 = new Font("Pretendard", Font.BOLD, 14);
@@ -67,6 +65,7 @@ public class LoginFrame extends JFrame {
 		jlblPw.setFont(font);
 		font = new Font("Pretendard", Font.PLAIN, 22);
 		jtfId.setFont(font);
+		jpPw.setFont(font);
 
 		//관리자 모드 전환 체크박스
 		jcbChangeAdmin = new JCheckBox("관리자 모드 전환", false);
@@ -84,14 +83,15 @@ public class LoginFrame extends JFrame {
 		
 		//로그인 버튼 설정
 		jbtnLogin = new JButton("로그인");
-		jbtnLogin.setBounds(jlblPw.getX(), jlblPw.getY()+90, 295, 30);
+		jbtnLogin.setBounds(jlblPw.getX(), jlblPw.getY()+90, 295, 40);
 		jbtnLogin.setBackground(new Color(0xE0E0E0));
 		jbtnLogin.setBorder(null);
 		jbtnLogin.setFont(new Font("Pretendard", Font.BOLD, 16));
 		
 		//학교 이미지 설정
 		JLabel jlblImg = new JLabel();
-		jlblImg.setBounds(590, 130, 435, 280);
+		jlblImg.setIcon(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/logo2.png"));
+		jlblImg.setBounds(610, 150, 435, 280);
 		
 		//사용방법 표시하는 라벨(로그인 가장 아래 있는 설명)
 		JTextArea jtaMsg = new JTextArea();
