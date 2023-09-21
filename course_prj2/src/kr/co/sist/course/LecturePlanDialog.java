@@ -41,6 +41,7 @@ public class LecturePlanDialog extends JDialog {
 			jbtnApply.setBounds(310, 450, 80, 30);
 				add(jbtnApply);
 				jbtnApply.addActionListener(le);
+				le = new LecturePlanEvt(this);
 		
 	}
 	
@@ -49,6 +50,7 @@ public class LecturePlanDialog extends JDialog {
 		this();
 		this.msD=msd;
 		this.SubjectCode = SubjectCode;
+		le = new LecturePlanEvt(this);
 	}
 	
 	public LecturePlanDialog() {
@@ -95,10 +97,6 @@ public class LecturePlanDialog extends JDialog {
 			
 	//	if (flag) {
 	
-				 le = new LecturePlanEvt(this);
-				
-				
-			
 			
 //			jtSubName.setText(lpVO.getSubName());
 //			jtSubGoal.setText(lpVO.getSubGoal());
