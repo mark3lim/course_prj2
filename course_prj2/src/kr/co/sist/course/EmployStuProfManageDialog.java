@@ -3,6 +3,7 @@ package kr.co.sist.course;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,9 +16,9 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
-// ---------------  관리자용 학생 관리 ---------------
+//---------------  교수용 학생 관리 ---------------
 @SuppressWarnings("serial")
-public class EmployStuManageDialog extends JDialog {
+public class EmployStuProfManageDialog extends JDialog {
 
 	private Main main;
 	private DefaultComboBoxModel<String> dcbmDept;
@@ -26,20 +27,21 @@ public class EmployStuManageDialog extends JDialog {
 	private JComboBox<String> jcbMajor;
 	private DefaultComboBoxModel<String> dcbmSearch;
 	private JComboBox<String> jcbSearch;
+	private DefaultComboBoxModel<String> dcbmScore;
+	private JComboBox<String> jcbScore;
 	private DefaultTableModel dtmStu;
 	private JTable jtStu;
 	private JTextField jtfSearch;
 	private JButton jbtnAdd;
-	private JButton jbtnEdit;
 	private JButton jbtnSearch;
 	private JButton jbtnDMSearch;
 
 	/**
-	 * 관리자용 학생 관리 Dialog
+	 * 교수용 학생 관리 Dialog
 	 * @param main
 	 */
-	public EmployStuManageDialog(Main main) {
-		super(main, "관리자", true);
+	public EmployStuProfManageDialog(Main main) {
+		super(main, "교수", true);
 		this.main = main;
 		Font font = new Font("Pretendard", Font.BOLD, 14);
 
@@ -59,26 +61,39 @@ public class EmployStuManageDialog extends JDialog {
 		jtfSearch = new JTextField();
 		// 등록 버튼
 		jbtnAdd = new JButton("등록");
-		// 수정 버튼
-		jbtnEdit = new JButton("수정");
 		// 검색 조회 버튼
 		jbtnSearch = new JButton("조회");
 		// 학부 학과 조회 버튼
 		jbtnDMSearch = new JButton("조회");
 		// 테이블
-		String[] columnNames = { "No", "학번", "이름", "학부", "학과", "학년", "전화번호", "이메일", "주소" };			
+		String[] columnNames = { "No", "학번", "이름", "학부", "학과", "학년", "전화번호", "이메일", "주소", "성적" };			
 		dtmStu = new DefaultTableModel(null, columnNames);
 		
 		jtStu = new JTable(dtmStu) {
 		    // 셀 편집 안되게 설정
 		    @Override
 		    public boolean isCellEditable(int row, int column) {
-		        return false;
+		        return column == 9;
 		    }
 		};
 		
 		JScrollPane jspJtStu = new JScrollPane(jtStu);
 		
+		//성적
+		dcbmScore = new DefaultComboBoxModel<String>();
+		jcbScore = new JComboBox<String>(dcbmScore);
+		dcbmScore.addElement("-");
+		String[] score = {"A","B","C","D"};
+		String[] scorePlus = {"+","0","-"};
+		for(int i=0;i<score.length; i++) {
+			for(int j=0;j<scorePlus.length; j++){
+				dcbmScore.addElement(score[i].concat(scorePlus[j]));				
+			}
+		}
+		dcbmScore.addElement("F");
+		
+		// 성적
+		jtStu.getColumnModel().getColumn(9).setCellEditor(new DefaultCellEditor(jcbScore));
 		// 학부
 		dcbmDept = new DefaultComboBoxModel<String>();
 		jcbDept = new JComboBox<String>(dcbmDept);
@@ -89,14 +104,19 @@ public class EmployStuManageDialog extends JDialog {
 
 		// 행크기 변경 - setRowHeight
 		jtStu.setRowHeight(25);
-		jtStu.getColumnModel().getColumn(0).setPreferredWidth(2);
-		jtStu.getColumnModel().getColumn(1).setPreferredWidth(43);
-		jtStu.getColumnModel().getColumn(2).setPreferredWidth(55);
-		jtStu.getColumnModel().getColumn(5).setPreferredWidth(10);
-		jtStu.getColumnModel().getColumn(8).setPreferredWidth(100);
+		jtStu.getColumnModel().getColumn(0).setPreferredWidth(3);
+		jtStu.getColumnModel().getColumn(1).setPreferredWidth(47);
+		jtStu.getColumnModel().getColumn(2).setPreferredWidth(45);
+		jtStu.getColumnModel().getColumn(3).setPreferredWidth(60);
+		jtStu.getColumnModel().getColumn(4).setPreferredWidth(60);
+		jtStu.getColumnModel().getColumn(5).setPreferredWidth(3);
+		if(jtStu.getColumnModel().getColumnCount() == 10) {
+			jtStu.getColumnModel().getColumn(9).setPreferredWidth(20);
+		}
 
 		// setFont
 		jlblTitle.setFont(new Font("Pretendard", Font.BOLD, 20));
+		jtStu.setFont(new Font("Pretendard", Font.BOLD, 12));
 		jcbSearch.setFont(font);
 		jcbDept.setFont(font);
 		jcbMajor.setFont(font);
@@ -104,8 +124,6 @@ public class EmployStuManageDialog extends JDialog {
 		jbtnSearch.setFont(font);
 		jbtnDMSearch.setFont(font);
 		jbtnAdd.setFont(font);
-		jbtnEdit.setFont(font);
-		jtStu.setFont(new Font("Pretendard", Font.BOLD, 12));
 
 		// setBounds
 		jlblback.setBounds(0, 0, 1000, 700);
@@ -113,8 +131,7 @@ public class EmployStuManageDialog extends JDialog {
 		jcbSearch.setBounds(555, 80, 100, 30);
 		jtfSearch.setBounds(665, 80, 140, 30);
 		jbtnSearch.setBounds(815, 80, 60, 30);
-		jbtnAdd.setBounds(700, 540, 80, 30);
-		jbtnEdit.setBounds(795, 540, 80, 30); 
+		jbtnAdd.setBounds(795, 540, 80, 30);
 		jspJtStu.setBounds(110, 170, 770, 355);
 		jcbDept.setBounds(113, 118, 120, 30);
 		jcbMajor.setBounds(243, 118, 120, 30);
@@ -128,20 +145,16 @@ public class EmployStuManageDialog extends JDialog {
 		jbtnSearch.setBackground(color);
 		jbtnDMSearch.setBackground(color);
 		jbtnAdd.setBackground(color);
-		jbtnEdit.setBackground(color);
-		jtfSearch.setBorder(new LineBorder(new Color(0xCFCFCF)));
 		
 		// setBorder
-		jcbDept.setBorder(null);
+		jtfSearch.setBorder(new LineBorder(new Color(0xCFCFCF)));
 		jbtnSearch.setBorder(null);
 		jbtnDMSearch.setBorder(null);
 		jbtnAdd.setBorder(null);
-		jbtnEdit.setBorder(null);
 
 		// add
-		jbtnEdit.setEnabled(false);
+		jbtnAdd.setEnabled(false);
 		add(jbtnAdd);
-		add(jbtnEdit);
 		add(jlblTitle);
 		add(jcbSearch);
 		add(jtfSearch);
@@ -152,16 +165,19 @@ public class EmployStuManageDialog extends JDialog {
 		add(jbtnDMSearch);
 		
 		// addEvent
-		EmployStuManageEvt esme = new EmployStuManageEvt(this);
+		EmployStuProfManageEvt esme = new EmployStuProfManageEvt(this);
 		jbtnSearch.addActionListener(esme);
 		jbtnDMSearch.addActionListener(esme);
 		jbtnAdd.addActionListener(esme);
-		jbtnEdit.addActionListener(esme);
-		jtStu.addMouseListener(esme);
 		jcbDept.addActionListener(esme);
-		jtfSearch.addMouseListener(esme);
 		jcbSearch.addActionListener(esme);
 
+		jtStu.addMouseListener(esme);
+		jtfSearch.addMouseListener(esme);
+		jtfSearch.addActionListener(esme);
+		jcbScore.addActionListener(esme);
+		
+		
 		// 배경
 		add(jlblback);
 		
@@ -201,7 +217,7 @@ public class EmployStuManageDialog extends JDialog {
 	public JTable getJtStu() {
 		return jtStu;
 	}
-
+	
 	public DefaultComboBoxModel<String> getDcbmDept() {
 		return dcbmDept;
 	}
@@ -218,8 +234,12 @@ public class EmployStuManageDialog extends JDialog {
 		return jcbMajor;
 	}
 
-	public JButton getJbtnEdit() {
-		return jbtnEdit;
+	public DefaultComboBoxModel<String> getDcbmScore() {
+		return dcbmScore;
+	}
+
+	public JComboBox<String> getJcbScore() {
+		return jcbScore;
 	}
 	
 }

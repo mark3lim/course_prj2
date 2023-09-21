@@ -1,7 +1,7 @@
 package kr.co.sist.course;
 
 import javax.swing.JFrame;
-//돼라
+
 public class Main extends JFrame{
 	
 	public Main() {
@@ -9,7 +9,15 @@ public class Main extends JFrame{
 		
 		setBounds(400,100,1200,800);
 		setVisible(true);
-		new EmployStuManageDialog(this);
+		
+		//E - 관리자, P - 교수
+		//나중에 VO로 받아와서 수정 !!
+		String emp = "E";
+		if(emp.equals("E")) {
+			new EmployStuManageDialog(this);			
+		}else if(emp.equals("P")) {
+			new EmployStuProfManageDialog(this);
+		}
 		
 		setResizable(false);
 		
