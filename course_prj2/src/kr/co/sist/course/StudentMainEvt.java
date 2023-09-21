@@ -32,11 +32,11 @@ public class StudentMainEvt extends WindowAdapter implements ActionListener {
 	}
 	
 	public void mySubject() {
-		System.out.println("수강과목");
+		new MySubjectDialog(smf);
 	}
 	
 	public void courseApplication() {
-		System.out.println("수강신청");
+		new StudentSubjectDialog(smf);
 	}
 	
 	public void myGrade() {

@@ -37,9 +37,9 @@ public class ServerOutput {
 		File file = new File(path.toString());
 		FileInputStream fis = null;
 		
-		path.append("/").append(file.list()[0]);
 		
 		try {
+			path.append("/").append(file.list()[0]);
 			
 			//실행 시 오류가 나면 strFileList[0]를 strFileList[1]로 변경하여 시도. 0번 인덱스에 정크 파일이 있어서 발생하는 문제로 주로 맥에서 일어난다.
 			file = new File(path.toString());
@@ -65,7 +65,9 @@ public class ServerOutput {
 		} catch (FileNotFoundException e) {
 			os.close();
 			socket.close();
-		} 
+		} catch (NullPointerException npe) {
+			
+		}
 	}
 	
 	public static void main(String[] args) {
