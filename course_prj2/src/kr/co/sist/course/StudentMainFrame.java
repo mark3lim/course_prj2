@@ -18,9 +18,9 @@ public class StudentMainFrame extends JFrame {
 	
 	private JButton jbtnMyProfile; 
 	private JButton jbtnLogout;
-	private JButton jbtnRegisterSubject;
-	private JButton jbtnGradeSearch;
-	private JButton jbtnCourseApply;
+	private RoundedJButton jbtnRegisterSubject;
+	private RoundedJButton jbtnGradeSearch;
+	private RoundedJButton jbtnCourseApply;
 	private JLabel jlblMyPhoto;
 	private JLabel jlblMyName;
 	private JLabel jlblDept;
@@ -30,6 +30,10 @@ public class StudentMainFrame extends JFrame {
 
 	static StudentVO sVO;
 	
+	/**
+	 * 학생 화면 설정
+	 * @param stuVO 로그인한 학생의 StudentVO
+	 */
 	public StudentMainFrame(StudentVO stuVO) {
 		sVO = stuVO;
 		
@@ -48,11 +52,12 @@ public class StudentMainFrame extends JFrame {
 		pnlButton.setBorder(new LineBorder(Color.red));
 		Dimension d = new Dimension(300, 50);
 		
-		jbtnRegisterSubject = new JButton("수강과목");
+		//메인이 되는 버튼 설정
+		jbtnRegisterSubject = new RoundedJButton("수강과목");
 		jbtnRegisterSubject.setPreferredSize(d);
-		jbtnGradeSearch = new JButton("성적조회");
+		jbtnGradeSearch = new RoundedJButton("성적조회");
 		jbtnGradeSearch.setPreferredSize(d);
-		jbtnCourseApply = new JButton("수강신청");
+		jbtnCourseApply = new RoundedJButton("수강신청");
 		jbtnCourseApply.setPreferredSize(d);
 		
 		pnlButton.add(jbtnRegisterSubject);
@@ -82,18 +87,24 @@ public class StudentMainFrame extends JFrame {
 		pnlName.setBounds(720, jlblMyPhoto.getY()-45, 300, 35);
 		pnlName.setLayout(null);
 		
-		Font font = new Font("맑은 고딕", Font.BOLD, 16);
-		
 		jlblMyName = new JLabel();
 		jlblMyName.setHorizontalAlignment(JLabel.CENTER);
 		jlblMyName.setBounds(0, 2, 105, 30);
 		jlblMyName.setBorder(new LineBorder(Color.pink));
-		jlblMyName.setFont(font);
+		jlblMyName.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		
+		//작은 버튼의 색깔
+		Color btnColor = new Color(0xE0E0E0);
 		
 		jbtnMyProfile = new JButton("내 정보");
 		jbtnMyProfile.setBounds(115, 5, 85, 25);
+		jbtnMyProfile.setBackground(btnColor);
+		jbtnMyProfile.setBorder(null);
+		
 		jbtnLogout = new JButton("로그아웃");
 		jbtnLogout.setBounds(212, 5, 85, 25);
+		jbtnLogout.setBackground(btnColor);
+		jbtnLogout.setBorder(null);
 		
 		pnlName.add(jlblMyName);
 		pnlName.add(jbtnMyProfile);
@@ -123,6 +134,11 @@ public class StudentMainFrame extends JFrame {
 		setVisible(true);
 	}
 	
+	/**
+	 * 타이틀 라벨을 만드는 메서드
+	 * 추후에 보여지는 라벨이 수정이 되면 변경하기 편하게 하기 위해서 메서드로 만듬
+	 * @return JPanel
+	 */
 	public JPanel setInfoLable() {
 		String[] strArr = {"학부", "학과", "이메일", "로그인 시간"};
 		JLabel[] jl = new JLabel[strArr.length];
@@ -139,7 +155,6 @@ public class StudentMainFrame extends JFrame {
 			
 			pnl.add(jl[i]);
 		}
-		
 		
 		return pnl;
 	}

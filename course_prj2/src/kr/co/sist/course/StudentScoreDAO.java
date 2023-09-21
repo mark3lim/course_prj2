@@ -27,6 +27,12 @@ public class StudentScoreDAO {
 		return ssDAO;
 	}
 	
+	/**
+	 * 학생의 학번으로 학생이 들은 학년, 학기를 가져와서 "n학년 - m학기" 형식으로 List에 저장한다.
+	 * @param stuno 학생의 학번
+	 * @return List<String> "n학년 - m학기" 형식으로 List에 저장하고 정렬하여 List를 반환
+	 * @throws SQLException 데이터베이스에 정보가 없거나 SQLException이 발생하면 예외 발생.
+	 */
 	public List<String> selectSemester(int stuno) throws SQLException {
 		Set<String> set = new HashSet<String>();
 		Connection con = null;
@@ -62,6 +68,13 @@ public class StudentScoreDAO {
 		return list;
 	}
 	
+	/**
+	 * 선택된 컴보박스에서 학년과 학기를 구하고 데이터베이스에 해당 정보에 맞는 성적을 가져온다.
+	 * @param sLevel 학년
+	 * @param semester 학기
+	 * @return List<StudentScoreVO> 학생의 학과, 강의명, 성적, 평점, 이수구분을 담은 StudentScoreVO를 List로 반환
+	 * @throws SQLException 정보가 없거나 SQLException이 발행하면 예외 발생.
+	 */
 	public List<StudentScoreVO> selectScore(int sLevel, int semester) throws SQLException {
 		List<StudentScoreVO> list = new ArrayList<StudentScoreVO>();
 		Connection con = null;

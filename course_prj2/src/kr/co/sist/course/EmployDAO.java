@@ -22,6 +22,12 @@ public class EmployDAO {
 		return eDAO;
 	}
 	
+	/**
+	 * 로그인한 사원의 EmployVO를 설정하는 작업이다.
+	 * @param empno 사번
+	 * @return EmployVO
+	 * @throws SQLException
+	 */
 	public EmployVO selectEmp(String empno) throws SQLException {
 		EmployVO eVO = null;
 		Connection con = null;
@@ -35,14 +41,28 @@ public class EmployDAO {
 			
 			StringBuilder query = new StringBuilder();
 			query
-			.append("")
-			.append("")
-			.append("")
-			.append("");
+			.append("SELECT E.EMPNO,D.DPTNAME,M.MAJORNAME,E.USERCODE, E.PASS, E.ENAME, E.PHONE, E.EMAIL, E.IMG ")
+			.append("FROM EMP E, MAJOR M, DPT D")
+			.append("WHERE EMPNO=? AND E.MAJORCODE=M.MAJORCODE AND E.DPTCODE=D.DPTCODE");
 			
 			pstmt = con.prepareStatement(query.toString());
+			pstmt.setString(1, empno);
 			
 			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				eVO = new EmployVO(
+						empno,
+						rs.getString("USERCODE").charAt(0),
+						rs.getString("ENAME"),
+						rs.getString("EMAIL"),
+						rs.getString("IMG"),
+						rs.getString("DPTNAME"),
+						rs.getString("MAJOR"),
+						rs.getString("PHONE")
+						);
+			}
+			
 			
 		} finally {
 			db.dbClose(rs, pstmt, con);
@@ -51,6 +71,12 @@ public class EmployDAO {
 		return eVO;
 	}
 	
+	/**
+	 * 사원의 변경된 정보를 데이터베이스에 업데이트하는 작업이다.
+	 * @param updateVO 변경된 정보가 들어있는 EmployVO
+	 * @return 업데이트에 성공하면 1을 반환하고 업데이트를 안 했으면 0을 반환한다.
+	 * @throws SQLException
+	 */
 	public int updateProfile(EmployVO updateVO) throws SQLException {
 		int result = 0;
 		
@@ -86,6 +112,13 @@ public class EmployDAO {
 		return result;
 	}
 	
+	/**
+	 * 변경된 새 비밀번호를 업데이트하는 작업이다.
+	 * @param empno 사번
+	 * @param pw 새 비밀번호
+	 * @return 업데이트에 성공하면 1을 반환하고 업데이트를 안 했으면 0을 반환한다.
+	 * @throws SQLException
+	 */
 	public int updatePw(String empno, String pw) throws SQLException {
 		int result = 0;
 		

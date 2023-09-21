@@ -15,11 +15,19 @@ public class StudentScoreEvt extends WindowAdapter implements ActionListener {
 	
 	private StudentScoreDialog ssd;
 
+	/**
+	 * 객체가 생성되면 학기 정보가 들어있는 컴보박스를 초기화한다.
+	 * @param ssd StudentScoreDialog
+	 */
 	public StudentScoreEvt(StudentScoreDialog ssd) {
 		this.ssd = ssd;
 		setSearchBox(StudentMainFrame.sVO.getId());
 	}
 	
+	/**
+	 * 학생의 학번으로 학생이 들었거나 듣고있는 학기를 가져와 컴보박스에 설정한다.
+	 * @param stuNum 학생의 학번
+	 */
 	public void setSearchBox(int stuNum) {
 		//다오 연결해서 해당 학생이 들은 학기 가져오
 		
@@ -38,10 +46,13 @@ public class StudentScoreEvt extends WindowAdapter implements ActionListener {
 		
 	}
 	
+	/**
+	 * 컴보박스에 선택한 학기의 성적을 가져와서 DefaultTableModel에 넣어서 JTable에 보여준다.
+	 */
 	public void searchSemester() {
 		String temp = (String)(ssd.getJcbSemester().getSelectedItem());
-		int sLevel = Character.getNumericValue(temp.charAt(0));
-		int semester = Character.getNumericValue(temp.charAt(6));
+		int sLevel = Character.getNumericValue(temp.charAt(0)); //학년을 가져온다.
+		int semester = Character.getNumericValue(temp.charAt(6)); //학기를 가져온다.
 		
 		try {
 			List<StudentScoreVO> list = StudentScoreDAO.getInstance().selectScore(sLevel, semester);

@@ -30,6 +30,12 @@ public class StudentDAO {
 //		return sVO;
 //	}
 	
+	/**
+	 * StudentVO를 로그인한 학생에 맞춰서 데이터베이스 정보를 가져와 설정하는 작업이다.
+	 * @param stuNum 학번
+	 * @return StudentVO 학생 정보가 있는 클래스
+	 * @throws SQLException
+	 */
 	public StudentVO selectMyProfile(int stuNum) throws SQLException {
 		StudentVO sVO = null;
 		Connection con = null;
@@ -69,6 +75,12 @@ public class StudentDAO {
 		return sVO;
 	}
 	
+	/**
+	 * 수정된 정보를 데이터베이스에 업데이트(수정)하는 작업이다.
+	 * @param updateVO 변경된 정보가 담긴 StudentVO를 매개변수로 받는다.
+	 * @return 업데이트에 성공하면 1을 반환하고 업데이트를 안 했으면 0을 반환한다.
+	 * @throws SQLException
+	 */
 	public int updateMyInfo(StudentVO updateVO) throws SQLException {
 		int result = 0;
 		
@@ -103,6 +115,13 @@ public class StudentDAO {
 		return result;
 	}
 	
+	/**
+	 * 변경된 새 비밀번호를 업데이트하는 작업이다.
+	 * @param stuNum 학번
+	 * @param pw 새 비밀번호
+	 * @return 업데이트에 성공하면 1을 반환하고 업데이트를 안 했으면 0을 반환한다.
+	 * @throws SQLException
+	 */
 	public int updatePw(int stuNum, String pw) throws SQLException {
 		int result = 0;
 		
