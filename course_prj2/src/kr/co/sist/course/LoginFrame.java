@@ -61,10 +61,10 @@ public class LoginFrame extends JFrame {
 		//비밀번호 입력 필드 설정
 		
 		//아이디(학번)과 비밀번호 라벨, 입력 폰트 설정
-		Font font = new Font("맑은 고딕", Font.BOLD, 26);
+		Font font = new Font("Pretendard", Font.BOLD, 26);
 		jlblId.setFont(font);
 		jlblPw.setFont(font);
-		font = new Font("맑은 고딕", Font.PLAIN, 22);
+		font = new Font("Pretendard", Font.PLAIN, 22);
 		jtfId.setFont(font);
 
 		//관리자 모드 전환 체크박스
@@ -86,7 +86,6 @@ public class LoginFrame extends JFrame {
 		//학교 이미지 설정
 		JLabel jlblImg = new JLabel();
 		jlblImg.setBounds(590, 130, 435, 280);
-		jlblImg.setBorder(new LineBorder(Color.red));
 		
 		//사용방법 표시하는 라벨(로그인 가장 아래 있는 설명)
 		JTextArea jtaMsg = new JTextArea();

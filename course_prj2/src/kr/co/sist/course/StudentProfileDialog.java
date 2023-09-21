@@ -58,7 +58,7 @@ public class StudentProfileDialog extends JDialog {
 		//내 정보 제목 표시
 		JLabel jlblTitle = new JLabel("내 정보");
 		jlblTitle.setBounds(180, 100, 70, 30);
-		jlblTitle.setFont(new Font("맑은 고딕", Font.BOLD, 24));
+		jlblTitle.setFont(new Font("Pretendard", Font.BOLD, 24));
 		
 		//학생 사진 보여주는 라벨
 		jlblMyImg = new JLabel();
@@ -154,7 +154,7 @@ public class StudentProfileDialog extends JDialog {
 		jbtnEditPhoto.setBorder(null);
 		
 		// 라벨 폰트 설정
-		Font font = new Font("맑은 고딕", Font.BOLD, 20);
+		Font font = new Font("Pretendard", Font.BOLD, 20);
 		jlblTitle.setFont(font);
 		jlStuNo.setFont(font);
 		jlName.setFont(font);
@@ -166,30 +166,8 @@ public class StudentProfileDialog extends JDialog {
 		jlMajor.setFont(font);
 		jlPhone.setFont(font);
 		jlAddr.setFont(font);
-		golbaengi.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+		golbaengi.setFont(new Font("Pretendard", Font.PLAIN, 16));
 		
-		//임시용 테두리 설정
-		//정확한 위치와 크기를 알아보기 위해서 설정
-		//디자인이 끝나면 삭제할 예
-//		jlblTitle.setBorder(new LineBorder(Color.red));
-//		jlblMyImg.setBorder(new LineBorder(Color.red));
-//		jlStuNo.setBorder(new LineBorder(Color.red));
-//		jlName.setBorder(new LineBorder(Color.red));
-//		jlPw.setBorder(new LineBorder(Color.red));
-//		jlblStuNo.setBorder(new LineBorder(Color.red));
-//		jlblName.setBorder(new LineBorder(Color.red));
-//		jpfPw.setBorder(new LineBorder(Color.red));
-//		jpfPwConfirm.setBorder(new LineBorder(Color.red));
-//		jlEmail.setBorder(new LineBorder(Color.red));
-//		jcbChoiceEmail.setBorder(new LineBorder(Color.red));
-//		jldpt.setBorder(new LineBorder(Color.red));
-//		jlblDept.setBorder(new LineBorder(Color.red));
-//		jlMajor.setBorder(new LineBorder(Color.red));
-//		jlblMajor.setBorder(new LineBorder(Color.red));
-//		jlPhone.setBorder(new LineBorder(Color.red));
-//		jtfPhone.setBorder(new LineBorder(Color.red));
-//		jlAddr.setBorder(new LineBorder(Color.red));
-//		jtfAddr.setBorder(new LineBorder(Color.red));
 		
 		setLayout(null);
 		

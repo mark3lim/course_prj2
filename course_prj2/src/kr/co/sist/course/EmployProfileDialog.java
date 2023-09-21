@@ -62,7 +62,7 @@ public class EmployProfileDialog extends JDialog {
 		//내 정보 제목 표시
 		JLabel jlblTitle = new JLabel("내 정보");
 		jlblTitle.setBounds(180, 100, 70, 30);
-		jlblTitle.setFont(new Font("맑은 고딕", Font.BOLD, 24));
+		jlblTitle.setFont(new Font("Pretendard", Font.BOLD, 24));
 		
 		//학생 사진 보여주는 라벨
 		jlblMyImg = new JLabel();
@@ -147,7 +147,7 @@ public class EmployProfileDialog extends JDialog {
 		jbtnEditImg.setBorder(null);
 		
 		// 라벨 폰트 설정
-		Font font = new Font("맑은 고딕", Font.BOLD, 20);
+		Font font = new Font("Pretendard", Font.BOLD, 20);
 		jlblTitle.setFont(font);
 		jlStuNo.setFont(font);
 		jlName.setFont(font);
@@ -158,7 +158,7 @@ public class EmployProfileDialog extends JDialog {
 		jldpt.setFont(font);
 		jlMajor.setFont(font);
 		jlPhone.setFont(font);
-		golbaengi.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+		golbaengi.setFont(new Font("Pretendard", Font.PLAIN, 16));
 		
 		setLayout(null);
 		

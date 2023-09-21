@@ -91,7 +91,7 @@ public class StudentMainFrame extends JFrame {
 		jlblMyName.setHorizontalAlignment(JLabel.CENTER);
 		jlblMyName.setBounds(0, 2, 105, 30);
 		jlblMyName.setBorder(new LineBorder(Color.pink));
-		jlblMyName.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		jlblMyName.setFont(new Font("Pretendard", Font.BOLD, 16));
 		
 		//작은 버튼의 색깔
 		Color btnColor = new Color(0xE0E0E0);
@@ -142,7 +142,7 @@ public class StudentMainFrame extends JFrame {
 	public JPanel setInfoLable() {
 		String[] strArr = {"학부", "학과", "이메일", "로그인 시간"};
 		JLabel[] jl = new JLabel[strArr.length];
-		Font font = new Font(null, Font.BOLD, 14);
+		Font font = new Font("Pretendard", Font.BOLD, 14);
 		
 		JPanel pnl = new JPanel();
 		pnl.setLayout(null);

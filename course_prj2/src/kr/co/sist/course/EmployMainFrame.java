@@ -94,7 +94,7 @@ public class EmployMainFrame extends JFrame {
 		pnlName.setBounds(680, jlblMyPhoto.getY() - 45, 340, 35);
 		pnlName.setLayout(null);
 
-		Font font = new Font("맑은 고딕", Font.BOLD, 16);
+		Font font = new Font("Pretendard", Font.BOLD, 16);
 
 		jlblMyName = new JLabel();
 		jlblMyName.setHorizontalAlignment(JLabel.CENTER);

@@ -40,7 +40,7 @@ public class StudentScoreDialog extends JDialog {
 		//타이틀 설정
 		JLabel jlTitle = new JLabel("성적조회");
 		jlTitle.setBounds(145, 100, 100, 30);
-		jlTitle.setFont(new Font("맑은 고딕", Font.BOLD, 24));
+		jlTitle.setFont(new Font("Pretendard", Font.BOLD, 24));
 		
 		//콤보박스 설정
 		dcbmSemester = new DefaultComboBoxModel<String>();
