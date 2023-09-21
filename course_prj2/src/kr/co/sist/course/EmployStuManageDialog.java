@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 @SuppressWarnings("serial")
 public class EmployStuManageDialog extends JDialog {
 
-	private Main main;
+	private EmployMainFrame emf;
 	private DefaultComboBoxModel<String> dcbmDept;
 	private JComboBox<String> jcbDept;
 	private DefaultComboBoxModel<String> dcbmMajor;
@@ -38,9 +38,9 @@ public class EmployStuManageDialog extends JDialog {
 	 * 관리자용 학생 관리 Dialog
 	 * @param main
 	 */
-	public EmployStuManageDialog(Main main) {
-		super(main, "관리자", true);
-		this.main = main;
+	public EmployStuManageDialog(EmployMainFrame emf) {
+		super(emf, "관리자", true);
+		this.emf = emf;
 		Font font = new Font("Pretendard", Font.BOLD, 14);
 
 		setLayout(null);
@@ -166,7 +166,7 @@ public class EmployStuManageDialog extends JDialog {
 		add(jlblback);
 		
 		setResizable(false);
-		setBounds(main.getX() + 100, main.getY() + 50, 1000, 700);
+		setBounds(emf.getX() + 100, emf.getY() + 50, 1000, 700);
 		setVisible(true);
 	}
 

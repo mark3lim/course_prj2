@@ -100,7 +100,7 @@ public class EmployStuEditManageDialog extends JDialog {
 		dcbmLevel.addElement(4);
 		
 		// addEvent
-		EmployStuEditManageEvt eseme = new EmployStuEditManageEvt(this);
+		EmployStuEditManageEvt eseme = new EmployStuEditManageEvt(this, esmVO.getDptName());
 		
 		//true면 등록, false면 수정
 		if(flag) {
