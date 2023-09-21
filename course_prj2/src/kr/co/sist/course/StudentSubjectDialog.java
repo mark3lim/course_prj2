@@ -16,11 +16,10 @@ import javax.swing.table.DefaultTableModel;
 
 @SuppressWarnings("serial")
 public class StudentSubjectDialog extends JDialog {
-		private StudentSubjectDAO ssDAO;
-		private StudentSubjectVO ssVO;
+
 		private JTable jtss;
 		private DefaultTableModel dtmtn;
-		private StudentMainFrame smf;
+	
 	public StudentSubjectDialog(StudentMainFrame smf) {
 		JLabel jlblTitle = new JLabel("수강신청");
 		JLabel jlblback=new JLabel(new ImageIcon("C:/Users/user/git/group_prj/course_prj/src/kr/co/sist/course/images/backgr.png"));

@@ -27,10 +27,13 @@ public class LecturePlanDialog extends JDialog {
 	private MySubjectDialog msD;
 	private LecturePlanEvt le;
 	private Font font;
-	public LecturePlanDialog(StudentSubjectDialog ssDL) {
-
+	private String SubjectCode;
+	
+	public LecturePlanDialog(StudentSubjectDialog ssDL, String SubjectCode) {
+		
 
 		this();
+		this.SubjectCode = SubjectCode;
 		this.ssDL=ssDL;
 		 jbtnApply = new JButton("신청");
 			
@@ -42,9 +45,10 @@ public class LecturePlanDialog extends JDialog {
 	}
 	
 	
-	public LecturePlanDialog (MySubjectDialog msd) {
+	public LecturePlanDialog (MySubjectDialog msd, String SubjectCode) {
 		this();
 		this.msD=msd;
+		this.SubjectCode = SubjectCode;
 	}
 	
 	public LecturePlanDialog() {
@@ -245,6 +249,28 @@ public class LecturePlanDialog extends JDialog {
 		return jtSubGoal;
 	}
 
+	public String getSubjectCode() {
+		return SubjectCode;
+	}
+
+
+
+
+	public MySubjectDialog getMsD() {
+		return msD;
+	}
+
+
+	public LecturePlanEvt getLe() {
+		return le;
+	}
+
+
+	public Font getFont() {
+		return font;
+	}
+
+
 	public void setJtSubGoal(JTextField jtSubGoal) {
 		this.jtSubGoal = jtSubGoal;
 	}
@@ -271,11 +297,7 @@ public class LecturePlanDialog extends JDialog {
 		return smf;
 	}
 
-//	public static void main(String[] args) {
-//// new LecturePlanDialog(new StudentSubjectDialog());
-//		
-//		
-//		
-//
-//	}
+//public static void main(String[] args) {
+// new LecturePlanDialog(new StudentSubjectDialog());	}
+//}
 }
