@@ -1,18 +1,14 @@
-   package kr.co.sist.course;
+package self_practice_course_prj;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-import kr.co.sist.dao.ClientImageIO;
-//돼라
 /* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 */
 public class EmployMainEvt extends WindowAdapter implements ActionListener {
 	
@@ -24,7 +20,7 @@ public class EmployMainEvt extends WindowAdapter implements ActionListener {
 	}
 	
 	public void goMyProfile() {
-		new EmployProfileDialog(emf);
+		System.out.println("profile");
 	}
 	
 	public void goStuManage() {
@@ -71,22 +67,11 @@ public class EmployMainEvt extends WindowAdapter implements ActionListener {
 			emf.getJlblTwo().setText(eVO.getMajorName());
 		}
 		emf.getJlblMyEmail().setText(eVO.getEmail());
-
-		try {
-			ImageIcon icon = ClientImageIO.readImage(eVO.getEmpno());
-			emf.getJlblMyPhoto().setIcon(icon);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
 		setLoginTime();
-		
 	}
 	
 	public void logout() {
-		new LoginFrame();
-		emf.dispose();
+		System.out.println("Logout");
 	}
 	
 	@Override

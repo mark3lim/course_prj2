@@ -1,4 +1,4 @@
-package kr.co.sist.course;
+package self_practice_course_prj;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,17 +13,13 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 /* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 */
-/**
- * 관리자, 교수가 보는 메인이 되는 화면
- * @author user
- */
 @SuppressWarnings("serial")
 public class EmployMainFrame extends JFrame {
 	
-	private RoundedJButton jbtnStuManage; 
-	private RoundedJButton jbtnProfesorManage;
-	private RoundedJButton jbtnMajorManage;
-	private RoundedJButton jbtnSubjectManage;
+	private JButton jbtnStuManage;
+	private JButton jbtnProfesorManage;
+	private JButton jbtnMajorManage;
+	private JButton jbtnSubjectManage;
 	private JLabel jlblOne;
 	private JLabel jlblTwo;
 	private JLabel jlblMyEmail;
@@ -37,13 +33,9 @@ public class EmployMainFrame extends JFrame {
 
 	static EmployVO eVO;
 	
-	/**
-	 * 화면을 교직원과 교수에 따라서 보여준다.
-	 * @param VO EmployVO
-	 */
 	public EmployMainFrame(EmployVO VO) {
 		eVO = VO;
-		flag = eVO.getUsercode()=='E' ? true : false; //교직원이면 true를 교수면 false를 반환한다.
+		flag = eVO.getUsercode()=='M' ? true : false; //관리자면 true를 교수면 false를 반환한다.
 		
 		// 배경 사진 설정
 		JLabel jlblBg = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/mainBg.png"));
@@ -51,7 +43,7 @@ public class EmployMainFrame extends JFrame {
 		
 		// 학생 사진을 보여주는 라벨 설정
 		jlblMyPhoto = new JLabel();
-		jlblMyPhoto.setBounds(220, 150, 190, 250);
+		jlblMyPhoto.setBounds(220, 150, 200, 250);
 		jlblMyPhoto.setBorder(new LineBorder(Color.red));
 		
 		// 메인 버튼들을 모아두는 패널 설정
@@ -59,20 +51,17 @@ public class EmployMainFrame extends JFrame {
 		pnlButton.setBounds(620, 170, 400, 400);
 		pnlButton.setBorder(new LineBorder(Color.red));
 		
-		//메인이 되는 3개 버튼의 크기를 정의
 		Dimension d = new Dimension(300, 50);
 		
-		//메인이 되는 버튼 설정
-		jbtnStuManage = new RoundedJButton("학생관리");
+		jbtnStuManage = new JButton("학생관리");
 		jbtnStuManage.setPreferredSize(d);
-		jbtnProfesorManage = new RoundedJButton("교수관리");
+		jbtnProfesorManage = new JButton("교수관리");
 		jbtnProfesorManage.setPreferredSize(d);
-		jbtnMajorManage = new RoundedJButton("학과관리");
+		jbtnMajorManage = new JButton("학과관리");
 		jbtnMajorManage.setPreferredSize(d);
-		jbtnSubjectManage = new RoundedJButton("과목관리");
+		jbtnSubjectManage = new JButton("과목관리");
 		jbtnSubjectManage.setPreferredSize(d);
 		
-		//패널에 메인이 되는 버튼 추가
 		pnlButton.add(jbtnStuManage);
 		pnlButton.add(jbtnProfesorManage);
 		pnlButton.add(jbtnMajorManage);
@@ -83,8 +72,7 @@ public class EmployMainFrame extends JFrame {
 		pnlInfoTag.setLocation(jlblMyPhoto.getX(), jlblMyPhoto.getY()+290);
 		pnlInfoTag.setBorder(new LineBorder(Color.red));
 		
-		//교직원 정보 표시창
-		//교직원와 교수에 따라서 보여주는 내용이 다르기 때문에 순서대로 해서 영어로 번호를 붙임
+		//관리자 정보 표시창
 		jlblOne = new JLabel();
 		jlblOne.setBounds(100, 0, 200, 30);
 		jlblTwo = new JLabel();
@@ -106,29 +94,19 @@ public class EmployMainFrame extends JFrame {
 		pnlName.setBounds(680, jlblMyPhoto.getY() - 45, 340, 35);
 		pnlName.setLayout(null);
 
-		//이름을 표시하는 라벨 설정
+		Font font = new Font("맑은 고딕", Font.BOLD, 16);
+
 		jlblMyName = new JLabel();
 		jlblMyName.setHorizontalAlignment(JLabel.CENTER);
 		jlblMyName.setBounds(0, 2, 140, 30);
 		jlblMyName.setBorder(new LineBorder(Color.pink));
-		jlblMyName.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		jlblMyName.setFont(font);
 
-		//작은 버튼의 색깔
-		Color btnColor = new Color(0xE0E0E0);
-		
-		//내 정보로 가는 버튼 설정
 		jbtnMyProfile = new JButton("내 정보");
 		jbtnMyProfile.setBounds(152, 5, 85, 25);
-		jbtnMyProfile.setBackground(btnColor);
-		jbtnMyProfile.setBorder(null);
-		
-		//로그아웃 버튼 설정
 		jbtnLogout = new JButton("로그아웃");
 		jbtnLogout.setBounds(250, 5, 85, 25);
-		jbtnLogout.setBackground(btnColor);
-		jbtnLogout.setBorder(null);
 
-		
 		pnlName.add(jlblMyName);
 		pnlName.add(jbtnMyProfile);
 		pnlName.add(jbtnLogout);
@@ -139,11 +117,11 @@ public class EmployMainFrame extends JFrame {
 		add(pnlButton);
 		add(pnlInfoTag);
 		add(pnlName);
-		//배경이 되는 이미지를 갖고 있는 라벨을 추가
+
 		add(jlblBg);
 
 
-		//이벤트 연결
+		//기본 값 설정
 		EmployMainEvt eme = new EmployMainEvt(this);
 		jbtnStuManage.addActionListener(eme);
 		jbtnProfesorManage.addActionListener(eme);
@@ -158,10 +136,6 @@ public class EmployMainFrame extends JFrame {
 		setVisible(true);
 	}
 	
-	/**
-	 * 교직원과 교수에 따라서 라벨 텍스트를 설정한다.
-	 * @return JPanel
-	 */
 	public JPanel setInfoLable() {
 		String[] M_Arr = {"", "사번", "이메일", "로그인 시간"};
 		String[] P_Arr = {"학부", "학과", "이메일", "로그인 시간"};
@@ -249,5 +223,16 @@ public class EmployMainFrame extends JFrame {
 		return flag;
 	}
 
+	public static void main(String[] args) {
+		//임시 값
+		EmployVO v = new EmployVO();
+		v.setUsercode('M');
+		v.setName("농담곰");
+		v.setEmpno("EMP000100");
+		v.setDptName("컴퓨터공학부");
+		v.setMajorName("컴퓨터과학");
+		v.setEmail("testest@gmail.com");
+		new EmployMainFrame(v);
+	}
 
 }

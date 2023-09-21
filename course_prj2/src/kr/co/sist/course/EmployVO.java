@@ -1,7 +1,7 @@
-package kr.co.sist.course;
+package self_practice_course_prj;
 
 public class EmployVO {
-	//돼라
+
 	private String empno;
 	private char usercode;
 	private String name;
