@@ -15,20 +15,28 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
-//돼라
-//인영
+import javax.swing.table.TableColumn;
+
+/**
+ *인영
+ *교수 관리 Dialog
+ * @author user
+ *ㄴ
+ */
 @SuppressWarnings("serial")
 public class EmployProfManageDialog extends JDialog {
 
 	private EmployMainFrame emf;
 
-	DefaultComboBoxModel<String> dcbmSearch;
-	JComboBox<String> jcbSearch;
-	JTextField jtfSearch;
-	JTable jtProf;
-	JButton jbtnAdd;
-	JButton jbtnSearch;
-	EmployProfManageEvt epme;
+	private JComboBox<String> jcbSearch;
+	private DefaultComboBoxModel<String> dcbmSearch;
+	private JTextField jtfSearch;
+	private JTable jtProf;
+	private JButton jbtnAdd;
+	private JButton jbtnEdit;
+	private JButton jbtnSearch;
+	private EmployProfManageEvt epme;
+	private DefaultTableModel dtmProf;
 
 	public EmployProfManageDialog(EmployMainFrame emf) {
 		super(emf, "관리자", true);
@@ -37,8 +45,7 @@ public class EmployProfManageDialog extends JDialog {
 		// 타이틀
 		JLabel jlblTitle = new JLabel("교수관리");
 		// 배경
-		JLabel jlblback = new JLabel(
-				new ImageIcon("E:/dev/workspace/html_prj/src/main/webapp/common/images/backgr.png"));
+		JLabel jlblback = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/backgr.png"));
 
 		dcbmSearch = new DefaultComboBoxModel<String>();
 		jcbSearch = new JComboBox<String>(dcbmSearch);
@@ -50,13 +57,44 @@ public class EmployProfManageDialog extends JDialog {
 		jtfSearch = new JTextField();
 		// 등록버튼
 		jbtnAdd = new JButton("등록");
+		jbtnEdit = new JButton("수정");
 		// 조회버튼
 		jbtnSearch = new JButton("조회");
+
+		/////JTable/////
 		// 테이블
-		String[] columNames = { "No", "사번", "이름", "학부명", "학과명", "전화번호", "이메일" };
-		DefaultTableModel dtmProf = new DefaultTableModel(null, columNames);
-		jtProf = new JTable(dtmProf);
+		dtmProf = new DefaultTableModel();
+		// 컬럼 이름 추가
+		dtmProf.addColumn("No");
+		dtmProf.addColumn("사번");
+		dtmProf.addColumn("이름");
+		dtmProf.addColumn("학부명");
+		dtmProf.addColumn("학과명");
+		dtmProf.addColumn("전화번호");
+		dtmProf.addColumn("이메일");
+		// JTable 컬럼 값 수정 불가
+		jtProf = new JTable(dtmProf) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+
 		JScrollPane jspJtProf = new JScrollPane(jtProf);
+
+		// JTable 컬럼 width 크기 설정
+		TableColumn column = jtProf.getColumnModel().getColumn(0);
+		column.setPreferredWidth(5);
+		column = jtProf.getColumnModel().getColumn(1);
+		column.setPreferredWidth(30);
+		column = jtProf.getColumnModel().getColumn(2);
+		column.setPreferredWidth(20);
+		// 컬럼 height 크기 설정
+		jtProf.setRowHeight(25);
+		// JTable 크기 조절 불가
+		for (int i = 0; i < jtProf.getColumnModel().getColumnCount(); i++) {
+			jtProf.getColumnModel().getColumn(i).setResizable(false);
+		}//end for
 
 		// Bounds
 		jlblback.setBounds(0, 0, 1000, 700);
@@ -64,33 +102,43 @@ public class EmployProfManageDialog extends JDialog {
 		jcbSearch.setBounds(555, 80, 100, 30);
 		jtfSearch.setBounds(665, 80, 140, 30);
 		jbtnSearch.setBounds(815, 80, 60, 30);
-		jbtnAdd.setBounds(795, 540, 80, 30);
+		jbtnAdd.setBounds(700, 540, 80, 30);
+		jbtnEdit.setBounds(795, 540, 80, 30);
 		jspJtProf.setBounds(110, 170, 770, 350);
 
-		// Font
+		// Font 설정
 		Font font = new Font("Pretendard", Font.BOLD, 14);
 		jlblTitle.setFont(new Font("Pretendard", Font.BOLD, 20));
 		jcbSearch.setFont(font);
 		jtfSearch.setFont(font);
 		jbtnSearch.setFont(font);
 		jbtnAdd.setFont(font);
+		jbtnEdit.setFont(font);
 		jspJtProf.setFont(font);
 
-		// back-color
+		// background-color 설정
 //		jcbSearch.setBackground(new Color(0xE0E0E0));
 		jbtnSearch.setBackground(new Color(0xE0E0E0));
 		jbtnAdd.setBackground(new Color(0xE0E0E0));
-		jtfSearch.setBorder(new LineBorder(new Color(0xE0E0E0)));
+		jbtnEdit.setBackground(new Color(0xE0E0E0));
+		jtfSearch.setBorder(new LineBorder(new Color(0xCFCFCF)));
 		jbtnSearch.setBorder(null);
 		jbtnAdd.setBorder(null);
+		jbtnEdit.setBorder(null);
+		jcbSearch.setBackground(Color.white);
 
+		/// 이벤트 연결///
 		epme = new EmployProfManageEvt(this);
 		jbtnAdd.addActionListener(epme);
+		jbtnEdit.addActionListener(epme);
+
+		jbtnSearch.addActionListener(epme);
 
 		// add
 		add(jlblTitle);
 		add(jbtnSearch);
 		add(jbtnAdd);
+		add(jbtnEdit);
 		add(jtfSearch);
 		add(jcbSearch);
 		add(jspJtProf);
@@ -98,14 +146,18 @@ public class EmployProfManageDialog extends JDialog {
 		// add background
 		add(jlblback);
 
-		setLayout(null);
-		setResizable(false);
+		setLayout(null); // 수동 배치
+		setResizable(false); // 창 크기 조절 불가
 
 		setBounds(emf.getX() + 100, emf.getY() + 50, 1000, 700);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 	}// EmployProfManageDialog
+
+	public EmployMainFrame getEmf() {
+		return emf;
+	}
 
 	public DefaultComboBoxModel<String> getDcbmSearch() {
 		return dcbmSearch;
@@ -127,9 +179,20 @@ public class EmployProfManageDialog extends JDialog {
 		return jbtnAdd;
 	}
 
+	public JButton getJbtnEdit() {
+		return jbtnEdit;
+	}
+
 	public JButton getJbtnSearch() {
 		return jbtnSearch;
 	}
 
+	public EmployProfManageEvt getEpme() {
+		return epme;
+	}
+
+	public DefaultTableModel getDtmProf() {
+		return dtmProf;
+	}
 
 }// class

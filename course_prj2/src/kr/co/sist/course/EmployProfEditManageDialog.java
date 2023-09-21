@@ -12,30 +12,37 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
-//돼라
-//인영
+
+/**
+ * 인영 교수 관리- 수정 Dialog
+ * ㄴ
+ * @author user
+ *
+ */
 @SuppressWarnings("serial")
 public class EmployProfEditManageDialog extends JDialog {
 
 	private EmployProfManageDialog epmd;
-	JTextField jtfEmpno;
-	JTextField jtfName;
-	JTextField jtfPhone;
-	JTextField jtfEmail;
-	DefaultComboBoxModel<String> dcbmDept;
-	JComboBox<String> jcbDept;
-	DefaultComboBoxModel<String> dcbmMajor;
-	JComboBox<String> jcbMajor;
-	DefaultComboBoxModel<String> dcbmEmail;
-	JComboBox<String> jcbEmail;
-	JButton jbtnEdit;
+//	private EmployProfEditManageDialogEvt epemde;
+	private JLabel JlblSetEmpno;
+	private JTextField jtfName;
+	private JTextField jtfPhone;
+	private JTextField jtfEmail;
+	private DefaultComboBoxModel<String> dcbmDept;
+	private JComboBox<String> jcbDept;
+	private DefaultComboBoxModel<String> dcbmMajor;
+	private JComboBox<String> jcbMajor;
+	private DefaultComboBoxModel<String> dcbmEmail;
+	private JComboBox<String> jcbEmail;
+	private JButton jbtnEdit;
 
-	//교수 수정 창
-	public EmployProfEditManageDialog(/* EmployProfManageDialog epmd */) {
-		/*
-		 * super(epmd, "관리자", true); 
-		 * this.epmd = epmd;
-		 */
+	// 교수 수정 창
+	public EmployProfEditManageDialog(EmployProfManageDialog epmd, ProfVO pVO) {
+
+		super(epmd, "관리자", true);
+		this.epmd = epmd;
+
+		
 		//// 라벨 ////
 		JLabel jlblTitle = new JLabel("교수 수정");
 		JLabel jlblEmpno = new JLabel("사번");
@@ -44,39 +51,63 @@ public class EmployProfEditManageDialog extends JDialog {
 		JLabel jlblMajor = new JLabel("학과");
 		JLabel jlblPhone = new JLabel("전화번호");
 		JLabel jlblEmail = new JLabel("이메일");
-
+		JlblSetEmpno = new JLabel(pVO.getEmpno()); // 사번
 		//// 텍스트 필드 ////
-		jtfEmpno = new JTextField(); // 사번
-		jtfName = new JTextField(); // 이름
-		jtfPhone = new JTextField(); // 전화번호
-		jtfEmail = new JTextField(); // 이메일
 
+		String email = pVO.getEmail();
+		jtfName = new JTextField(pVO.getEname()); // 이름
+		jtfPhone = new JTextField(pVO.getPhone()); // 전화번호
+		jtfEmail = new JTextField(email.substring(0, (email.indexOf("@")))); // 이메일
+
+		//이벤트 등록
+		
 		//// 콤보 박스 ///
 		// 학부
 		dcbmDept = new DefaultComboBoxModel<String>();
-		jcbDept = new JComboBox<String>(dcbmDept);
 		// 학과
 		dcbmMajor = new DefaultComboBoxModel<String>();
-		jcbMajor = new JComboBox<String>(dcbmMajor);
+
 		// 이메일
 		dcbmEmail = new DefaultComboBoxModel<String>();
-		jcbEmail = new JComboBox<String>(dcbmEmail);
 
+		
+//		dcbmDept.addElement("컴퓨터공학부");
+//		dcbmDept.addElement("인문사회부");
+//		dcbmDept.addElement("연극학부");
+//		dcbmDept.addElement("건축학부");
+//		dcbmDept.addElement("체육학부");
+
+//		dcbmMajor.addElement("컴퓨터과학과");
+//		dcbmMajor.addElement("국어국문학과");
+//		dcbmMajor.addElement("연극영화과");
+//		dcbmMajor.addElement("건축공학과");
+//		dcbmMajor.addElement("사회체육학과");
+
+		email = pVO.getEmail().substring(email.lastIndexOf("@"), email.length());
+		dcbmEmail.setSelectedItem(email);
 		dcbmEmail.addElement("@naver.com");
 		dcbmEmail.addElement("@gmail.com");
 		dcbmEmail.addElement("@daum.net");
 		dcbmEmail.addElement("@naver.com");
 		dcbmEmail.addElement("@gmail.com");
 
+		jcbDept = new JComboBox<String>(dcbmDept);
+		jcbMajor = new JComboBox<String>(dcbmMajor);
+		jcbEmail = new JComboBox<String>(dcbmEmail);
+		
+		EmployProfEditManageDialogEvt epemde= new EmployProfEditManageDialogEvt(this);
+		
+		dcbmDept.setSelectedItem(pVO.getDptName());
+		dcbmMajor.setSelectedItem(pVO.getMajorName());
 		//// 버튼 ////
 		jbtnEdit = new JButton("수정"); // 수정버튼
 
 		//// 배경 색 설정 ////
 		Color backgroundColor = Color.decode("#FCF7F5");
 
-        // getContentPane() 메서드를 사용하여 배경색 설정
-        Container contentPane = getContentPane();
-        contentPane.setBackground(backgroundColor);
+		// getContentPane() 메서드를 사용하여 배경색 설정
+		Container contentPane = getContentPane();
+		contentPane.setBackground(backgroundColor);
 		//// Bounds ////
 		// 라벨
 		jlblTitle.setBounds(20, 10, 210, 50);
@@ -87,7 +118,7 @@ public class EmployProfEditManageDialog extends JDialog {
 		jlblPhone.setBounds(148, 290, 100, 30);
 		jlblEmail.setBounds(148, 340, 80, 30);
 		// 텍스트필드
-		jtfEmpno.setBounds(260, 90, 150, 30);
+		JlblSetEmpno.setBounds(260, 90, 150, 30);
 		jtfName.setBounds(260, 140, 140, 30);
 		jtfPhone.setBounds(260, 290, 140, 30);
 		jtfEmail.setBounds(260, 340, 140, 30);
@@ -97,23 +128,37 @@ public class EmployProfEditManageDialog extends JDialog {
 		jcbEmail.setBounds(410, 340, 140, 30);
 		// 버튼
 		jbtnEdit.setBounds(274, 414, 80, 30);
+		
+	
+		jbtnEdit.addActionListener(epemde);
+		jcbDept.addActionListener(epemde);
+		jcbMajor.addActionListener(epemde);
+		
 
 		//// Font ////
 		Font font = new Font("Pretendard", Font.BOLD, 25);
 		jlblTitle.setFont(new Font("Pretendard", Font.BOLD, 22));
+		jbtnEdit.setFont(new Font("Pretendard", Font.BOLD, 14));
+		jcbDept.setFont(new Font("Pretendard", Font.BOLD, 14));
+		jcbMajor.setFont(new Font("Pretendard", Font.BOLD, 14));
+		jcbEmail.setFont(new Font("Pretendard", Font.BOLD, 14));
 		jlblEmpno.setFont(font);
 		jlblName.setFont(font);
 		jlblDpt.setFont(font);
 		jlblMajor.setFont(font);
 		jlblPhone.setFont(font);
 		jlblEmail.setFont(font);
-		jbtnEdit.setFont(new Font("Pretendard", Font.BOLD, 14));
-		jcbDept.setFont(new Font("Pretendard", Font.BOLD, 14));
-		jcbMajor.setFont(new Font("Pretendard", Font.BOLD, 14));
-		jcbEmail.setFont(new Font("Pretendard", Font.BOLD, 14));
+		JlblSetEmpno.setFont(new Font("Pretendard", Font.BOLD, 18));
 
 		//// back-color ////
 		jbtnEdit.setBackground(new Color(0xE0E0E0));
+		jbtnEdit.setBorder(null);
+		jtfEmail.setBorder(new LineBorder(new Color(0xCFCFCF)));
+		jtfName.setBorder(new LineBorder(new Color(0xCFCFCF)));
+		jtfPhone.setBorder(new LineBorder(new Color(0xCFCFCF)));
+		jcbDept.setBackground(Color.white);
+		jcbEmail.setBackground(Color.white);
+		jcbMajor.setBackground(Color.white);
 
 		//// add ////
 		add(jlblTitle);
@@ -123,7 +168,7 @@ public class EmployProfEditManageDialog extends JDialog {
 		add(jlblMajor);
 		add(jlblPhone);
 		add(jlblEmail);
-		add(jtfEmpno);
+		add(JlblSetEmpno);
 		add(jtfName);
 		add(jtfPhone);
 		add(jtfEmail);
@@ -140,12 +185,13 @@ public class EmployProfEditManageDialog extends JDialog {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}// EmployProfEditManageDialog
 
+	/// getter///
 	public EmployProfManageDialog getEpmd() {
 		return epmd;
 	}
 
-	public JTextField getJtfEmpno() {
-		return jtfEmpno;
+	public JLabel getJlblSetEmpno() {
+		return JlblSetEmpno;
 	}
 
 	public JTextField getJtfName() {
@@ -187,8 +233,5 @@ public class EmployProfEditManageDialog extends JDialog {
 	public JButton getJbtnEdit() {
 		return jbtnEdit;
 	}
-	
-	
-	
 
 }// class
