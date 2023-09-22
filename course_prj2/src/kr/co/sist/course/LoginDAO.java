@@ -83,16 +83,17 @@ public class LoginDAO {
 			query
 			.append("	SELECT  E.EMPNO,D.DPTNAME,M.MAJORNAME,E.USERCODE, E.PASS, E.ENAME, E.PHONE, E.EMAIL, E.IMG	")
 			.append("	FROM  EMP E, MAJOR M, DPT D																	")
-			.append("	WHERE  E.EMPNO=? AND E.PASS=?																")
+			.append("	WHERE  E.EMPNO='"+id+"' AND E.PASS='"+pw+"'																")
 			.append("	AND E.MAJORCODE=M.MAJORCODE AND E.DPTCODE=D.DPTCODE											");
 			pstmt = con.prepareStatement(query.toString());
 			
-			pstmt.setString(1, id);
-			pstmt.setString(2, pw);
+			//pstmt.setString(1, id);
+		//	pstmt.setString(2, pw);
 			
 			rs = pstmt.executeQuery();
 			
-			while (rs.next()) {
+			
+			if (rs.next()) {
 				eVO = new EmployVO();
 				
 				eVO.setEmpno(rs.getString("EMPNO"));
