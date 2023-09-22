@@ -1,4 +1,4 @@
-package kr.co.sist.course;
+package kr.co.sist.course2;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -82,7 +82,7 @@ public class EmployProfEditManageDialog extends JDialog {
 		jcbEmail = new JComboBox<String>(dcbmEmail);
 
 		// 이벤트 연결
-		EmployProfEditManageDialogEvt epemde = new EmployProfEditManageDialogEvt(this);
+		EmployProfEditManageDialogEvt epemde = new EmployProfEditManageDialogEvt(this,pVO.getDptName());
 
 		dcbmDept.setSelectedItem(pVO.getDptName());
 		dcbmMajor.setSelectedItem(pVO.getMajorName());
