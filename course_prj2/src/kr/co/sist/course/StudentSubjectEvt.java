@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class StudentSubjectEvt extends WindowAdapter implements MouseListener{
 	private StudentSubjectDialog ssDialog;
-
+	private LecturePlanVO lpVO;
 	
 	public StudentSubjectEvt (StudentSubjectDialog ssDialog) {
 		this.ssDialog = ssDialog;
@@ -25,7 +25,7 @@ public class StudentSubjectEvt extends WindowAdapter implements MouseListener{
 		DefaultTableModel dtmtn = ssDialog.getDtmtn();
 		try {
 			List<StudentSubjectVO> list;
-			list = ssDAO.selectSubject(20230002);
+			list = ssDAO.selectSubject(StudentMainFrame.sVO.getId());
              ssDialog.getDtmtn().setRowCount(0);
 			
 			String[] rowData=new String[5];
@@ -61,8 +61,8 @@ public class StudentSubjectEvt extends WindowAdapter implements MouseListener{
 		      
 		        try {
 		        	  LecturePlanDao lpDAO = LecturePlanDao.getInstance();
-					 lpDAO.selectedContents(subjectCode);
-					 new LecturePlanDialog(ssDialog);// -> 매개변수?
+		        	  lpVO=lpDAO.selectedContents(subjectCode);
+					 new LecturePlanDialog(ssDialog,subjectCode);// -> 매개변수?
 					 
 				} catch (SQLException e1) {
 				

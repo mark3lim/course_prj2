@@ -18,8 +18,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 /**
- *인영
- *교수 관리 Dialog
+ * 인영 교수 관리 Dialog
+ * 
  * @author user
  *
  */
@@ -61,7 +61,7 @@ public class EmployProfManageDialog extends JDialog {
 		// 조회버튼
 		jbtnSearch = new JButton("조회");
 
-		/////JTable/////
+		///// JTable/////
 		// 테이블
 		dtmProf = new DefaultTableModel();
 		// 컬럼 이름 추가
@@ -86,15 +86,17 @@ public class EmployProfManageDialog extends JDialog {
 		TableColumn column = jtProf.getColumnModel().getColumn(0);
 		column.setPreferredWidth(5);
 		column = jtProf.getColumnModel().getColumn(1);
-		column.setPreferredWidth(30);
+		column.setPreferredWidth(50);
 		column = jtProf.getColumnModel().getColumn(2);
 		column.setPreferredWidth(20);
+		column = jtProf.getColumnModel().getColumn(6);
+		column.setPreferredWidth(90);
 		// 컬럼 height 크기 설정
 		jtProf.setRowHeight(25);
 		// JTable 크기 조절 불가
 		for (int i = 0; i < jtProf.getColumnModel().getColumnCount(); i++) {
 			jtProf.getColumnModel().getColumn(i).setResizable(false);
-		}//end for
+		} // end for
 
 		// Bounds
 		jlblback.setBounds(0, 0, 1000, 700);
@@ -108,16 +110,16 @@ public class EmployProfManageDialog extends JDialog {
 
 		// Font 설정
 		Font font = new Font("Pretendard", Font.BOLD, 14);
+//		jtProf.setFont(font);
 		jlblTitle.setFont(new Font("Pretendard", Font.BOLD, 20));
 		jcbSearch.setFont(font);
 		jtfSearch.setFont(font);
 		jbtnSearch.setFont(font);
 		jbtnAdd.setFont(font);
 		jbtnEdit.setFont(font);
-		jspJtProf.setFont(font);
+		jtProf.setFont(new Font("Pretendard", Font.BOLD, 13));
 
 		// background-color 설정
-//		jcbSearch.setBackground(new Color(0xE0E0E0));
 		jbtnSearch.setBackground(new Color(0xE0E0E0));
 		jbtnAdd.setBackground(new Color(0xE0E0E0));
 		jbtnEdit.setBackground(new Color(0xE0E0E0));

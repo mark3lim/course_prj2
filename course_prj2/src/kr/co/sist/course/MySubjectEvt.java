@@ -14,7 +14,8 @@ import javax.swing.table.DefaultTableModel;
 public class MySubjectEvt implements MouseListener{
 	
 	private MySubjectDialog msDialog;
-	private String subjectCode;
+
+	private LecturePlanVO lpVO;
 	public MySubjectEvt (MySubjectDialog msDialog) {
 		this.msDialog=msDialog;
 		showContents();
@@ -25,7 +26,7 @@ public class MySubjectEvt implements MouseListener{
 		DefaultTableModel dtmtn = msDialog.getDtmtn();
 		try {
 			List<MySubjectVO> list;
-			list = msDAO.selectedContents(20230002,1);
+			list = msDAO.selectedContents(StudentMainFrame.sVO.getId());
 			msDialog.getDtmtn().setRowCount(0);
 			
 			String[] rowData=new String[6];
@@ -56,13 +57,14 @@ public class MySubjectEvt implements MouseListener{
 		        int row = msDialog.getJtMySub().getSelectedRow();
 		        
 		        Object value = msDialog.getJtMySub().getValueAt(row, 2);
-		       subjectCode = String.valueOf(value);
+		      String subjectCode = String.valueOf(value);
 		        System.out.println(subjectCode);
 		      
 		        try {
 		        	  LecturePlanDao lpDAO = LecturePlanDao.getInstance();
-					LecturePlanVO lpVO = lpDAO.selectedContents(subjectCode);
-					 new LecturePlanDialog(msDialog);
+					lpVO = lpDAO.selectedContents(subjectCode);
+					
+					 new LecturePlanDialog(msDialog,subjectCode);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -84,14 +86,8 @@ public class MySubjectEvt implements MouseListener{
 		    }
 	}
 
-	public String getSubjectCode() {
-		return subjectCode;
-	}
-
-	public void setSubjectCode(String subjectCode) {
-		this.subjectCode = subjectCode;
-	}
-
+	
+	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub

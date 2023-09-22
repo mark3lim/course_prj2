@@ -63,6 +63,8 @@ public class StudentScoreEvt extends WindowAdapter implements ActionListener {
 			}
 			
 			DefaultTableModel dtm = ssd.getDtmScore();
+			dtm.setNumRows(0); //초기화
+			
 			String[] arr = new String[5];
 			
 			for(StudentScoreVO ssVO : list) {

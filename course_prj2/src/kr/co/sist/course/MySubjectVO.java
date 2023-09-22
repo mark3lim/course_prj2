@@ -6,8 +6,8 @@ public class MySubjectVO {
 	private String majorName ; 
 	private String subName;
 	private String subCode;
-	private String profname ; 
-	private char subType ; 
+	private String profname; 
+	private char subType; 
 	private int credit;
 	
 	public MySubjectVO () {

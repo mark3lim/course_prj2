@@ -9,22 +9,22 @@ import java.sql.SQLException;
 public class LecturePlanEvt  extends WindowAdapter implements ActionListener {
 	
 	private LecturePlanDialog lp;
-	private MySubjectDialog ms;
 	private LecturePlanVO lpVO;
-	private MySubjectVO msVO;
-	private StudentSubjectVO ssVO;
+//	private LecturePlanVO lpVO;
+//	private MySubjectVO msVO;
+//	private StudentSubjectVO ssVO;
+	
+	
+	
+
 	//서브젝트 코드는 어떻게 받을 건지?
 	public LecturePlanEvt(LecturePlanDialog lp) {
 		this.lp = lp;
-	setLecturePlanData(ssVO.getSubjectCode());
+		
+	setLecturePlanData(lp.getSubjectCode());
  
 	}
-	
-	public LecturePlanEvt(MySubjectDialog ms) {
-	this.ms = ms;
-	setLecturePlanData(msVO.getSubCode());
 
-	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -55,10 +55,10 @@ public class LecturePlanEvt  extends WindowAdapter implements ActionListener {
 	}
 	}
 	
-	public void setLecturePlanData(String subCode) {
+	public void setLecturePlanData(String subjectCode) {
 	LecturePlanDao lpDAO=LecturePlanDao.getInstance();
 	try {
-		LecturePlanVO lpVO = lpDAO.selectedContents(subCode);
+		  lpVO=lpDAO.selectedContents(subjectCode);
 		
 			lp.getJtSubName().setText(lpVO.getSubName());
 			lp.getJtSubGoal().setText(lpVO.getSubGoal());

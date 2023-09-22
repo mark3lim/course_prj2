@@ -35,10 +35,10 @@ public class LoginDAO {
 			
 			StringBuilder query = new StringBuilder();
 			query
-			.append("	SELECT  STUNO,D.DPTNAME,M.MAJORNAME, PASS, SNAME, PHONE, EMAIL, ADDR, IMG	")
-			.append("	FROM  STUDENT S, MAJOR M, DPT D												")
-			.append("	WHERE  STUNO=? AND  PASS=?													")
-			.append("	AND S.MAJORCODE=M.MAJORCODE AND S.DPTCODE=D.DPTCODE							");
+			.append("	SELECT  STUNO,D.DPTNAME,M.MAJORNAME, PASS, SNAME, PHONE, EMAIL, ADDR, IMG, NOWLEVEL	")
+			.append("	FROM  STUDENT S, MAJOR M, DPT D														")
+			.append("	WHERE  STUNO=? AND  PASS=?															")
+			.append("	AND S.MAJORCODE=M.MAJORCODE AND S.DPTCODE=D.DPTCODE									");
 			pstmt = con.prepareStatement(query.toString());
 			
 			pstmt.setInt(1, Integer.parseInt(id));
@@ -57,6 +57,7 @@ public class LoginDAO {
 				sVO.setImg(rs.getString("IMG"));
 				sVO.setDptName(rs.getString("DPTNAME"));
 				sVO.setMajorName(rs.getString("MAJORNAME"));
+				sVO.setYear(rs.getInt("NOWLEVEL"));
 			}
 			
 			
@@ -82,16 +83,17 @@ public class LoginDAO {
 			query
 			.append("	SELECT  E.EMPNO,D.DPTNAME,M.MAJORNAME,E.USERCODE, E.PASS, E.ENAME, E.PHONE, E.EMAIL, E.IMG	")
 			.append("	FROM  EMP E, MAJOR M, DPT D																	")
-			.append("	WHERE  E.EMPNO=? AND E.PASS=?																")
+			.append("	WHERE  E.EMPNO='"+id+"' AND E.PASS='"+pw+"'																")
 			.append("	AND E.MAJORCODE=M.MAJORCODE AND E.DPTCODE=D.DPTCODE											");
 			pstmt = con.prepareStatement(query.toString());
 			
-			pstmt.setString(1, id);
-			pstmt.setString(2, pw);
+			//pstmt.setString(1, id);
+		//	pstmt.setString(2, pw);
 			
 			rs = pstmt.executeQuery();
 			
-			while (rs.next()) {
+			
+			if (rs.next()) {
 				eVO = new EmployVO();
 				
 				eVO.setEmpno(rs.getString("EMPNO"));
