@@ -15,7 +15,7 @@ public class MySubjectEvt implements MouseListener{
 	
 	private MySubjectDialog msDialog;
 
-	private LecturePlanVO lpVO;
+//	private LecturePlanVO lpVO;
 	public MySubjectEvt (MySubjectDialog msDialog) {
 		this.msDialog=msDialog;
 		showContents();
@@ -26,7 +26,7 @@ public class MySubjectEvt implements MouseListener{
 		DefaultTableModel dtmtn = msDialog.getDtmtn();
 		try {
 			List<MySubjectVO> list;
-			list = msDAO.selectedContents(StudentMainFrame.sVO.getId());
+			list = msDAO.selectedContents(StudentMainFrame.sVO.getId(),StudentMainFrame.sVO.getYear());
 			msDialog.getDtmtn().setRowCount(0);
 			
 			String[] rowData=new String[6];
@@ -60,15 +60,15 @@ public class MySubjectEvt implements MouseListener{
 		      String subjectCode = String.valueOf(value);
 		        System.out.println(subjectCode);
 		      
-		        try {
-		        	  LecturePlanDao lpDAO = LecturePlanDao.getInstance();
-					lpVO = lpDAO.selectedContents(subjectCode);
+//		        try {
+//		        	  LecturePlanDao lpDAO = LecturePlanDao.getInstance();
+//					lpVO = lpDAO.selectedContents(subjectCode);
 					
 					 new LecturePlanDialog(msDialog,subjectCode);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+//				} catch (SQLException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
 		        // Check if the selected cell is not empty (assuming your table model has data)
 //		        if (row >= 0 && col == 0 && value != null) { // Check if it's the first column (subject code)
 //		            String subjectCode = String.valueOf(value);
@@ -83,8 +83,10 @@ public class MySubjectEvt implements MouseListener{
 //		                ex.printStackTrace();
 //		            }
 //		        }
-		    }
+//		        } 
 	}
+		 }
+	
 
 	
 	

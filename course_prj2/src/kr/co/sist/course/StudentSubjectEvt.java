@@ -12,8 +12,14 @@ import javax.swing.table.DefaultTableModel;
 
 public class StudentSubjectEvt extends WindowAdapter implements MouseListener{
 	private StudentSubjectDialog ssDialog;
-	private LecturePlanVO lpVO;
+	public String subjectCode;
 	
+	
+
+	
+
+
+
 	public StudentSubjectEvt (StudentSubjectDialog ssDialog) {
 		this.ssDialog = ssDialog;
 		showContents();
@@ -54,20 +60,20 @@ public class StudentSubjectEvt extends WindowAdapter implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		 if (e.getButton() == MouseEvent.BUTTON1) {
 		        int row = ssDialog.getJtss().getSelectedRow();
-		        int col = ssDialog.getJtss().getSelectedColumn();
-		        Object value = ssDialog.getJtss().getValueAt(row, col);
-		        String subjectCode = String.valueOf(value);
+		     
+		        Object value = ssDialog.getJtss().getValueAt(row, 0);
+		         subjectCode = String.valueOf(value);
 		        System.out.println(subjectCode);
 		      
-		        try {
-		        	  LecturePlanDao lpDAO = LecturePlanDao.getInstance();
-		        	  lpVO=lpDAO.selectedContents(subjectCode);
+//		        try {
+//		        	  LecturePlanDao lpDAO = LecturePlanDao.getInstance();
+//		        	  lpVO=lpDAO.selectedContents(subjectCode);
 					 new LecturePlanDialog(ssDialog,subjectCode);// -> 매개변수?
 					 
-				} catch (SQLException e1) {
-				
-					e1.printStackTrace();
-				}
+//				} catch (SQLException e1) {
+//				
+//					e1.printStackTrace();
+//				}
 		       
 		    }
 		

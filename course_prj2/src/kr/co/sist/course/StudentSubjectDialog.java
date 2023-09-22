@@ -1,8 +1,7 @@
 package kr.co.sist.course;
 
 import java.awt.Font;
-import java.sql.SQLException;
-import java.util.List;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
@@ -60,7 +59,7 @@ public class StudentSubjectDialog extends JDialog {
 		
 		this.setResizable(false);
 		
-		setBounds(smf.getX() + 100, smf.getY() + 50, 1000, 700);
+		setBounds(500, 100, 1000, 700);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}

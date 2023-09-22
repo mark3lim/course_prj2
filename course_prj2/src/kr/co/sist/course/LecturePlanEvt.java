@@ -20,7 +20,7 @@ public class LecturePlanEvt  extends WindowAdapter implements ActionListener {
 	//서브젝트 코드는 어떻게 받을 건지?
 	public LecturePlanEvt(LecturePlanDialog lp) {
 		this.lp = lp;
-		
+		System.out.println("subjectcode "+lp.getSubjectCode());
 	setLecturePlanData(lp.getSubjectCode());
  
 	}
@@ -38,19 +38,16 @@ public class LecturePlanEvt  extends WindowAdapter implements ActionListener {
 		
 	}
 	
-//	public void StudentSubject () {
-//	 new LecturePlanDialog( lp,lpVO,true);
-//	}
-	
+
 	public void addContents() {
 	StudentSubjectDAO ssDAO= StudentSubjectDAO.getInstance();
 	
 	
 	
 	 try {
-		ssDAO.insertLecture();
+		ssDAO.insertLecture(lp.getSubjectCode());
 	} catch (SQLException e) {
-		// TODO Auto-generated catch block
+		
 		e.printStackTrace();
 	}
 	}
