@@ -23,7 +23,7 @@ public class EmployStuProfManageEvt extends MouseAdapter implements ActionListen
 
 	public EmployStuProfManageEvt(EmployStuProfManageDialog espmd) {
 		this.espmd = espmd;
-		empNo = "KOR001501"; // 로그인한 사번 가져와서 넣기
+		empNo = "KOR001501"; // 로그인한 사번 가져와서 넣기 EmployMainFrame.eVO.getEmpno()
 
 		setDept();
 		setMajor();

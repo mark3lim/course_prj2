@@ -32,6 +32,16 @@ public class EmployStuEditManageEvt extends WindowAdapter implements ActionListe
 		setDept();
 		setMajor();
 	}
+	
+	public EmployStuEditManageEvt(EmployStuEditManageDialog esemd) {
+		this.esemd = esemd;
+		//dptName = "컴퓨터공학부";
+		imgPath = "E:/dev/workspace/course_ysy/src/kr/co/sist/course/images/user.png";
+		imgType = ".png";
+		
+		setDept();
+		setMajor();
+	}
 
 	/**
 	 * 학부 설정
@@ -54,8 +64,10 @@ public class EmployStuEditManageEvt extends WindowAdapter implements ActionListe
 	public void setMajor() {
 		EmployStuManageDAO esmDAO = EmployStuManageDAO.getInstance();
 		esemd.getDcbmMajor().removeAllElements();
+		String dptNameAdd = esemd.getDcbmDept().getElementAt(esemd.getJcbDept().getSelectedIndex());
+		System.out.println(dptName);
 		try {
-			List<String> majorList = esmDAO.selectMajor(dptName);
+			List<String> majorList = esmDAO.selectMajor(dptName==null ? dptNameAdd : dptName);
 			for (String major : majorList) {
 				esemd.getDcbmMajor().addElement(major);
 			}

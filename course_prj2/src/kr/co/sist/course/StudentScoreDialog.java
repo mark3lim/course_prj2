@@ -33,6 +33,8 @@ public class StudentScoreDialog extends JDialog {
 		super.setModal(false);
 		super.setTitle("성적 조회");
 		
+		Font font14 = new Font("Pretendard", Font.BOLD, 14);
+		
 		//배경화면 설정 라벨
 		JLabel bgLabel = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/backgr.png"));
 		bgLabel.setBounds(0, 0, 1000, 700);
@@ -47,6 +49,7 @@ public class StudentScoreDialog extends JDialog {
 		jcbSemester = new JComboBox<String>(dcbmSemester);
 		jcbSemester.setBounds(jlTitle.getX()-3, jlTitle.getY()+40, 150, 30);
 		jcbSemester.setBackground(Color.white);
+		jcbSemester.setFont(font14);
 		
 		//성적 테이블 설정
 		String[] columnNames = {"학과명", "과목명", "평점", "성적", "이수구분"};
@@ -67,12 +70,14 @@ public class StudentScoreDialog extends JDialog {
 		jtScore.getColumnModel().getColumn(0).setPreferredWidth(110);
 		jtScore.getColumnModel().getColumn(1).setPreferredWidth(210);
 		jtScore.setRowHeight(30);
+		jtScore.setFont(font14);
 		
 		//검색 버튼 설정
 		jbtnSearch = new JButton("조회");
 		jbtnSearch.setBounds(jcbSemester.getX()+160, jcbSemester.getY(), 80, 30);
 		jbtnSearch.setBackground(new Color(0xE0E0E0));
 		jbtnSearch.setBorder(null);
+		jbtnSearch.setFont(font14);
 		
 		//이벤트 연결
 		StudentScoreEvt sse = new StudentScoreEvt(this);

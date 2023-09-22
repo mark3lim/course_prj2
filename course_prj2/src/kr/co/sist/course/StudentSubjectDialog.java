@@ -59,7 +59,7 @@ public class StudentSubjectDialog extends JDialog {
 		
 		this.setResizable(false);
 		
-		setBounds(500, 100, 1000, 700);
+		setBounds(smf.getX() + 100, smf.getY() + 50, 1000, 700);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}

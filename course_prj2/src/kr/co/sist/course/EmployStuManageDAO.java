@@ -541,6 +541,8 @@ public class EmployStuManageDAO {
 			.append(" and stuno = '"+ stuNo +"' and slevel = '"+ level +"' 		      												")
 			.append(" and semester = case when to_number(to_char(sysdate, 'mm')) > 6 then 2 else 1 end 								");
 			
+			System.out.println(updateGrade);
+			
 			pstmt = con.prepareStatement(updateGrade.toString());
 
 			cnt = pstmt.executeUpdate();
