@@ -229,15 +229,15 @@ public class StudentMainFrame extends JFrame {
 		return sVO;
 	}
 
-//	public static void main(String[] args) {
-//		//임시 값
-//		StudentVO s = new StudentVO();
-//		s.setName("농담곰");
-//		s.setDptName("연극영화부");
-//		s.setMajorName("연극영화과");
-//		s.setEmail("testest@naver.com");
-//		s.setId(2023001);
-//		new StudentMainFrame(s);
-//	}
+	public static void main(String[] args) {
+		//임시 값
+		StudentVO s = new StudentVO();
+		s.setName("농담곰");
+		s.setDptName("연극영화부");
+		s.setMajorName("연극영화과");
+		s.setEmail("testest@naver.com");
+		s.setId(2023001);
+		new StudentMainFrame(s);
+	}
 	
 }
