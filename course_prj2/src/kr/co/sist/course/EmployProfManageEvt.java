@@ -15,7 +15,11 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  * 인영 교수 관리 Event
+<<<<<<< HEAD
+ * ㄴ
+=======
  * 
+>>>>>>> refs/heads/main
  * @author user
  *
  */
