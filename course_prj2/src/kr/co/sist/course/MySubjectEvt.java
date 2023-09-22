@@ -26,7 +26,7 @@ public class MySubjectEvt implements MouseListener{
 		DefaultTableModel dtmtn = msDialog.getDtmtn();
 		try {
 			List<MySubjectVO> list;
-			list = msDAO.selectedContents(StudentMainFrame.sVO.getId(),StudentMainFrame.sVO.getYear());
+			list = msDAO.selectedContents(StudentMainFrame.sVO.getId());
 			msDialog.getDtmtn().setRowCount(0);
 			
 			String[] rowData=new String[6];
