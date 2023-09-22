@@ -37,7 +37,11 @@ public class StudentSubjectDAO {
 		StringBuilder selectSubject = new StringBuilder();
 		selectSubject.append(" select distinct sb.subcode ,sb.subname, e.ename,  sb.subtype, sb.credit  ")
 		.append(" from subject sb, course c, emp e, hakyeon h, student s ")
-		.append(" where s.stuno= h.stuno and h.stuno=c.stuno and c.subcode=sb.subcode and sb.empno=e.empno and s.stuno=? ");
+		.append(" where s.stuno= h.stuno and h.stuno=c.stuno and c.subcode=sb.subcode and sb.empno=e.empno and sb.subcode not in (select sb.subcode  ")
+		.append(" from  student s, dpt d ,subject sb ")
+		.append(" where s.dptcode=d.dptcode and d.dptcode=sb.dptcode and s.stuno=?) ");
+		
+		
 
 		pstmt = con.prepareStatement(selectSubject.toString());
 		pstmt.setInt(1, StuNum);
