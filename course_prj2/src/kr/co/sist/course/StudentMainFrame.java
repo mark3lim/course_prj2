@@ -18,9 +18,9 @@ public class StudentMainFrame extends JFrame {
 	
 	private JButton jbtnMyProfile; 
 	private JButton jbtnLogout;
-	private RoundedJButton jbtnRegisterSubject;
-	private RoundedJButton jbtnGradeSearch;
-	private RoundedJButton jbtnCourseApply;
+	private JButton jbtnRegisterSubject;
+	private JButton jbtnGradeSearch;
+	private JButton jbtnCourseApply;
 	private JLabel jlblMyPhoto;
 	private JLabel jlblMyName;
 	private JLabel jlblDept;
@@ -37,6 +37,11 @@ public class StudentMainFrame extends JFrame {
 	public StudentMainFrame(StudentVO stuVO) {
 		sVO = stuVO;
 		
+		Font font = new Font("Pretendard", Font.BOLD, 18);
+		Font font14 = new Font("Pretendard", Font.BOLD, 14);
+		Font font16 = new Font("Pretendard", Font.BOLD, 16);
+		LineBorder border = new LineBorder(new Color(0xE0E0E0));
+		
 		//배경 사진 설정
 		JLabel jlblBg = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/mainBg.png"));
 		jlblBg.setBounds(0, 0, 1200, 800);
@@ -49,38 +54,53 @@ public class StudentMainFrame extends JFrame {
 		//메인 버튼들을 모아두는 패널과 버튼들 설정
 		JPanel pnlButton = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 60));
 		pnlButton.setBounds(620, 170, 400, 400);
-		pnlButton.setBorder(new LineBorder(Color.red));
 		Dimension d = new Dimension(300, 50);
 		
 		//메인이 되는 버튼 설정
-		jbtnRegisterSubject = new RoundedJButton("수강과목");
+		jbtnRegisterSubject = new JButton("수강과목");
 		jbtnRegisterSubject.setPreferredSize(d);
-		jbtnGradeSearch = new RoundedJButton("성적조회");
+		jbtnGradeSearch = new JButton("성적조회");
 		jbtnGradeSearch.setPreferredSize(d);
-		jbtnCourseApply = new RoundedJButton("수강신청");
+		jbtnCourseApply = new JButton("수강신청");
 		jbtnCourseApply.setPreferredSize(d);
+		jbtnRegisterSubject.setFont(font);
+		jbtnGradeSearch.setFont(font);
+		jbtnCourseApply.setFont(font);
+		jbtnRegisterSubject.setBorder(new LineBorder(new Color(0xE0E0E0)));
+		jbtnGradeSearch.setBorder(new LineBorder(new Color(0xE0E0E0)));
+		jbtnCourseApply.setBorder(new LineBorder(new Color(0xE0E0E0)));
+		jbtnRegisterSubject.setBackground(Color.WHITE);
+		jbtnGradeSearch.setBackground(Color.WHITE);
+		jbtnCourseApply.setBackground(Color.WHITE);
 		
 		pnlButton.add(jbtnRegisterSubject);
 		pnlButton.add(jbtnGradeSearch);
 		pnlButton.add(jbtnCourseApply);
+		pnlButton.setBackground(Color.white);
+		pnlButton.setBorder(border);
 		
 		//로그인하면 보여주는 학생 정보를 보여주는 패널과 라벨 설정
 		JPanel pnlInfoTag = setInfoLable(); //분류 라벨 만드는 method
-		pnlInfoTag.setLocation(jlblMyPhoto.getX(), jlblMyPhoto.getY()+290);
+		pnlInfoTag.setLocation(jlblMyPhoto.getX()-10, jlblMyPhoto.getY()+260);
 		
 		jlblDept = new JLabel();
-		jlblDept.setBounds(100, 0, 200, 30);
+		jlblDept.setBounds(120, 0, 200, 30);
 		jlblMajor = new JLabel();
-		jlblMajor.setBounds(100, 35, 200, 30);
+		jlblMajor.setBounds(120, 35, 200, 30);
 		jlblEmail = new JLabel();
-		jlblEmail.setBounds(100, 70, 200, 30);
+		jlblEmail.setBounds(120, 70, 200, 30);
 		jlblLoginTime = new JLabel();
-		jlblLoginTime.setBounds(100, 105, 200, 30);
+		jlblLoginTime.setBounds(120, 105, 200, 30);
 		
 		pnlInfoTag.add(jlblDept);
 		pnlInfoTag.add(jlblMajor);
 		pnlInfoTag.add(jlblEmail);
 		pnlInfoTag.add(jlblLoginTime);
+		
+		jlblDept.setFont(font16);
+		jlblMajor.setFont(font16);
+		jlblEmail.setFont(font16);
+		jlblLoginTime.setFont(font16);
 		
 		//이름, 내 정보, 로그아웃이 모여있는 패널과 설정
 		JPanel pnlName = new JPanel();
@@ -90,12 +110,10 @@ public class StudentMainFrame extends JFrame {
 		jlblMyName = new JLabel();
 		jlblMyName.setHorizontalAlignment(JLabel.CENTER);
 		jlblMyName.setBounds(0, 2, 105, 30);
-		jlblMyName.setBorder(new LineBorder(Color.pink));
-		jlblMyName.setFont(new Font("Pretendard", Font.BOLD, 16));
+		jlblMyName.setFont(new Font("Pretendard", Font.BOLD, 20));
 		
 		//작은 버튼의 색깔
 		Color btnColor = new Color(0xE0E0E0);
-		Font font14 = new Font("Pretendard", Font.BOLD, 14);
 		
 		jbtnMyProfile = new JButton("내 정보");
 		jbtnMyProfile.setBounds(115, 5, 85, 25);
@@ -112,6 +130,7 @@ public class StudentMainFrame extends JFrame {
 		pnlName.add(jlblMyName);
 		pnlName.add(jbtnMyProfile);
 		pnlName.add(jbtnLogout);
+		pnlName.setBackground(Color.white);
 		
 		setLayout(null);
 		
@@ -132,7 +151,7 @@ public class StudentMainFrame extends JFrame {
 		addWindowListener(sme);
 		
 		//화면 크기 설정
-		setBounds(200, 150, 1200, 800);
+		setBounds(400, 100, 1200, 800);
 		setVisible(true);
 	}
 	
@@ -149,6 +168,7 @@ public class StudentMainFrame extends JFrame {
 		JPanel pnl = new JPanel();
 		pnl.setLayout(null);
 		pnl.setSize(310, 140);
+		pnl.setBackground(Color.white);
 		
 		for(int i = 0; i < jl.length; i++) {
 			jl[i] = new JLabel(strArr[i]);
@@ -209,15 +229,15 @@ public class StudentMainFrame extends JFrame {
 		return sVO;
 	}
 
-	public static void main(String[] args) {
-		//임시 값
-		StudentVO s = new StudentVO();
-		s.setName("농담곰");
-		s.setDptName("연극영화부");
-		s.setMajorName("연극영화과");
-		s.setEmail("testest@naver.com");
-		s.setId(2023001);
-		new StudentMainFrame(s);
-	}
+//	public static void main(String[] args) {
+//		//임시 값
+//		StudentVO s = new StudentVO();
+//		s.setName("농담곰");
+//		s.setDptName("연극영화부");
+//		s.setMajorName("연극영화과");
+//		s.setEmail("testest@naver.com");
+//		s.setId(2023001);
+//		new StudentMainFrame(s);
+//	}
 	
 }

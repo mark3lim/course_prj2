@@ -40,6 +40,7 @@ public class EmployMainFrame extends JFrame {
 		// 폰트
 		Font font = new Font("Pretendard", Font.BOLD, 18);
 		Font font14 = new Font("Pretendard", Font.BOLD, 14);
+		Font font16 = new Font("Pretendard", Font.BOLD, 16);
 		
 		// 배경 사진 설정
 		JLabel jlblBg = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/mainBg.png"));
@@ -71,14 +72,15 @@ public class EmployMainFrame extends JFrame {
 		jbtnMajorManage.setFont(font);
 		jbtnSubjectManage.setFont(font);
 		
+		LineBorder border = new LineBorder(new Color(0xE0E0E0));
 		jbtnStuManage.setBackground(Color.white);
-		jbtnStuManage.setBorder(new LineBorder(new Color(0xE0E0E0)));
+		jbtnStuManage.setBorder(border);
 		jbtnProfesorManage.setBackground(Color.white);
-		jbtnProfesorManage.setBorder(new LineBorder(new Color(0xE0E0E0)));
+		jbtnProfesorManage.setBorder(border);
 		jbtnMajorManage.setBackground(Color.white);
-		jbtnMajorManage.setBorder(new LineBorder(new Color(0xE0E0E0)));
+		jbtnMajorManage.setBorder(border);
 		jbtnSubjectManage.setBackground(Color.white);
-		jbtnSubjectManage.setBorder(new LineBorder(new Color(0xE0E0E0)));
+		jbtnSubjectManage.setBorder(border);
 		
 		pnlButton.add(jbtnStuManage);
 		pnlButton.add(jbtnProfesorManage);
@@ -97,17 +99,17 @@ public class EmployMainFrame extends JFrame {
 		jlblOne = new JLabel();
 		jlblOne.setBounds(100, 0, 200, 30);
 		jlblTwo = new JLabel();
-		jlblTwo.setBounds(100, jlblOne.getY()+35, 200, 30);
+		jlblTwo.setBounds(120, jlblOne.getY()+35, 200, 30);
 		
 		jlblMyEmail = new JLabel();
-		jlblMyEmail.setBounds(100, jlblTwo.getY()+35, 200, 30);
+		jlblMyEmail.setBounds(120, jlblTwo.getY()+35, 200, 30);
 		jlblLoginTime = new JLabel();
-		jlblLoginTime.setBounds(100,jlblMyEmail.getY()+35, 200, 30);
+		jlblLoginTime.setBounds(120,jlblMyEmail.getY()+35, 200, 30);
 		
-		jlblOne.setFont(font);
-		jlblTwo.setFont(font);
-		jlblMyEmail.setFont(font);
-		jlblLoginTime.setFont(font);
+		jlblOne.setFont(font16);
+		jlblTwo.setFont(font16);
+		jlblMyEmail.setFont(font16);
+		jlblLoginTime.setFont(font16);
 		
 		pnlInfoTag.add(jlblOne);
 		pnlInfoTag.add(jlblTwo);
@@ -128,12 +130,12 @@ public class EmployMainFrame extends JFrame {
 
 		jbtnMyProfile = new JButton("내 정보");
 		jbtnMyProfile.setFont(font14);
-		jbtnMyProfile.setBounds(152, 5, 85, 25);
+		jbtnMyProfile.setBounds(155, 5, 85, 25);
 		jbtnMyProfile.setBorder(null);
 		jbtnMyProfile.setBackground(new Color(0xE0E0E0));
 		jbtnLogout = new JButton("로그아웃");
 		jbtnLogout.setFont(font14);
-		jbtnLogout.setBounds(250, 5, 85, 25);
+		jbtnLogout.setBounds(252, 5, 85, 25);
 		jbtnLogout.setBorder(null);
 		jbtnLogout.setBackground(new Color(0xE0E0E0));
 

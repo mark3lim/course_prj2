@@ -89,7 +89,7 @@ public class StudentScoreDialog extends JDialog {
 		//배경 이미지가 있는 라벨 추가
 		add(bgLabel);
 		
-		setBounds(150, 200, 1000, 700);
+		setBounds(smf.getX() + 100, smf.getY() + 50, 1000, 700);
 		setVisible(true);
 	}
 
