@@ -35,7 +35,7 @@ public class EmployMainFrame extends JFrame {
 	
 	public EmployMainFrame(EmployVO VO) {
 		eVO = VO;
-		flag = eVO.getUsercode()=='M' ? true : false; //관리자면 true를 교수면 false를 반환한다.
+		flag = eVO.getUsercode()=='E' ? true : false; //관리자면 true를 교수면 false를 반환한다.
 		
 		// 폰트
 		Font font = new Font("Pretendard", Font.BOLD, 18);

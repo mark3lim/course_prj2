@@ -20,7 +20,7 @@ public class EmployMainEvt extends WindowAdapter implements ActionListener {
 	}
 	
 	public void goMyProfile() {
-		System.out.println("profile");
+		new EmployProfileDialog(emf);
 	}
 	
 	public void goStuManage() {
@@ -42,15 +42,13 @@ public class EmployMainEvt extends WindowAdapter implements ActionListener {
 	public void goMajorManage() {
 		if(emf.getFlag()) {
 			new MajorManageDialog(emf);
-			System.out.println("학과관리");
 		} else {
 			JOptionPane.showMessageDialog(emf, "접근 권한이 없습니다.");
 		}
 	}
 	
 	public void goLectureManage() {
-//		new SubjectManageDialog(emf);
-		System.out.println("과목관리");
+		new SubjectManageDialog(emf);
 	}
 	
 	public void setLoginTime() {
@@ -74,7 +72,8 @@ public class EmployMainEvt extends WindowAdapter implements ActionListener {
 	}
 	
 	public void logout() {
-		System.out.println("Logout");
+		new LoginFrame();
+		emf.dispose();
 	}
 	
 	@Override

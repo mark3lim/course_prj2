@@ -27,8 +27,10 @@ public class SubjectManageDialog extends JDialog {
 	private JButton jbtnSearch;
 	private JButton jbtnAdd;
 	private JTable jtLecture;
+	private EmployMainFrame emf;
 
-	public SubjectManageDialog() {
+	public SubjectManageDialog(EmployMainFrame emf) {
+		this.emf = emf;
 
 		Font font = new Font("Pretendard", Font.BOLD, 14);
 
@@ -148,8 +150,5 @@ public class SubjectManageDialog extends JDialog {
 		return jtLecture;
 	}
 
-	public static void main(String[] args) {
-		new SubjectManageDialog();
-	}
 
 }// class
