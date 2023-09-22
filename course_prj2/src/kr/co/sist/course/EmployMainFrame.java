@@ -89,7 +89,7 @@ public class EmployMainFrame extends JFrame {
 		
 		// 로그인하면 보여주는 학생 정보를 보여주는 패널 설정
 		JPanel pnlInfoTag = setInfoLable(); //분류 라벨 만드는 method
-		pnlInfoTag.setLocation(jlblMyPhoto.getX(), jlblMyPhoto.getY()+290);
+		pnlInfoTag.setLocation(jlblMyPhoto.getX()-10, jlblMyPhoto.getY()+250);
 		pnlInfoTag.setBackground(Color.white);
 		//pnlInfoTag.setBorder(new LineBorder(Color.red));
 		
@@ -160,7 +160,7 @@ public class EmployMainFrame extends JFrame {
 		addWindowListener(eme);
 
 		//화면 크기 설정
-		setBounds(200, 150, 1200, 800);
+		setBounds(400, 100, 1200, 800);
 		setVisible(true);
 	}
 	
