@@ -57,41 +57,46 @@ public class LoginFrame extends JFrame {
 		jpPw = new JPasswordField(20);
 		jpPw.setBounds(jlblPw.getX()+75, jlblPw.getY()+2, 220, 40);
 		jpPw.setBorder(lineColor);
-		
-		//비밀번호 입력 필드 설정
-		
+				
 		//아이디(학번)과 비밀번호 라벨, 입력 폰트 설정
-		Font font = new Font("맑은 고딕", Font.BOLD, 26);
+		Font font = new Font("Pretendard", Font.BOLD, 26);
+		Font font14 = new Font("Pretendard", Font.BOLD, 14);
 		jlblId.setFont(font);
 		jlblPw.setFont(font);
-		font = new Font("맑은 고딕", Font.PLAIN, 22);
+		font = new Font("Pretendard", Font.PLAIN, 22);
 		jtfId.setFont(font);
+		jpPw.setFont(font);
 
 		//관리자 모드 전환 체크박스
 		jcbChangeAdmin = new JCheckBox("관리자 모드 전환", false);
 		jcbChangeAdmin.setBounds(jlblId.getX(), jlblId.getY()-35, 120, 30);
 		jcbChangeAdmin.setFocusPainted(false);
+		jcbChangeAdmin.setFont(font14);
+		jcbChangeAdmin.setBackground(Color.white);
 		
 		//아이디 저장 여부 체크박스
 		jcbIdSave = new JCheckBox("아이디 저장");
 		jcbIdSave.setBounds(jlblPw.getX(), jlblPw.getY()+50, 120, 30);
 		jcbIdSave.setFocusPainted(false);
+		jcbIdSave.setFont(font14);
+		jcbIdSave.setBackground(Color.white);
 		
 		//로그인 버튼 설정
 		jbtnLogin = new JButton("로그인");
-		jbtnLogin.setBounds(jlblPw.getX(), jlblPw.getY()+90, 295, 30);
+		jbtnLogin.setBounds(jlblPw.getX(), jlblPw.getY()+90, 295, 40);
 		jbtnLogin.setBackground(new Color(0xE0E0E0));
 		jbtnLogin.setBorder(null);
+		jbtnLogin.setFont(new Font("Pretendard", Font.BOLD, 16));
 		
 		//학교 이미지 설정
 		JLabel jlblImg = new JLabel();
-		jlblImg.setBounds(590, 130, 435, 280);
-		jlblImg.setBorder(new LineBorder(Color.red));
+		jlblImg.setIcon(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/logo2.png"));
+		jlblImg.setBounds(610, 150, 435, 280);
 		
 		//사용방법 표시하는 라벨(로그인 가장 아래 있는 설명)
 		JTextArea jtaMsg = new JTextArea();
 		StringBuilder sb = new StringBuilder();
-		sb.append("- 최초 사용자는 전화번호 뒷자리 4개가 임시 비밀번호로 설정돼있습니다.").append("\n")
+		sb.append("- 최초 사용자는 전화번호 뒷자리 4개가 임시 비밀번호로 설정되어있습니다.").append("\n")
 		.append("- 비밀번호는 마이페이지에서 변경할 수 있습니다.").append("\n")
 		.append("- ID는 학번/사번 입니다.").append("\n")
 		.append("- 학생, 교직원은 별도의 회원가입 절차 없이 학번/사번으로 로그인이 가능합니다.");
@@ -99,6 +104,7 @@ public class LoginFrame extends JFrame {
 		jtaMsg.setText(sb.toString());
 		jtaMsg.setEditable(false);
 		jtaMsg.setBounds(jbtnLogin.getX(), jbtnLogin.getY()+85, 600, 100);
+		jtaMsg.setFont(new Font("Pretendard", Font.BOLD, 16));
 		
 		//화면에 표시(추가)
 		add(jcbChangeAdmin);
@@ -122,7 +128,7 @@ public class LoginFrame extends JFrame {
 		addWindowListener(le);
 		
 		//화면 크기 설정
-		setBounds(200, 150, 1200, 800);
+		setBounds(400, 100, 1200, 800);
 		setVisible(true);
 	}
 

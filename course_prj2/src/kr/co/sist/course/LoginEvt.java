@@ -4,6 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
@@ -14,6 +21,7 @@ public class LoginEvt extends WindowAdapter implements ActionListener {
 	
 	public LoginEvt(LoginFrame lf) {
 		this.lf = lf;
+		bringId();
 	}
 	
 	/**
@@ -28,8 +36,8 @@ public class LoginEvt extends WindowAdapter implements ActionListener {
 		if("".equals(id) || "".equals(pass)) {
 			JOptionPane.showMessageDialog(lf, "아이디와 비밀번호는 필수 입력입니다.");
 			return;
-		}
-		
+		} 
+			
 		try {
 			if(isAdmin()) { //관리자 또는 학생 계정으로 로그인하는지 확인한다.
 				new EmployMainFrame(LoginDAO.getInstnace().selectEmp(strId, pass));
@@ -37,14 +45,18 @@ public class LoginEvt extends WindowAdapter implements ActionListener {
 			} else {
 				new StudentMainFrame(LoginDAO.getInstnace().selectStu(strId, pass));
 			}
+			
+			idSave(strId);
 			lf.dispose();
 			
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			JOptionPane.showMessageDialog(lf, "서버 오류!\n잠시 후에 다시 시도해 주세요.");
 		} catch (NumberFormatException nfe) {
+			nfe.printStackTrace();
 			JOptionPane.showMessageDialog(lf, "아이디, 비밀번호를 올바르게 입력해주세요.");
 		} catch (NullPointerException npe) {
+			npe.printStackTrace();
 			JOptionPane.showMessageDialog(lf, "아이디, 비밀번호를 올바르게 입력해주세요.\"");
 		}
 		
@@ -64,12 +76,36 @@ public class LoginEvt extends WindowAdapter implements ActionListener {
 	 * @param id 아이디(사번, 학번)
 	 */
 	public void idSave(String id) {
-		System.out.println(id);
+		File file = new File("e:/dev/temp/id.dmp");
 		
 		if(lf.getJcbIdSave().isSelected()) {
-			System.out.println("아이디 저장");
+			
+			try {
+				BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+				bw.write(id);
+				bw.close();
+				
+				
+			} catch (IOException e) {
+			}
+			
 		} else {
-			System.out.println("아이디 저장 안 함");
+			file.delete();
+		}
+	}
+	
+	public void bringId() {
+		File file = new File("e:/dev/temp/id.dmp");
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			String id = br.readLine();
+			
+			lf.getJtfId().setText(id);
+			
+			br.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 

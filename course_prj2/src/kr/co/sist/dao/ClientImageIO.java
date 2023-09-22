@@ -47,9 +47,6 @@ public class ClientImageIO {
 			}
 			os.flush();
 			
-			System.out.println("이미지 전송 완료");
-			
-			
 		} finally {
 			if(os != null) { os.close(); }
 			if(socket != null) { socket.close(); }
@@ -74,18 +71,8 @@ public class ClientImageIO {
 			//바이트로 되어있는 이미지 파일을 읽어온다.
 			byte[] data = is.readAllBytes();
 			ImageIcon icon = new ImageIcon(data);
-
-			System.out.println("사진 불러오기 성공");
 			
 			return icon;
-//			JFrame jf = new JFrame();
-//			JLabel jl = new JLabel(icon);
-			
-//			jf.add(jl);
-//			jf.setBounds(100, 150, 400, 600);
-//			jf.setVisible(true);
-//			jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			
 			
 		} finally {
 			if(is != null) { is.close(); }
@@ -93,24 +80,4 @@ public class ClientImageIO {
 		}
 	}
 	
-//	public static void main(String[] args) {
-//		Frame f = new Frame();
-//		
-//		try {
-//			ClientImageIO client = new ClientImageIO();
-////			
-////			FileDialog fd = new FileDialog(f, "사진 찾기", FileDialog.LOAD);
-////			fd.setVisible(true);
-////			
-////			String fileType = fd.getFile().substring(fd.getFile().lastIndexOf("."));
-////			
-////			client.writeImage(fd.getDirectory()+fd.getFile(), fileType, "20230004");
-//			System.out.println("------------------------------------------------------------------------");
-//			client.readImage("20230004");
-//			
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
-
 }

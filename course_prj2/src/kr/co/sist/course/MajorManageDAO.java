@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.spi.DirStateFactory.Result;
 import javax.swing.JOptionPane;
 
 import kr.co.sist.dao.DbConn;
@@ -56,7 +55,6 @@ public class MajorManageDAO {
 			StringBuilder selectAllMajorInfo = new StringBuilder();
 			selectAllMajorInfo.append("	select d.dptname, m.majorcode, m.majorname	")
 					.append("	from dpt d, major m		").append("	where d.dptcode = m.dptcode	");
-			System.out.println(selectAllMajorInfo);
 			pstmt = con.prepareStatement(selectAllMajorInfo.toString());
 
 			rs = pstmt.executeQuery();
@@ -262,7 +260,6 @@ public class MajorManageDAO {
 			updateMajorInfo.append("	update major	").append("	set  majorname= '" + mmVO.getMajorName() + "'	")
 					.append("	where  majorcode= '" + mmVO.getmajorCode() + "'	");
 
-			System.out.println(updateMajorInfo);
 			pstmt = con.prepareStatement(updateMajorInfo.toString());
 
 			rowCntUpdate = pstmt.executeUpdate();

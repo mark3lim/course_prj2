@@ -3,8 +3,6 @@ package kr.co.sist.course;
 import java.awt.Color;
 import java.awt.Font;
 
-////////////// 인영 ///////////////
-/////////// 학과관리 Dialog ///////////
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -59,8 +57,6 @@ public class MajorManageDialog extends JDialog {
 
 		dcbmDptAdd = new DefaultComboBoxModel<String>();
 		jcbDptAdd = new JComboBox<String>(dcbmDptAdd);
-
-//		mme.setDptNameCombo();
 
 		// 검색창
 		jtfMajor = new JTextField();
@@ -117,8 +113,8 @@ public class MajorManageDialog extends JDialog {
 		jbtnChange.setFont(font);
 		jlblMajor.setFont(new Font("Pretendard", Font.BOLD, 20));
 		jlblDpt.setFont(new Font("Pretendard", Font.BOLD, 20));
-		jspJtMajor.setFont(font);
-
+		jtMajor.setFont(new Font("Pretendard", Font.BOLD, 14));
+		
 		// back-color
 		jbtnSearch.setBackground(new Color(0xE0E0E0));
 		jbtnAdd.setBackground(new Color(0xE0E0E0));

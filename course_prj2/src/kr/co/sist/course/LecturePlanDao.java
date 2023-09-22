@@ -24,8 +24,9 @@ public class LecturePlanDao {
 		return lpDAO;
 	}
 	
-	public LecturePlanVO selectedContents(String subCode) throws SQLException {
+	public LecturePlanVO selectedContents(String subjectCode) throws SQLException {
 		LecturePlanVO lpVO=null;
+		System.out.println(subjectCode);
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -39,7 +40,7 @@ public class LecturePlanDao {
 		.append(" WHERE s.stuno = h.stuno and s.stuno = c.stuno and c.subcode = sp.subcode  ")
 		.append(" and c.subcode=sb.subcode and c.subcode=? ");
 		pstmt = con.prepareStatement(selectedContents.toString());
-		pstmt.setString(1,subCode);
+		pstmt.setString(1,subjectCode);
 		rs = pstmt.executeQuery();
 
 		

@@ -203,41 +203,6 @@ public class ProfDAO {
 		return majorcode;
 	}// getMajorcode
 
-//	/**
-//	 * 사번을 생성하기 위해 userCode를 얻는 일
-//	 * @param pVO
-//	 * @return
-//	 * @throws SQLException
-//	 */
-//	public String getUserCode(ProfVO pVO) throws SQLException{
-//		
-//		Connection con = null;
-//		PreparedStatement pstmt = null;
-//		ResultSet rs = null;
-//		String userCode = null;
-//
-//		DbConn db = DbConn.getInstance();
-//		try {
-//			con = db.getConnection("192.168.10.142", "applepie", "mincho");
-//
-//			String getUserCode = "select usercode from emp where majorcode=(select MAJORCODE from MAJOR where MAJORNAME = '" + pVO.getMajorName() + "')";
-//
-//			pstmt = con.prepareStatement(getUserCode);
-//
-//			rs = pstmt.executeQuery();
-//
-//			if (rs.next()) {
-//				userCode = rs.getString(1);
-//			} // end if
-//
-//		} finally {
-//			db.dbClose(rs, pstmt, con);
-//		} // end finally
-//		userCode = userCode.trim();
-//		return userCode;
-//		
-//	}
-
 	/**
 	 * 사번을 생성하기 위해 생성한 시퀀스에서 next number를 가져오는 일
 	 * 
@@ -293,21 +258,22 @@ public class ProfDAO {
 			con.setAutoCommit(false); // 자동 커밋 비활성화
 
 			String majorCode = getMajorcode(pVO);
-			String userCode = "C";
+			String userCode = "P";
 			int seq = getNextProfSeq();
 
 			empNo = majorCode + userCode + String.format("%03d", seq);
 
 			// 3. 쿼리문 생성 객체 얻기 - bind 값 설정하는 과정에 오류가 있어서 직접 넣음
+			String getPwByPhone=pVO.getPhone().substring(9,13);
+			System.out.println(getPwByPhone);
 			StringBuilder insertProfInfo = new StringBuilder();
 			insertProfInfo.append(
-					" insert into emp(  empno, ename, dptcode, majorcode, phone, email, usercode)				")
+					" insert into emp(  empno, ename, dptcode, majorcode, phone, email, usercode, pass )				")
 					.append(" values ( '" + empNo + "','" + pVO.getEname() + "' ,	")
 					.append(" (select DPTCODE from DPT where DPTNAME = '" + pVO.getDptName() + "')	")
 					.append(" , (select MAJORCODE from MAJOR where MAJORNAME ='" + pVO.getMajorName() + "'),")
-					.append("'" + pVO.getPhone() + "', '" + pVO.getEmail() + "', 'P')	");
+					.append("'" + pVO.getPhone() + "', '" + pVO.getEmail() + "', 'P', '"+getPwByPhone+"' )	");
 
-//			System.out.println(insertProfInfo);
 			pstmt = con.prepareStatement(insertProfInfo.toString());
 
 			// 5. 쿼리문 실행 결과 얻기

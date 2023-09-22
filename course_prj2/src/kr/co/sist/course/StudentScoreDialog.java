@@ -40,7 +40,7 @@ public class StudentScoreDialog extends JDialog {
 		//타이틀 설정
 		JLabel jlTitle = new JLabel("성적조회");
 		jlTitle.setBounds(145, 100, 100, 30);
-		jlTitle.setFont(new Font("맑은 고딕", Font.BOLD, 24));
+		jlTitle.setFont(new Font("Pretendard", Font.BOLD, 24));
 		
 		//콤보박스 설정
 		dcbmSemester = new DefaultComboBoxModel<String>();
@@ -51,7 +51,13 @@ public class StudentScoreDialog extends JDialog {
 		//성적 테이블 설정
 		String[] columnNames = {"학과명", "과목명", "평점", "성적", "이수구분"};
 		dtmScore = new DefaultTableModel(null, columnNames);
-		jtScore = new JTable(dtmScore);
+		//컬럼 값 수정 불가
+		jtScore = new JTable(dtmScore) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 		
 		JScrollPane jsp = new JScrollPane(jtScore);
 		jsp.setBounds(jcbSemester.getX(), jcbSemester.getY()+40, 705, 385);
@@ -68,13 +74,6 @@ public class StudentScoreDialog extends JDialog {
 		jbtnSearch.setBackground(new Color(0xE0E0E0));
 		jbtnSearch.setBorder(null);
 		
-		//임시용 테두리 설정
-		//정확한 위치와 크기를 알아보기 위해서 설정
-		//디자인이 끝나면 삭제할 예정
-//		jlTitle.setBorder(new LineBorder(Color.red));
-//		jtScore.setBorder(new LineBorder(Color.red));
-//		jsp.setBorder(new LineBorder(Color.red));
-		
 		//이벤트 연결
 		StudentScoreEvt sse = new StudentScoreEvt(this);
 		jbtnSearch.addActionListener(sse);
@@ -90,7 +89,7 @@ public class StudentScoreDialog extends JDialog {
 		//배경 이미지가 있는 라벨 추가
 		add(bgLabel);
 		
-		setBounds(150, 200, 1000, 700);
+		setBounds(smf.getX() + 100, smf.getY() + 50, 1000, 700);
 		setVisible(true);
 	}
 
@@ -118,8 +117,5 @@ public class StudentScoreDialog extends JDialog {
 		return dcbmSemester;
 	}
 	
-//	public static void main(String[] args) {
-//		new StudentScoreDialog();
-//	}
 
 }

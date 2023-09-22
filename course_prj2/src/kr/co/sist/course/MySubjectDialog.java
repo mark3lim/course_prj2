@@ -13,12 +13,18 @@ import javax.swing.table.DefaultTableModel;
 
 @SuppressWarnings("serial")
 public class MySubjectDialog extends JDialog{
+	
+
 	private DefaultTableModel dtmtn;
 	private JTable jtMySub;
-	
-public MySubjectDialog() {
+	private StudentMainFrame smf;
+	private String subjectCode;
+
+
+
+public MySubjectDialog(StudentMainFrame smf) {
 		
-		
+		this.smf=smf;
 		
 		JLabel jlblTitle = new JLabel("수강과목");
 		JLabel jlblback=new JLabel(new ImageIcon("C:/Users/user/git/group_prj/course_prj/src/kr/co/sist/course/images/backgr.png"));
@@ -58,10 +64,14 @@ public MySubjectDialog() {
 		
 		this.setResizable(false);
 		
-		setBounds(500, 100, 1000, 700);
+		setBounds(smf.getX() + 100, smf.getY() + 50, 1000, 700);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
+
+public void setSmf(StudentMainFrame smf) {
+	this.smf = smf;
+}
 
 public void setDtmtn(DefaultTableModel dtmtn) {
 	this.dtmtn = dtmtn;
@@ -81,6 +91,12 @@ public JTable getJtMySub() {
 
 public void setJtMySub(JTable jtMySub) {
 	this.jtMySub = jtMySub;
+}
+public StudentMainFrame getSmf() {
+	return smf;
+}
+public String getSubjectCode() {
+	return subjectCode;
 }
 
 //public static void main(String[] args) {

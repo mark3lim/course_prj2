@@ -12,7 +12,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 /**
  * 인영 교수 관리 Event
@@ -112,6 +111,7 @@ public class EmployProfManageEvt extends WindowAdapter implements ActionListener
 
 	}// selectionProfInfo
 
+	
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if (ae.getSource() == epmd.getJbtnAdd()) { // 추가 버튼 누르면 동작
@@ -123,17 +123,17 @@ public class EmployProfManageEvt extends WindowAdapter implements ActionListener
 			if (selectedRow == -1) {
 				JOptionPane.showMessageDialog(epmd, "수정할 교수를 선택해주세요", "알림", JOptionPane.WARNING_MESSAGE);
 				return;
-			}
+			}//end if
 			selectionProfInfo();
 		} // end if
 
 		// 교수 정보 조회 텍스트 필드에 입력된 값 얻어오기
 		String searchValue = epmd.getJtfSearch().getText().trim().toUpperCase();
-		if (ae.getSource() == epmd.getJbtnSearch()) { //조회 버튼이 눌리면
+		if (ae.getSource() == epmd.getJbtnSearch()) { // 조회 버튼이 눌리면
 			if (!searchValue.isEmpty()) { // 교수 정보 조회 텍스 필드가 비어있지 않으면 정보를 조회하는 일
 				searchOneProfInfo(searchValue);
 			} // end if
-		}//end if
+		} // end if
 	}// actionPerformed
 
 	@Override

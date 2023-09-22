@@ -62,10 +62,7 @@ public class StudentSubjectDAO {
 
 	}
 	
-	public LecturePlanVO selectRegisterSub () {
-		return null;
-		
-	}
+
 	public void insertLecture()throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt=null;
@@ -84,9 +81,9 @@ public class StudentSubjectDAO {
 			
 			
 			pstmt=con.prepareStatement(insertLecture.toString());
-			pstmt.setString(1, /*ssVO.getSubjectCode()*/"KOR001001"); // ssVO.getSubjectCode()가 널 상태임
-			pstmt.setInt(2, /*StudentMainFrame.sVO.getId()*/20230002); //임의의 학번 추가
-			pstmt.setInt(3, /*StudentMainFrame.sVO.getId()*/20230002);
+			pstmt.setString(1, ssVO.getSubjectCode()/*"KOR001001"*/); // ssVO.getSubjectCode()가 널 상태임
+			pstmt.setInt(2, StudentMainFrame.sVO.getId()/*20230002*/); //임의의 학번 추가
+			pstmt.setInt(3, StudentMainFrame.sVO.getId()/*20230002*/);
 			
 		
 			pstmt.executeUpdate();

@@ -43,7 +43,6 @@ public class EmployProfEditManageDialog extends JDialog {
 		super(epmd, "관리자", true);
 		this.epmd = epmd;
 
-		
 		//// 라벨 ////
 		JLabel jlblTitle = new JLabel("교수 수정");
 		JLabel jlblEmpno = new JLabel("사번");
@@ -60,8 +59,8 @@ public class EmployProfEditManageDialog extends JDialog {
 		jtfPhone = new JTextField(pVO.getPhone()); // 전화번호
 		jtfEmail = new JTextField(email.substring(0, (email.indexOf("@")))); // 이메일
 
-		//이벤트 등록
-		
+		// 이벤트 등록
+
 		//// 콤보 박스 ///
 		// 학부
 		dcbmDept = new DefaultComboBoxModel<String>();
@@ -70,19 +69,6 @@ public class EmployProfEditManageDialog extends JDialog {
 
 		// 이메일
 		dcbmEmail = new DefaultComboBoxModel<String>();
-
-		
-//		dcbmDept.addElement("컴퓨터공학부");
-//		dcbmDept.addElement("인문사회부");
-//		dcbmDept.addElement("연극학부");
-//		dcbmDept.addElement("건축학부");
-//		dcbmDept.addElement("체육학부");
-
-//		dcbmMajor.addElement("컴퓨터과학과");
-//		dcbmMajor.addElement("국어국문학과");
-//		dcbmMajor.addElement("연극영화과");
-//		dcbmMajor.addElement("건축공학과");
-//		dcbmMajor.addElement("사회체육학과");
 
 		email = pVO.getEmail().substring(email.lastIndexOf("@"), email.length());
 		dcbmEmail.setSelectedItem(email);
@@ -95,9 +81,10 @@ public class EmployProfEditManageDialog extends JDialog {
 		jcbDept = new JComboBox<String>(dcbmDept);
 		jcbMajor = new JComboBox<String>(dcbmMajor);
 		jcbEmail = new JComboBox<String>(dcbmEmail);
-		
-		EmployProfEditManageDialogEvt epemde= new EmployProfEditManageDialogEvt(this);
-		
+
+		// 이벤트 연결
+		EmployProfEditManageDialogEvt epemde = new EmployProfEditManageDialogEvt(this,pVO.getDptName());
+
 		dcbmDept.setSelectedItem(pVO.getDptName());
 		dcbmMajor.setSelectedItem(pVO.getMajorName());
 		//// 버튼 ////
@@ -129,12 +116,11 @@ public class EmployProfEditManageDialog extends JDialog {
 		jcbEmail.setBounds(410, 340, 140, 30);
 		// 버튼
 		jbtnEdit.setBounds(274, 414, 80, 30);
-		
-	
+
+		// 이벤트 등록
 		jbtnEdit.addActionListener(epemde);
 		jcbDept.addActionListener(epemde);
 		jcbMajor.addActionListener(epemde);
-		
 
 		//// Font ////
 		Font font = new Font("Pretendard", Font.BOLD, 25);
@@ -150,6 +136,7 @@ public class EmployProfEditManageDialog extends JDialog {
 		jlblPhone.setFont(font);
 		jlblEmail.setFont(font);
 		JlblSetEmpno.setFont(new Font("Pretendard", Font.BOLD, 18));
+		
 
 		//// back-color ////
 		jbtnEdit.setBackground(new Color(0xE0E0E0));

@@ -49,7 +49,7 @@ public class StudentSubjectVO {
 		super();
 		this.subjectCode = subjectCode;
 		this.subjectname = subjectname;
-		ProfName = profName;
+		this.ProfName = profName;
 		this.subType = subType;
 		this.credit = credit;
 	}

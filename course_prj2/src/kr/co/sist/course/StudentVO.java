@@ -10,12 +10,13 @@ public class StudentVO {
 	private String dptName;
 	private String addr;
 	private String img;
+	private int year;
 	
 	public StudentVO() {
 	}
 	
 	public StudentVO(int id, String name, String phone, String email, String majorName, String dptName, String addr,
-			String img) {
+			String img, int year) {
 		this.id = id;
 		this.name = name;
 		this.phone = phone;
@@ -24,6 +25,7 @@ public class StudentVO {
 		this.dptName = dptName;
 		this.addr = addr;
 		this.img = img;
+		this.year = year;
 		
 	}
 
@@ -89,6 +91,14 @@ public class StudentVO {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
 	}
 
 	@Override

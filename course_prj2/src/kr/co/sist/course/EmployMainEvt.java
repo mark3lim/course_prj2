@@ -1,18 +1,14 @@
-   package kr.co.sist.course;
+package kr.co.sist.course;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-import kr.co.sist.dao.ClientImageIO;
-//돼라
 /* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 *//* 태균 */
 public class EmployMainEvt extends WindowAdapter implements ActionListener {
 	
@@ -28,8 +24,11 @@ public class EmployMainEvt extends WindowAdapter implements ActionListener {
 	}
 	
 	public void goStuManage() {
-//		new EmployStuManageDialog(emf);
-		System.out.println("학생관리");
+		if(emf.getFlag()) { //관리자
+			new EmployStuManageDialog(emf);			
+		}else {				//교수
+			new EmployStuProfManageDialog(emf);
+		}
 	}
 	
 	public void goDrManage() {
@@ -42,16 +41,14 @@ public class EmployMainEvt extends WindowAdapter implements ActionListener {
 
 	public void goMajorManage() {
 		if(emf.getFlag()) {
-//			new MajorManageDialog(emf);
-			System.out.println("학과관리");
+			new MajorManageDialog(emf);
 		} else {
 			JOptionPane.showMessageDialog(emf, "접근 권한이 없습니다.");
 		}
 	}
 	
 	public void goLectureManage() {
-//		new SubjectManageDialog(emf);
-		System.out.println("과목관리");
+		new SubjectManageDialog(emf);
 	}
 	
 	public void setLoginTime() {
@@ -71,17 +68,7 @@ public class EmployMainEvt extends WindowAdapter implements ActionListener {
 			emf.getJlblTwo().setText(eVO.getMajorName());
 		}
 		emf.getJlblMyEmail().setText(eVO.getEmail());
-
-		try {
-			ImageIcon icon = ClientImageIO.readImage(eVO.getEmpno());
-			emf.getJlblMyPhoto().setIcon(icon);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
 		setLoginTime();
-		
 	}
 	
 	public void logout() {

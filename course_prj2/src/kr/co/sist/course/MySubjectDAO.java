@@ -27,7 +27,7 @@ public class MySubjectDAO {
 		return msDAO;
 	}
 
-	public List<MySubjectVO> selectedContents(int StuNum, int slevel) throws SQLException {
+	public List<MySubjectVO> selectedContents(int StuNum) throws SQLException {
 		List<MySubjectVO> list = new ArrayList<MySubjectVO>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -40,11 +40,11 @@ public class MySubjectDAO {
 		selectedContents.append("select m.majorname, sb.subname ,sb.subcode, e.ename, sb.subtype, sb.credit ")
 		.append(" from student s,major m ,course c, subject sb , emp e ")
 		.append("where  s.stuno=c.stuno and s.majorcode=m.majorcode and sb.subcode=c.subcode "
-				+ " and sb.empno=e.empno and c.semester= case when to_number(to_char(sysdate, 'mm')) > 6 then 2 else 1 end and s.stuno=? and c.slevel = ? ");
+				+ " and sb.empno=e.empno and c.semester= case when to_number(to_char(sysdate, 'mm')) > 6 then 2 else 1 end and s.stuno=? and c.slevel = (select nowlevel from student where stuno=? ) ");
 
 		pstmt = con.prepareStatement(selectedContents.toString());
 		pstmt.setInt(1, StuNum);
-		pstmt.setInt(2, slevel);
+		pstmt.setInt(2, StuNum);
 		rs = pstmt.executeQuery();
 
 		MySubjectVO msVO = null;
