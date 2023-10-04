@@ -34,7 +34,7 @@ public class LoginFrame extends JFrame {
 		super("로그인");
 		
 		//배경화면 설정
-		JLabel jlblBg = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/mainBg.png"));
+		JLabel jlblBg = new JLabel(new ImageIcon("E:/images/mainBg.png"));
 		jlblBg.setBounds(0, 0, 1200, 800);
 		
 		//아이디, 비밀번호 입력창 선 색깔 설정

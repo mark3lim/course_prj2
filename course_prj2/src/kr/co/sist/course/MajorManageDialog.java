@@ -49,7 +49,7 @@ public class MajorManageDialog extends JDialog {
 		JLabel jlblTitle = new JLabel("학과관리");
 		// 배경
 		JLabel jlblback = new JLabel(
-				new ImageIcon("C:/Users/user/git/group_prj/course_prj/src/kr/co/sist/course/images/backgr.png"));
+				new ImageIcon("E:/images/backgr.png"));
 		// 콤보박스
 		dcbmDpt = new DefaultComboBoxModel<String>();
 		jcbDpt = new JComboBox<String>(dcbmDpt);

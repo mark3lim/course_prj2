@@ -27,7 +27,7 @@ public MySubjectDialog(StudentMainFrame smf) {
 		this.smf=smf;
 		
 		JLabel jlblTitle = new JLabel("수강과목");
-		JLabel jlblback=new JLabel(new ImageIcon("C:/Users/user/git/group_prj/course_prj/src/kr/co/sist/course/images/backgr.png"));
+		JLabel jlblback=new JLabel(new ImageIcon("E:/images/backgr.png"));
 		Font font = new Font("Pretendard", Font.BOLD, 14);
 		String[] tabName = { "학과명", "과목명","과목코드", "교수명", "이수구분", "학점"};
 		 dtmtn = new DefaultTableModel(null, tabName);
@@ -64,7 +64,7 @@ public MySubjectDialog(StudentMainFrame smf) {
 		
 		this.setResizable(false);
 		
-		setBounds(500, 100, 1000, 700);
+		setBounds(smf.getX() + 100, smf.getY() + 50, 1000, 700);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}

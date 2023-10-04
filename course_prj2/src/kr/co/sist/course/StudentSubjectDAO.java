@@ -37,7 +37,11 @@ public class StudentSubjectDAO {
 		StringBuilder selectSubject = new StringBuilder();
 		selectSubject.append(" select distinct sb.subcode ,sb.subname, e.ename,  sb.subtype, sb.credit  ")
 		.append(" from subject sb, course c, emp e, hakyeon h, student s ")
-		.append(" where s.stuno= h.stuno and h.stuno=c.stuno and c.subcode=sb.subcode and sb.empno=e.empno and s.stuno=? ");
+		.append(" where s.stuno= h.stuno and h.stuno=c.stuno and c.subcode=sb.subcode and sb.empno=e.empno and sb.subcode not in (select sb.subcode  ")
+		.append(" from  student s, dpt d ,subject sb ")
+		.append(" where s.dptcode=d.dptcode and d.dptcode=sb.dptcode and s.stuno=?) ");
+		
+		
 
 		pstmt = con.prepareStatement(selectSubject.toString());
 		pstmt.setInt(1, StuNum);
@@ -63,11 +67,12 @@ public class StudentSubjectDAO {
 	}
 	
 
-	public void insertLecture()throws SQLException {
+	public void insertLecture(String subjectCode)throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt=null;
 		DbConn db = DbConn.getInstance();
-		StudentSubjectVO ssVO = new StudentSubjectVO();
+		
+		
 		try {
 			
 			con = db.getConnection("192.168.10.142", "applepie", "mincho");
@@ -75,15 +80,15 @@ public class StudentSubjectDAO {
 			StringBuilder insertLecture = new StringBuilder();
 			
 			insertLecture.append(" insert into course (subcode, stuno, slevel, semester) ")
-			.append(" values (?, ?, (select nowlevel from student where stuno=?) , ")
+			.append(" values (?, ?, ? , ")
 			.append(" case when to_number(to_char(sysdate, 'mm')) > 6 then 2 else 1 end ) ");
-//	String insertLecture= "insert into course values(?,?,?,?)";
+
 			
 			
 			pstmt=con.prepareStatement(insertLecture.toString());
-			pstmt.setString(1, ssVO.getSubjectCode()/*"KOR001001"*/); // ssVO.getSubjectCode()가 널 상태임
+			pstmt.setString(1,subjectCode /*"KOR001001"*/); // ssVO.getSubjectCode()가 널 상태임
 			pstmt.setInt(2, StudentMainFrame.sVO.getId()/*20230002*/); //임의의 학번 추가
-			pstmt.setInt(3, StudentMainFrame.sVO.getId()/*20230002*/);
+			pstmt.setInt(3, StudentMainFrame.sVO.getYear()/*20230002*/);
 			
 		
 			pstmt.executeUpdate();
@@ -109,7 +114,7 @@ public class StudentSubjectDAO {
 			insertLecture.append(" INSERT INTO TGRADE  (SUBCODE, STUNO, SLEVEL, SEMESTER, GRADE ) ")
 			.append(" values (?, ?, (select nowlevel from student where stuno=?) , ")
 			.append(" CASE WHEN TO_NUMBER(TO_CHAR(SYSDATE, 'MM')) > 6 THEN 2 ELSE 1 END, '-' ");//value값 grade는 -로 설정해놨음.
-//	String insertLecture= "insert into course values(?,?,?,?)";
+
 			
 			
 			pstmt=con.prepareStatement(insertLecture.toString());
@@ -128,8 +133,6 @@ public class StudentSubjectDAO {
 	}//insertLecture
 
 
-//	INSERT INTO TGRADE  (SUBCODE, STUNO, SLEVEL, SEMESTER, GRADE )
-//	VALUES ('ARC001001', 20230002, (select nowlevel from student where stuno=20230002) ,
-//	        CASE WHEN TO_NUMBER(TO_CHAR(SYSDATE, 'MM')) > 6 THEN 2 ELSE 1 END, 'A+');
+
 
 }

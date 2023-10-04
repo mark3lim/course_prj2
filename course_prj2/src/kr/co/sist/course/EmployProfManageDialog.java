@@ -45,7 +45,7 @@ public class EmployProfManageDialog extends JDialog {
 		// 타이틀
 		JLabel jlblTitle = new JLabel("교수관리");
 		// 배경
-		JLabel jlblback = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/backgr.png"));
+		JLabel jlblback = new JLabel(new ImageIcon("E:/images/backgr.png"));
 
 		dcbmSearch = new DefaultComboBoxModel<String>();
 		jcbSearch = new JComboBox<String>(dcbmSearch);

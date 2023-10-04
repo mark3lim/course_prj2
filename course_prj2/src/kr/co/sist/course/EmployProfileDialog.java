@@ -56,7 +56,7 @@ public class EmployProfileDialog extends JDialog {
 		Color btnColor = new Color(0xE0E0E0);
 		
 		//배경화면 설정 라벨
-		JLabel bgLabel = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/backgr.png"));
+		JLabel bgLabel = new JLabel(new ImageIcon("E:/images/backgr.png"));
 		bgLabel.setBounds(0, 0, 1000, 700);
 		
 		//내 정보 제목 표시
@@ -71,14 +71,14 @@ public class EmployProfileDialog extends JDialog {
 		jlblMyImg.setToolTipText("크기: 190 X 250");
 		
 		//학번 설정
-		JLabel jlStuNo = new JLabel("학번");
-		jlStuNo.setBounds(420, 170, labelWidth, labelHeight);
+		JLabel jlEmpno = new JLabel("사번");
+		jlEmpno.setBounds(420, 170, labelWidth, labelHeight);
 		jlblEmpno = new JLabel();
-		jlblEmpno.setBounds(jlStuNo.getX()+100, jlStuNo.getY(), fieldWidth, fieldHeight);
+		jlblEmpno.setBounds(jlEmpno.getX()+100, jlEmpno.getY(), fieldWidth, fieldHeight);
 		
 		//이름 설정
 		JLabel jlName = new JLabel("이름");
-		jlName.setBounds(jlStuNo.getX(), jlStuNo.getY()+32, labelWidth, labelHeight);
+		jlName.setBounds(jlEmpno.getX(), jlEmpno.getY()+32, labelWidth, labelHeight);
 		jlblName = new JLabel();
 		jlblName.setBounds(jlblEmpno.getX(), jlName.getY(), fieldWidth, fieldHeight);
 		
@@ -148,17 +148,33 @@ public class EmployProfileDialog extends JDialog {
 		
 		// 라벨 폰트 설정
 		Font font = new Font("Pretendard", Font.BOLD, 20);
+		Font font16 = new Font("Pretendard", Font.PLAIN, 16);
 		jlblTitle.setFont(font);
-		jlStuNo.setFont(font);
+		jlEmpno.setFont(font);
+		jlblEmpno.setFont(font16);
 		jlName.setFont(font);
+		jlblName.setFont(font16);
 		jlPw.setFont(font);
-		jlblEmpno.setFont(font);
-		jlblName.setFont(font);
+		jpfPw.setFont(font16);
+		jpfCheckPw.setFont(font16);
+		jlblEmpno.setFont(font16);
+		jlblName.setFont(font16);
 		jlEmail.setFont(font);
+		jtfEmail.setFont(font16);
+		jcbChoiceEmail.setFont(font16);
 		jldpt.setFont(font);
+		jlblDpt.setFont(font);
 		jlMajor.setFont(font);
+		jlblMajor.setFont(font);
 		jlPhone.setFont(font);
+		jtfPhone.setFont(font);
 		golbaengi.setFont(new Font("Pretendard", Font.PLAIN, 16));
+		
+		//버튼 폰트 설정
+		Font btnFont = new Font("Pretendard", Font.PLAIN, 14);
+		jbtnEdit.setFont(btnFont);
+		jbtnEditImg.setFont(btnFont);
+		jbtnUpdatePw.setFont(btnFont);
 		
 		setLayout(null);
 		
@@ -171,7 +187,7 @@ public class EmployProfileDialog extends JDialog {
 		
 		bgLabel.add(jlblTitle);
 		bgLabel.add(jlblMyImg);
-		bgLabel.add(jlStuNo);
+		bgLabel.add(jlEmpno);
 		bgLabel.add(jlblEmpno);
 		bgLabel.add(jlName);
 		bgLabel.add(jlblName);

@@ -48,7 +48,7 @@ public class LecturePlanEvt  extends WindowAdapter implements ActionListener {
 	
 	
 	 try {
-		ssDAO.insertLecture();
+		ssDAO.insertLecture(lp.getSubjectCode());
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

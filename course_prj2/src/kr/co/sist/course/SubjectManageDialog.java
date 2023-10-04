@@ -12,12 +12,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.border.LineBorder;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 @SuppressWarnings("serial")
 public class SubjectManageDialog extends JDialog {
-
+	
 	private JLabel jlblSmd;
 	private JLabel jlBack;
 	private JComboBox<String> jcbDpt;
@@ -26,11 +26,13 @@ public class SubjectManageDialog extends JDialog {
 	private DefaultComboBoxModel<String> dcbmMajor;
 	private JButton jbtnSearch;
 	private JButton jbtnAdd;
+	private JButton jbtnEdit;
 	private JTable jtLecture;
-	private EmployMainFrame emf;
-
-	public SubjectManageDialog(EmployMainFrame emf) {
-		this.emf = emf;
+	private DefaultTableModel dtmSub;
+	private EmployMainFrame emp;
+	
+	public SubjectManageDialog(EmployMainFrame emp) {
+		this.emp = emp;
 
 		Font font = new Font("Pretendard", Font.BOLD, 14);
 
@@ -41,12 +43,13 @@ public class SubjectManageDialog extends JDialog {
 		jcbMajor = new JComboBox<String>(dcbmMajor);
 		jbtnSearch = new JButton("조회");
 		jbtnAdd = new JButton("등록");
+		jbtnEdit = new JButton("수정");
 		jlBack = new JLabel(new ImageIcon("C:/Users/dltmd/Desktop/backgr.png"));
 
 		// 테이블
 		String[] columnNames = { "No", "과목코드", "과목명", "학부명", "학과명", 
 				"교수명", "학점", "이수구분" };
-		DefaultTableModel dtmSub = new DefaultTableModel(null, columnNames);
+		dtmSub = new DefaultTableModel(null, columnNames);
 		jtLecture = new JTable(dtmSub);
 		JScrollPane jspJtSub = new JScrollPane(jtLecture);
 
@@ -56,19 +59,6 @@ public class SubjectManageDialog extends JDialog {
 		jtLecture.getColumnModel().getColumn(1).setPreferredWidth(60);
 		jtLecture.getColumnModel().getColumn(5).setPreferredWidth(30);
 
-		// 학부 콤보박스
-		dcbmDpt.addElement("컴퓨터공학부");
-		dcbmDpt.addElement("인문사회부");
-		dcbmDpt.addElement("연극학부");
-		dcbmDpt.addElement("건축학부");
-		dcbmDpt.addElement("체육학부");
-		// 학과 콤보박스
-		dcbmMajor.addElement("컴퓨터과학과");
-		dcbmMajor.addElement("국어국문학과");
-		dcbmMajor.addElement("연극영화과");
-		dcbmMajor.addElement("건축공학과");
-		dcbmMajor.addElement("사회체육학과");
-
 		setLayout(null);
 
 		// setBounds
@@ -77,9 +67,9 @@ public class SubjectManageDialog extends JDialog {
 		jcbDpt.setBounds(110, 118, 125, 30);
 		jcbMajor.setBounds(245, 118, 125, 30);
 		jbtnSearch.setBounds(380, 118, 60, 30);
-		jbtnAdd.setBounds(795, 540, 80, 30);
+		jbtnAdd.setBounds(710, 540, 80, 30);
+		jbtnEdit.setBounds(795, 540, 80, 30);
 		jspJtSub.setBounds(110, 170, 770, 355);
-		
 
 		// setFont
 		jlblSmd.setFont(new Font("Pretendard", Font.BOLD, 20));
@@ -87,6 +77,7 @@ public class SubjectManageDialog extends JDialog {
 		jcbMajor.setFont(font);
 		jbtnSearch.setFont(font);
 		jbtnAdd.setFont(font);
+		jbtnEdit.setFont(font);
 		jtLecture.setFont(font);
 
 		// setBackground
@@ -94,23 +85,37 @@ public class SubjectManageDialog extends JDialog {
 		jcbMajor.setBackground(new Color(0xE0E0E0));
 		jbtnSearch.setBackground(new Color(0xE0E0E0));
 		jbtnAdd.setBackground(new Color(0xE0E0E0));
+		jbtnEdit.setBackground(new Color(0xE0E0E0));
 		jbtnSearch.setBorder(null);
 		jbtnAdd.setBorder(null);
-
+		jbtnEdit.setBorder(null);
+		
+		//event
+		SubjectManageEvt smEvt=new SubjectManageEvt(this);
+		jbtnAdd.addActionListener(smEvt);
+		jbtnSearch.addActionListener(smEvt);
+		jcbDpt.addActionListener(smEvt);
+		jcbMajor.addActionListener(smEvt);
+		jbtnEdit.addActionListener(smEvt);
+		
+		// 테이블의 선택 모드 설정
+		jtLecture.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
 		// add
 		add(jcbDpt);
 		add(jcbMajor);
 		add(jbtnSearch);
 		add(jlblSmd);
 		add(jbtnAdd);
+		add(jbtnEdit);
 		add(jspJtSub);
 
 		// 배경
 		add(jlBack);
 
-		setResizable(false);
 		setBounds(500, 150, 1000, 700);
 		setVisible(true);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}// SubjectManageDialog
 
@@ -146,8 +151,16 @@ public class SubjectManageDialog extends JDialog {
 		return jbtnAdd;
 	}
 
+		public JButton getJbtnEdit() {
+		return jbtnEdit;
+	}
+
 	public JTable getJtLecture() {
 		return jtLecture;
+	}
+
+	public DefaultTableModel getDtmSub() {
+		return dtmSub;
 	}
 
 

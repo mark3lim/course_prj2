@@ -27,14 +27,13 @@ public class StudentScoreDialog extends JDialog {
 	private JComboBox<String> jcbSemester;
 	private DefaultComboBoxModel<String> dcbmSemester;
 	
-//	public StudentScoreDialog(/*StudentMainFrame smf*/) {
 	public StudentScoreDialog(StudentMainFrame smf) {
 		this.smf = smf;
 		super.setModal(false);
 		super.setTitle("성적 조회");
 		
 		//배경화면 설정 라벨
-		JLabel bgLabel = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/backgr.png"));
+		JLabel bgLabel = new JLabel(new ImageIcon("E:/images/backgr.png"));
 		bgLabel.setBounds(0, 0, 1000, 700);
 		
 		//타이틀 설정
@@ -89,7 +88,7 @@ public class StudentScoreDialog extends JDialog {
 		//배경 이미지가 있는 라벨 추가
 		add(bgLabel);
 		
-		setBounds(150, 200, 1000, 700);
+		setBounds(smf.getX() + 100, smf.getY() + 50, 1000, 700);
 		setVisible(true);
 	}
 
