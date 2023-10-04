@@ -43,13 +43,12 @@ public class StudentMainFrame extends JFrame {
 		LineBorder border = new LineBorder(new Color(0xE0E0E0));
 		
 		//배경 사진 설정
-		JLabel jlblBg = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/mainBg.png"));
+		JLabel jlblBg = new JLabel(new ImageIcon("E:/images/mainBg.png"));
 		jlblBg.setBounds(0, 0, 1200, 800);
 		
 		//학생 사진을 보여주는 라벨 설정
 		jlblMyPhoto = new JLabel();
 		jlblMyPhoto.setBounds(220, 150, 190, 250);
-		jlblMyPhoto.setBorder(new LineBorder(Color.red));
 		
 		//메인 버튼들을 모아두는 패널과 버튼들 설정
 		JPanel pnlButton = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 60));

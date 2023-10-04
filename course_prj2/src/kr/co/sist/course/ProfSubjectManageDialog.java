@@ -12,11 +12,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 @SuppressWarnings("serial")
-public class SubjectManageDialog extends JDialog {
+public class ProfSubjectManageDialog extends JDialog {
+	private LectureManageProfEditEvt lmpeEvt;
+	private ProfSubjectManageEvt psmeEvt;
 	
 	private JLabel jlblSmd;
 	private JLabel jlBack;
@@ -25,30 +26,20 @@ public class SubjectManageDialog extends JDialog {
 	private JComboBox<String> jcbMajor;
 	private DefaultComboBoxModel<String> dcbmMajor;
 	private JButton jbtnSearch;
-	private JButton jbtnAdd;
-	private JButton jbtnEdit;
 	private JTable jtLecture;
 	private DefaultTableModel dtmSub;
-	private EmployMainFrame emp;
-	
-	public SubjectManageDialog(EmployMainFrame emp) {
-		this.emp = emp;
 
-		Font font = new Font("Pretendard", Font.BOLD, 14);
+	public ProfSubjectManageDialog() {
 
 		jlblSmd = new JLabel("과목관리");
 		dcbmDpt = new DefaultComboBoxModel<String>();
 		jcbDpt = new JComboBox<String>(dcbmDpt);
-		dcbmMajor = new DefaultComboBoxModel<String>();
-		jcbMajor = new JComboBox<String>(dcbmMajor);
 		jbtnSearch = new JButton("조회");
-		jbtnAdd = new JButton("등록");
-		jbtnEdit = new JButton("수정");
 		jlBack = new JLabel(new ImageIcon("C:/Users/dltmd/Desktop/backgr.png"));
 
 		// 테이블
 		String[] columnNames = { "No", "과목코드", "과목명", "학부명", "학과명", 
-				"교수명", "학점", "이수구분" };
+				"교수명", "학점", "이수구분", "강의계획서" };
 		dtmSub = new DefaultTableModel(null, columnNames);
 		jtLecture = new JTable(dtmSub);
 		JScrollPane jspJtSub = new JScrollPane(jtLecture);
@@ -65,49 +56,32 @@ public class SubjectManageDialog extends JDialog {
 		jlBack.setBounds(0, 0, 1000, 700);
 		jlblSmd.setBounds(115, 65, 210, 50);
 		jcbDpt.setBounds(110, 118, 125, 30);
-		jcbMajor.setBounds(245, 118, 125, 30);
-		jbtnSearch.setBounds(380, 118, 60, 30);
-		jbtnAdd.setBounds(710, 540, 80, 30);
-		jbtnEdit.setBounds(795, 540, 80, 30);
+		jbtnSearch.setBounds(245, 118, 60, 30);
 		jspJtSub.setBounds(110, 170, 770, 355);
 
-		// setFont
+		//Font
+		Font font = new Font("Pretendard", Font.BOLD, 14);
 		jlblSmd.setFont(new Font("Pretendard", Font.BOLD, 20));
 		jcbDpt.setFont(font);
-		jcbMajor.setFont(font);
 		jbtnSearch.setFont(font);
-		jbtnAdd.setFont(font);
-		jbtnEdit.setFont(font);
 		jtLecture.setFont(font);
 
 		// setBackground
 		jcbDpt.setBackground(new Color(0xE0E0E0));
-		jcbMajor.setBackground(new Color(0xE0E0E0));
 		jbtnSearch.setBackground(new Color(0xE0E0E0));
-		jbtnAdd.setBackground(new Color(0xE0E0E0));
-		jbtnEdit.setBackground(new Color(0xE0E0E0));
 		jbtnSearch.setBorder(null);
-		jbtnAdd.setBorder(null);
-		jbtnEdit.setBorder(null);
 		
 		//event
-		SubjectManageEvt smEvt=new SubjectManageEvt(this);
-		jbtnAdd.addActionListener(smEvt);
-		jbtnSearch.addActionListener(smEvt);
-		jcbDpt.addActionListener(smEvt);
-		jcbMajor.addActionListener(smEvt);
-		jbtnEdit.addActionListener(smEvt);
-		
-		// 테이블의 선택 모드 설정
-		jtLecture.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//		lmpeEvt=new LectureManageProfEditEvt(this);
+		psmeEvt = new ProfSubjectManageEvt(this);
+		jcbDpt.addActionListener(lmpeEvt);
+		jtLecture.addMouseListener(psmeEvt);
+		jbtnSearch.addActionListener(psmeEvt);
 		
 		// add
 		add(jcbDpt);
-		add(jcbMajor);
 		add(jbtnSearch);
 		add(jlblSmd);
-		add(jbtnAdd);
-		add(jbtnEdit);
 		add(jspJtSub);
 
 		// 배경
@@ -118,42 +92,37 @@ public class SubjectManageDialog extends JDialog {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}// SubjectManageDialog
+	
+	
+	public LectureManageProfEditEvt getLmpeEvt() {
+		return lmpeEvt;
+	}
+
 
 	public JLabel getJlblSmd() {
 		return jlblSmd;
 	}
 
+
 	public JLabel getJlBack() {
 		return jlBack;
 	}
+
 
 	public JComboBox<String> getJcbDpt() {
 		return jcbDpt;
 	}
 
+
 	public DefaultComboBoxModel<String> getDcbmDpt() {
 		return dcbmDpt;
 	}
 
-	public JComboBox<String> getJcbMajor() {
-		return jcbMajor;
-	}
-
-	public DefaultComboBoxModel<String> getDcbmMajor() {
-		return dcbmMajor;
-	}
 
 	public JButton getJbtnSearch() {
 		return jbtnSearch;
 	}
 
-	public JButton getJbtnAdd() {
-		return jbtnAdd;
-	}
-
-		public JButton getJbtnEdit() {
-		return jbtnEdit;
-	}
 
 	public JTable getJtLecture() {
 		return jtLecture;
@@ -163,5 +132,23 @@ public class SubjectManageDialog extends JDialog {
 		return dtmSub;
 	}
 
+
+	public DefaultComboBoxModel<String> getDcbmMajor() {
+		return dcbmMajor;
+	}
+
+	public JComboBox<String> getJcbMajor() {
+		return jcbMajor;
+	}
+
+
+	public ProfSubjectManageEvt getPsmeEvt() {
+		return psmeEvt;
+	}
+
+
+	public static void main(String[] args) {
+		new ProfSubjectManageDialog();
+	}
 
 }// class

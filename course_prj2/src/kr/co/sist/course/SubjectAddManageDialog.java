@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
-public class SubjectEditManageDialog extends JDialog {
+public class SubjectAddManageDialog extends JDialog {
 	
 	private SubjectManageDialog smd;
 	private DefaultComboBoxModel<String>dcbmDept;
@@ -26,16 +26,16 @@ public class SubjectEditManageDialog extends JDialog {
 	private JComboBox<String>jcbSubType;
 	private JTextField jtfLecture;
 	private JTextField jtfCredit;
-	private JButton jbtnEdit;
-	private SubjectManageVO smVO;
+	private JButton jbtnAdd;
+	
 	
 	//과목 등록 창
-	public SubjectEditManageDialog(SubjectManageDialog smd, SubjectManageVO smVO) {
-		super(smd, "과목수정", true);
+	public SubjectAddManageDialog(SubjectManageDialog smd) {
+		super(smd, "과목등록", true);
 		this.smd=smd;
 		
 		//라벨
-		JLabel jlblTitle = new JLabel("과목 수정");
+		JLabel jlblTitle = new JLabel("과목 등록");
 		JLabel jlblDept = new JLabel("학부");
 		JLabel jlblMajor = new JLabel("학과명");
 		JLabel jlblLecture = new JLabel("강의명");
@@ -44,15 +44,12 @@ public class SubjectEditManageDialog extends JDialog {
 		JLabel jlblSubType = new JLabel("이수 구분");
 		
 		//텍스트필드 
-		jtfLecture = new JTextField(smVO.getSubName());
-		System.out.println(smVO.getCredit());
-		jtfCredit = new JTextField(String.valueOf(smVO.getCredit()));
-		
+		jtfLecture = new JTextField();
+		jtfCredit = new JTextField();
 		
 		//콤보박스
 		//학부
 		dcbmDept = new DefaultComboBoxModel<String>();
-	
 		jcbDept = new JComboBox<String>(dcbmDept);
 		//학과
 		dcbmMajor = new DefaultComboBoxModel<String>();
@@ -65,7 +62,7 @@ public class SubjectEditManageDialog extends JDialog {
 		jcbSubType = new JComboBox<String>(dcbmSubType);
 		
 		//버튼
-		jbtnEdit = new JButton("수정");
+		jbtnAdd = new JButton("등록"); //("수정")
 		
 		//배경색
 		Color backgroundColor = Color.decode("#FCF7F5");
@@ -97,10 +94,10 @@ public class SubjectEditManageDialog extends JDialog {
         jtfCredit.setBounds(260, 290, 140, 30);
         
         //버튼
-        jbtnEdit.setBounds(274, 414, 80, 30);
+        jbtnAdd.setBounds(274, 414, 80, 30);
         
         //버튼색
-        jbtnEdit.setBackground(new Color(0xE0E0E0));
+        jbtnAdd.setBackground(new Color(0xE0E0E0));
         
         //글꼴
    		Font font = new Font("Pretendard", Font.BOLD, 19);
@@ -111,7 +108,7 @@ public class SubjectEditManageDialog extends JDialog {
    		jlblProf.setFont(font);
    		jlblCredit.setFont(font);
    		jlblSubType.setFont(font);
-   		jbtnEdit.setFont(new Font("Pretendard", Font.BOLD, 14));
+   		jbtnAdd.setFont(new Font("Pretendard", Font.BOLD, 14));
    		jcbDept.setFont(new Font("Pretendard", Font.BOLD, 14));
    		jcbMajor.setFont(new Font("Pretendard", Font.BOLD, 14));
         jcbProf.setFont(new Font("Pretendard", Font.BOLD, 14));
@@ -123,7 +120,7 @@ public class SubjectEditManageDialog extends JDialog {
         jcbMajor.addActionListener(lemEvt);
         jcbProf.addActionListener(lemEvt);
         jcbSubType.addActionListener(lemEvt);
-        jbtnEdit.addActionListener(lemEvt);
+        jbtnAdd.addActionListener(lemEvt);
    		
         //add
         add(jlblTitle);
@@ -139,7 +136,7 @@ public class SubjectEditManageDialog extends JDialog {
         add(jcbSubType);
         add(jtfLecture);
         add(jtfCredit);
-        add(jbtnEdit);
+        add(jbtnAdd);
         
         setBounds(550, 180, 700, 500);
         setVisible(true);
@@ -192,19 +189,9 @@ public class SubjectEditManageDialog extends JDialog {
 		return jtfCredit;
 	}
 
-	public JButton getJbtnEdit() {
-		return jbtnEdit;
+	public JButton getJbtnAdd() {
+		return jbtnAdd;
 	}
-
-	public SubjectManageVO getSmVO() {
-		return smVO;
-	}
-	
-	
-//	
-//	public static void main(String[] args) {
-//		new SubjectEditManageDialog(smd);
-//	}
 
 	
 }// class

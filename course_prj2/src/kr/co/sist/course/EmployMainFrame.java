@@ -43,13 +43,12 @@ public class EmployMainFrame extends JFrame {
 		Font font16 = new Font("Pretendard", Font.BOLD, 16);
 		
 		// 배경 사진 설정
-		JLabel jlblBg = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/mainBg.png"));
+		JLabel jlblBg = new JLabel(new ImageIcon("E:/images/mainBg.png"));
 		jlblBg.setBounds(0, 0, 1200, 800);
 		
 		// 학생 사진을 보여주는 라벨 설정
 		jlblMyPhoto = new JLabel();
 		jlblMyPhoto.setBounds(220, 150, 200, 250);
-		jlblMyPhoto.setBorder(new LineBorder(Color.red));
 		
 		// 메인 버튼들을 모아두는 패널 설정
 		JPanel pnlButton = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 40));
@@ -97,7 +96,7 @@ public class EmployMainFrame extends JFrame {
 		
 		//관리자 정보 표시창
 		jlblOne = new JLabel();
-		jlblOne.setBounds(100, 0, 200, 30);
+		jlblOne.setBounds(120, 0, 200, 30);
 		jlblTwo = new JLabel();
 		jlblTwo.setBounds(120, jlblOne.getY()+35, 200, 30);
 		
@@ -172,7 +171,7 @@ public class EmployMainFrame extends JFrame {
 		String[] strArr = null;
 		JLabel[] jl = null;
 		
-		if(eVO.getUsercode() == 'M') {
+		if(eVO.getUsercode() == 'E') {
 			jl = new JLabel[M_Arr.length];
 			strArr = M_Arr;
 		} else {
@@ -188,7 +187,7 @@ public class EmployMainFrame extends JFrame {
 		
 		for(int i = 0; i < jl.length; i++) {
 			jl[i] = new JLabel(strArr[i]);
-			jl[i].setBounds(10, 35*i, 80, 30);
+			jl[i].setBounds(10, 35*i, 100, 30);
 			jl[i].setFont(font);
 			
 			pnl.add(jl[i]);
@@ -253,16 +252,16 @@ public class EmployMainFrame extends JFrame {
 		return flag;
 	}
 
-	public static void main(String[] args) {
-		//임시 값
-		EmployVO v = new EmployVO();
-		v.setUsercode('M');
-		v.setName("농담곰");
-		v.setEmpno("EMP000100");
-		v.setDptName("컴퓨터공학부");
-		v.setMajorName("컴퓨터과학");
-		v.setEmail("testest@gmail.com");
-		new EmployMainFrame(v);
-	}
+//	public static void main(String[] args) {
+//		//임시 값
+//		EmployVO v = new EmployVO();
+//		v.setUsercode('M');
+//		v.setName("농담곰");
+//		v.setEmpno("EMP000100");
+//		v.setDptName("컴퓨터공학부");
+//		v.setMajorName("컴퓨터과학");
+//		v.setEmail("testest@gmail.com");
+//		new EmployMainFrame(v);
+//	}
 
 }

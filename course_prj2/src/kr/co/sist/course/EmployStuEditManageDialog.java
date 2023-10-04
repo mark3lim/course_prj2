@@ -100,7 +100,11 @@ public class EmployStuEditManageDialog extends JDialog {
 		dcbmLevel.addElement(4);
 		
 		// addEvent
+<<<<<<< HEAD
 		EmployStuEditManageEvt eseme = null;
+=======
+		EmployStuEditManageEvt eseme;
+>>>>>>> refs/heads/ltg
 		
 		//true면 등록, false면 수정
 		if(flag) {

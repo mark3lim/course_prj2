@@ -78,6 +78,11 @@ public class StudentProfileEvt extends WindowAdapter implements ActionListener {
 		String pw = new String(spd.getJpfPw().getPassword());
 		String pw2 = new String(spd.getJpfPwConfirm().getPassword());
 		
+		if("".equals(pw)) {
+			JOptionPane.showMessageDialog(spd, "비밀번호를 입력해주세요.");
+			return;
+		}
+		
 		if(!pw.equals(pw2)) {
 			JOptionPane.showMessageDialog(spd, "새 비밀번호와 비밀번호 확인이 일치하지 않습니다.");
 			return;

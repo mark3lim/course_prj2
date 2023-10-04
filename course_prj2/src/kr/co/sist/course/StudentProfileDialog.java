@@ -57,7 +57,7 @@ public class StudentProfileDialog extends JDialog {
 		Color btnColor = new Color(0xE0E0E0);
 		
 		//배경화면 설정 라벨
-		JLabel bgLabel = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/backgr.png"));
+		JLabel bgLabel = new JLabel(new ImageIcon("E:/images/backgr.png"));
 		bgLabel.setBounds(0, 0, 1000, 700);
 		
 		//내 정보 제목 표시
@@ -171,17 +171,30 @@ public class StudentProfileDialog extends JDialog {
 		Font font = new Font("Pretendard", Font.BOLD, 20);
 		jlblTitle.setFont(font);
 		jlStuNo.setFont(font);
-		jlName.setFont(font);
-		jlPw.setFont(font);
 		jlblStuNo.setFont(font);
+		jlName.setFont(font);
 		jlblName.setFont(font);
+		jlPw.setFont(font);
+		jpfPw.setFont(font16);
+		jpfPwConfirm.setFont(font16);
 		jlEmail.setFont(font);
+		jtfEmail.setFont(font16);
+		jcbChoiceEmail.setFont(font16);
 		jldpt.setFont(font);
+		jlblDept.setFont(font16);
 		jlMajor.setFont(font);
+		jlblMajor.setFont(font16);
 		jlPhone.setFont(font);
+		jtfPhone.setFont(font16);
 		jlAddr.setFont(font);
-		golbaengi.setFont(new Font("Pretendard", Font.PLAIN, 16));
+		jtfAddr.setFont(font16);
+		golbaengi.setFont(font16);
 		
+		//버튼 폰트 설정
+		Font btnFont = new Font("Pretendard", Font.PLAIN, 14);
+		jbtnChangePw.setFont(btnFont);
+		jbtnEditPhoto.setFont(btnFont);
+		jbtnUpdateInfo.setFont(btnFont);
 		
 		setLayout(null);
 		

@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 public class LoginEvt extends WindowAdapter implements ActionListener {
 	
 	private LoginFrame lf;
+	private boolean saveIdFlag;
 	
 	public LoginEvt(LoginFrame lf) {
 		this.lf = lf;
@@ -76,6 +77,10 @@ public class LoginEvt extends WindowAdapter implements ActionListener {
 	 * @param id 아이디(사번, 학번)
 	 */
 	public void idSave(String id) {
+		if(saveIdFlag) {
+			return;
+		}
+		
 		File file = new File("e:/dev/temp/id.dmp");
 		
 		if(lf.getJcbIdSave().isSelected()) {
@@ -101,11 +106,14 @@ public class LoginEvt extends WindowAdapter implements ActionListener {
 			String id = br.readLine();
 			
 			lf.getJtfId().setText(id);
+			saveIdFlag = true;
+			lf.getJcbIdSave().setSelected(true);
 			
 			br.close();
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			saveIdFlag = false;
+			lf.getJcbIdSave().setSelected(false);
 		}
 	}
 

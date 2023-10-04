@@ -5,6 +5,7 @@ import java.awt.Container;
 import java.awt.Font;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -39,7 +40,9 @@ public class EmployProfAddManageDialog extends JDialog {
 	public EmployProfAddManageDialog(EmployProfManageDialog epmd) {
 		super(epmd, "관리자", true);
 		this.epmd = epmd;
-
+		
+		JLabel jlblback = new JLabel(new ImageIcon("E:/images/backgr.png"));
+		jlblback.setBounds(0, 0, 1000, 700);
 		
 		//// 라벨 ////
 		JLabel jlblTitle = new JLabel("교수 등록");
@@ -149,6 +152,8 @@ public class EmployProfAddManageDialog extends JDialog {
 		add(jcbMajor);
 		add(jcbEmail);
 		add(jbtnAdd);
+		
+		add(jlblback);
 
 		setLayout(null);
 		setResizable(false);

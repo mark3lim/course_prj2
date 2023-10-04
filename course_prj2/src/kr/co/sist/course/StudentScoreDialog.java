@@ -27,7 +27,6 @@ public class StudentScoreDialog extends JDialog {
 	private JComboBox<String> jcbSemester;
 	private DefaultComboBoxModel<String> dcbmSemester;
 	
-//	public StudentScoreDialog(/*StudentMainFrame smf*/) {
 	public StudentScoreDialog(StudentMainFrame smf) {
 		this.smf = smf;
 		super.setModal(false);
@@ -36,7 +35,7 @@ public class StudentScoreDialog extends JDialog {
 		Font font14 = new Font("Pretendard", Font.BOLD, 14);
 		
 		//배경화면 설정 라벨
-		JLabel bgLabel = new JLabel(new ImageIcon("C:/Users/user/git/course_prj2/course_prj2/src/images/backgr.png"));
+		JLabel bgLabel = new JLabel(new ImageIcon("E:/images/backgr.png"));
 		bgLabel.setBounds(0, 0, 1000, 700);
 		
 		//타이틀 설정
