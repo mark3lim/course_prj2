@@ -100,15 +100,17 @@ public class EmployStuEditManageDialog extends JDialog {
 		dcbmLevel.addElement(4);
 		
 		// addEvent
-		EmployStuEditManageEvt eseme = new EmployStuEditManageEvt(this, esmVO.getDptName());
+		EmployStuEditManageEvt eseme;
 		
 		//true면 등록, false면 수정
 		if(flag) {
+			eseme = new EmployStuEditManageEvt(this);
 			jlblTitle = new JLabel("학생 등록");
 			jbtnEdit = new JButton("등록");
 			jtfStuNo.setText("등록시 자동 생성");
 			add(jbtnEditImg);
 		}else {
+			eseme = new EmployStuEditManageEvt(this, esmVO.getDptName());
 			jlblTitle = new JLabel("학생 수정");
 			jbtnEdit = new JButton("수정");
 			jtfStuNo.setText(String.valueOf(esmVO.getStuno()));
