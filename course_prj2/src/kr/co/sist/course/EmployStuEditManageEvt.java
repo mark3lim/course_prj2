@@ -35,10 +35,7 @@ public class EmployStuEditManageEvt extends WindowAdapter implements ActionListe
 	
 	public EmployStuEditManageEvt(EmployStuEditManageDialog esemd) {
 		this.esemd = esemd;
-<<<<<<< HEAD
 		//dptName = "컴퓨터공학부";
-=======
->>>>>>> refs/heads/ltg
 		imgPath = "E:/dev/workspace/course_ysy/src/kr/co/sist/course/images/user.png";
 		imgType = ".png";
 		
@@ -68,10 +65,7 @@ public class EmployStuEditManageEvt extends WindowAdapter implements ActionListe
 		EmployStuManageDAO esmDAO = EmployStuManageDAO.getInstance();
 		esemd.getDcbmMajor().removeAllElements();
 		String dptNameAdd = esemd.getDcbmDept().getElementAt(esemd.getJcbDept().getSelectedIndex());
-<<<<<<< HEAD
 		System.out.println(dptName);
-=======
->>>>>>> refs/heads/ltg
 		try {
 			List<String> majorList = esmDAO.selectMajor(dptName==null ? dptNameAdd : dptName);
 			for (String major : majorList) {
